@@ -11,16 +11,23 @@ const theme = createMuiTheme({
     },
     type: "light",
     primary: {
-      main: `${blue}`,
+      main: `${orange}`,
     },
     secondary: {
-      main: `${orange}`,
+      main: `${blue}`,
     },
   },
   typography: {
-    h3: {
-      fontWeight: 300,
+    tab: {
+        textTransform: 'none',
+        fontWeight: 700,
+        fontFamily: 'Raleway',
+        fontSize: '0.8rem',
     },
+    estimate: {
+        textTransform: 'none',
+        fontSize: '0.8rem',  
+    }
   },
 });
 
