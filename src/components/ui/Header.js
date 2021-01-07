@@ -13,19 +13,33 @@ import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import logo from "../../assets/logo.svg";
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: "-0.5em",
+    marginBottom: "1em",
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: 0,
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '-0.5em',
+    },
   },
   logoContainer: {
     padding: 0,
   },
   logo: {
-    height: "4em",
+    height: "5.5em",
+    [theme.breakpoints.down('sm')]: {
+      height: '4.5em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '3.5em',
+    }
   },
   tabContainer: {
     marginLeft: "auto",
@@ -65,16 +79,34 @@ const ElevationScroll = (props) => {
   });
 };
 
+const menuOptions = [
+  {
+    name: "Software Development",
+    link: "/software",
+  },
+  {
+    name: "App Development",
+    link: "/mobileapps",
+  },
+  {
+    name: "Web Development",
+    link: "/websites",
+  },
+];
+
 const Header = (props) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const theme = useTheme();
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleMouseOver = (e) => {
     setAnchorEl(e.currentTarget);
     setOpen(true);
+    if (window.location.pathname === "/services") setSelected(null);
   };
 
   const handleClose = (e) => {
@@ -97,22 +129,101 @@ const Header = (props) => {
     setSelected(i);
   };
 
-  const menuOptions = [
-    {
-      name: "Software Development",
-      link: "/software",
-    },
-    {
-      name: "App Development",
-      link: "/mobileapps",
-    },
-    {
-      name: "Web Development",
-      link: "/websites",
-    },
-  ];
-  const handleChange = (e, value) => setValue(value);
   const handleCompanyLogo = () => setValue(0);
+  const handleChange = (e, value) => {
+    setValue(value);
+  };
+
+  const tabs = (
+    <React.Fragment>
+      <Tabs
+        className={classes.tabContainer}
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+      >
+        <Tab label="Home" className={classes.tab} component={Link} to="/" />
+        <Tab
+          aria-owns={anchorEl ? "simple-menu" : undefined}
+          aria-haspopup={anchorEl ? "true" : undefined}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleClose}
+          label="Services"
+          className={classes.tab}
+          component={Link}
+          to="/services"
+        />
+        <Tab
+          label="The Revolution"
+          className={classes.tab}
+          component={Link}
+          to="/revolution"
+        />
+        <Tab
+          label="About Us"
+          className={classes.tab}
+          component={Link}
+          to="/about"
+        />
+        <Tab
+          label="Contact Us"
+          className={classes.tab}
+          component={Link}
+          to="/contact"
+        />
+      </Tabs>
+      <Button variant="contained" color="secondary" className={classes.button}>
+        Get Estimate
+      </Button>
+
+      <Popper
+        open={open}
+        anchorEl={anchorEl}
+        role={undefined}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
+          >
+            <Paper elevation={0} classes={{ root: classes.menu }}>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  onMouseLeave={handleClose}
+                  onMouseOver={handleMouseOverMenu}
+                  autoFocusItem={false}
+                  id="menu-list-grow"
+                  onKeyDown={handleListKeyDown}
+                >
+                  {menuOptions.map((option, i) => (
+                    <MenuItem
+                      key={i}
+                      classes={{ root: classes.menuItem }}
+                      component={Link}
+                      to={option.link}
+                      onClick={(e) => {
+                        handleClickMenu(e, i);
+                        handleClose();
+                        setValue(1);
+                      }}
+                      selected={i === selected && value === 1}
+                    >
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </React.Fragment>
+  );
 
   useEffect(() => {
     switch (window.location.pathname) {
@@ -121,6 +232,7 @@ const Header = (props) => {
         break;
       case "/services":
         if (value !== 1) setValue(1);
+        else setSelected(null);
         break;
       case "/software":
         if (value !== 1) {
@@ -167,101 +279,7 @@ const Header = (props) => {
             >
               <img src={logo} className={classes.logo} alt="company logo" />
             </Button>
-            <Tabs
-              className={classes.tabContainer}
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-            >
-              <Tab
-                label="Home"
-                className={classes.tab}
-                component={Link}
-                to="/"
-              />
-              <Tab
-                aria-owns={anchorEl ? "simple-menu" : undefined}
-                aria-haspopup={anchorEl ? "true" : undefined}
-                onMouseOver={handleMouseOver}
-                onMouseLeave={handleClose}
-                label="Services"
-                className={classes.tab}
-                component={Link}
-                to="/services"
-              />
-              <Tab
-                label="The Revolution"
-                className={classes.tab}
-                component={Link}
-                to="/revolution"
-              />
-              <Tab
-                label="About Us"
-                className={classes.tab}
-                component={Link}
-                to="/about"
-              />
-              <Tab
-                label="Contact Us"
-                className={classes.tab}
-                component={Link}
-                to="/contact"
-              />
-            </Tabs>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-            >
-              Get Estimate
-            </Button>
-
-            <Popper
-              open={open}
-              anchorEl={anchorEl}
-              role={undefined}
-              transition
-              disablePortal
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === "bottom" ? "center top" : "center bottom",
-                  }}
-                >
-                  <Paper elevation={0} classes={{ root: classes.menu }}>
-                    <ClickAwayListener onClickAway={handleClose}>
-                      <MenuList
-                        onMouseLeave={handleClose}
-                        onMouseOver={handleMouseOverMenu}
-                        autoFocusItem={false}
-                        id="menu-list-grow"
-                        onKeyDown={handleListKeyDown}
-                      >
-                        {menuOptions.map((option, i) => (
-                          <MenuItem
-                            key={i}
-                            classes={{ root: classes.menuItem }}
-                            component={Link}
-                            to={option.link}
-                            onClick={(e) => {
-                              handleClickMenu(e, i);
-                              handleClose();
-                              setValue(1);
-                            }}
-                            selected={i === selected}
-                          >
-                            {option.name}
-                          </MenuItem>
-                        ))}
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
+            {smaller ? null : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
