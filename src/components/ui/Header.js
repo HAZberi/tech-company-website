@@ -6,10 +6,8 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
-import MenuList from "@material-ui/core/MenuList";
+import Menu from "@material-ui/core/Menu";
 import MenuItem from '@material-ui/core/MenuItem';
-import Popper from '@material-ui/core/Popper';
-import Grow from '@material-ui/core/Grow';
 import { makeStyles } from "@material-ui/styles";
 
 import logo from "../../assets/logo.svg";
@@ -56,7 +54,18 @@ const ElevationScroll = (props) => {
 const Header = (props) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
+  const handleMouseOver = (e) => {
+      setAnchorEl(e.currentTarget);
+      setOpen(true);
+  }
+
+  const handleClose = (e) => {
+      setAnchorEl(false);
+      setOpen(false);
+  }
   const handleChange = (e, value) => setValue(value);
     const handleCompanyLogo = () => setValue(0);
 
@@ -82,7 +91,15 @@ const Header = (props) => {
               indicatorColor='primary'
             >
               <Tab label="Home" className={classes.tab} component={Link} to="/"/>
-              <Tab label="Services" className={classes.tab} component={Link} to="/services"/>
+              <Tab 
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup={anchorEl ? 'true' : undefined}
+                onMouseOver={handleMouseOver}
+                label="Services" 
+                className={classes.tab} 
+                component={Link} 
+                to="/services"
+            />
               <Tab label="The Revolution" className={classes.tab} component={Link} to="/revolution"/>
               <Tab label="About Us" className={classes.tab} component={Link} to="/about"/>
               <Tab label="Contact Us" className={classes.tab} component={Link} to="/contact"/>
@@ -93,6 +110,17 @@ const Header = (props) => {
                 className={classes.button}
             >
                 Get Estimate</Button>
+            <Menu
+                onClose={handleClose}
+                id='simple-menu'
+                anchorEl={anchorEl}
+                open={open}
+                MenuListProps={{onMouseLeave: handleClose}}
+            >
+                    <MenuItem onClick={handleClose} component={Link} to="/customsoftware">Custom Software Development</MenuItem>   
+                    <MenuItem onClick={handleClose} component={Link} to="/mobileapps">Mobile App Development</MenuItem>   
+                    <MenuItem onClick={handleClose} component={Link} to="/websites">Website Developement</MenuItem>   
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
