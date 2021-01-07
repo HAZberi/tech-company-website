@@ -15,6 +15,9 @@ import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
 
 import logo from "../../assets/logo.svg";
 
@@ -22,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     marginBottom: "1em",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       marginBottom: 0,
     },
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: '-0.5em',
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "-0.5em",
     },
   },
   logoContainer: {
@@ -34,12 +37,12 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     height: "5.5em",
-    [theme.breakpoints.down('sm')]: {
-      height: '4.5em',
+    [theme.breakpoints.down("sm")]: {
+      height: "4.5em",
     },
-    [theme.breakpoints.down('xs')]: {
-      height: '3.5em',
-    }
+    [theme.breakpoints.down("xs")]: {
+      height: "3.5em",
+    },
   },
   tabContainer: {
     marginLeft: "auto",
@@ -63,6 +66,25 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.7,
     "&:hover": {
       opacity: 1,
+    },
+  },
+  drawerIconContainer: {
+    marginLeft: "auto",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+    padding: 0,
+    marginRight: '0.75em',
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "0.5em",
+    },
+  },
+  drawerIcon: {
+    height: "1.75em",
+    width: "1.75em",
+    [theme.breakpoints.down("xs")]: {
+      height: "1.5em",
+      width: '1.5em',
     },
   },
 }));
@@ -96,33 +118,35 @@ const menuOptions = [
 
 const Header = (props) => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleMouseOver = (e) => {
     setAnchorEl(e.currentTarget);
-    setOpen(true);
+    setOpenMenu(true);
     if (window.location.pathname === "/services") setSelected(null);
   };
 
   const handleClose = (e) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
   };
 
   const handleListKeyDown = (event) => {
     if (event.key === "Tab") {
       event.preventDefault();
-      setOpen(false);
+      setOpenMenu(false);
     }
   };
 
   const handleMouseOverMenu = (e) => {
-    setOpen(true);
+    setOpenMenu(true);
   };
 
   const handleClickMenu = (e, i) => {
@@ -130,10 +154,30 @@ const Header = (props) => {
   };
 
   const handleCompanyLogo = () => setValue(0);
-  const handleChange = (e, value) => {
-    setValue(value);
+  const handleChange = (e, newValue) => {
+    setValue(newValue);
   };
 
+  const drawer = (
+    <React.Fragment>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+      >
+        Deep Throats
+      </SwipeableDrawer>
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        className={classes.drawerIconContainer}
+        disableRipple
+      >
+        <MenuIcon className={classes.drawerIcon} />
+      </IconButton>
+    </React.Fragment>
+  );
   const tabs = (
     <React.Fragment>
       <Tabs
@@ -177,7 +221,7 @@ const Header = (props) => {
       </Button>
 
       <Popper
-        open={open}
+        open={openMenu}
         anchorEl={anchorEl}
         role={undefined}
         transition
@@ -279,7 +323,7 @@ const Header = (props) => {
             >
               <img src={logo} className={classes.logo} alt="company logo" />
             </Button>
-            {smaller ? null : tabs}
+            {smaller ? drawer : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
