@@ -6,7 +6,6 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/styles";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -42,6 +41,16 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     marginRight: "20px",
   },
+  menu: {
+    backgroundColor: theme.palette.common.orange,
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    "&:hover": {
+      opacity: 1,
+    },
+  },
 }));
 
 const ElevationScroll = (props) => {
@@ -61,6 +70,7 @@ const Header = (props) => {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
 
   const handleMouseOver = (e) => {
     setAnchorEl(e.currentTarget);
@@ -68,7 +78,7 @@ const Header = (props) => {
   };
 
   const handleClose = (e) => {
-    setAnchorEl(false);
+    setAnchorEl(null);
     setOpen(false);
   };
 
@@ -79,15 +89,69 @@ const Header = (props) => {
     }
   };
 
+  const handleMouseOverMenu = (e) => {
+    setOpen(true);
+  };
+
+  const handleClickMenu = (e, i) => {
+    setSelected(i);
+  };
+
+  const menuOptions = [
+    {
+      name: "Software Development",
+      link: "/software",
+    },
+    {
+      name: "App Development",
+      link: "/mobileapps",
+    },
+    {
+      name: "Web Development",
+      link: "/websites",
+    },
+  ];
   const handleChange = (e, value) => setValue(value);
   const handleCompanyLogo = () => setValue(0);
 
   useEffect(() => {
-    if (window.location.pathname === "/" && value !== 0) setValue(0);
-    if (window.location.pathname === "/services" && value !== 1) setValue(1);
-    if (window.location.pathname === "/revolution" && value !== 2) setValue(2);
-    if (window.location.pathname === "/about" && value !== 3) setValue(3);
-    if (window.location.pathname === "/contact" && value !== 4) setValue(4);
+    switch (window.location.pathname) {
+      case "/":
+        if (value !== 0) setValue(0);
+        break;
+      case "/services":
+        if (value !== 1) setValue(1);
+        break;
+      case "/software":
+        if (value !== 1) {
+          setValue(1);
+          setSelected(0);
+        }
+        break;
+      case "/mobileapps":
+        if (value !== 1) {
+          setValue(1);
+          setSelected(1);
+        }
+        break;
+      case "/websites":
+        if (value !== 1) {
+          setValue(1);
+          setSelected(2);
+        }
+        break;
+      case "/revolution":
+        if (value !== 2) setValue(2);
+        break;
+      case "/about":
+        if (value !== 3) setValue(3);
+        break;
+      case "/contact":
+        if (value !== 4) setValue(4);
+        break;
+      default:
+        break;
+    }
   }, [value]);
   return (
     <React.Fragment>
@@ -119,6 +183,7 @@ const Header = (props) => {
                 aria-owns={anchorEl ? "simple-menu" : undefined}
                 aria-haspopup={anchorEl ? "true" : undefined}
                 onMouseOver={handleMouseOver}
+                onMouseLeave={handleClose}
                 label="Services"
                 className={classes.tab}
                 component={Link}
@@ -166,44 +231,31 @@ const Header = (props) => {
                       placement === "bottom" ? "center top" : "center bottom",
                   }}
                 >
-                  <Paper>
+                  <Paper elevation={0} classes={{ root: classes.menu }}>
                     <ClickAwayListener onClickAway={handleClose}>
                       <MenuList
                         onMouseLeave={handleClose}
+                        onMouseOver={handleMouseOverMenu}
                         autoFocusItem={false}
                         id="menu-list-grow"
                         onKeyDown={handleListKeyDown}
                       >
-                        <MenuItem
-                          onClick={() => {
-                            handleClose();
-                            setValue(1);
-                          }}
-                          component={Link}
-                          to="/customsoftware"
-                        >
-                          Software Development
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => {
-                            handleClose();
-                            setValue(1);
-                          }}
-                          component={Link}
-                          to="/mobileapps"
-                        >
-                          App Development
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => {
-                            handleClose();
-                            setValue(1);
-                          }}
-                          component={Link}
-                          to="/websites"
-                        >
-                          Web Developement
-                        </MenuItem>
+                        {menuOptions.map((option, i) => (
+                          <MenuItem
+                            key={i}
+                            classes={{ root: classes.menuItem }}
+                            component={Link}
+                            to={option.link}
+                            onClick={(e) => {
+                              handleClickMenu(e, i);
+                              handleClose();
+                              setValue(1);
+                            }}
+                            selected={i === selected}
+                          >
+                            {option.name}
+                          </MenuItem>
+                        ))}
                       </MenuList>
                     </ClickAwayListener>
                   </Paper>

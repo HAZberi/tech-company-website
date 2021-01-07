@@ -19,7 +19,7 @@ const App = () => {
             />
             <Route
               exact
-              path="/customsoftware"
+              path="/software"
               component={() => <div>Custom Software Developement</div>}
             />
             <Route
