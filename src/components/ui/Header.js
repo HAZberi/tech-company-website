@@ -26,6 +26,7 @@ import logo from "../../assets/logo.svg";
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
+    //toolbar minimum height
     ...theme.mixins.toolbar,
     marginBottom: "1em",
     [theme.breakpoints.down("sm")]: {
@@ -63,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menu: {
     backgroundColor: theme.palette.common.orange,
+    marginTop: '7px'
   },
   menuItem: {
     ...theme.typography.tab,
@@ -95,17 +97,17 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerItem: {
     ...theme.typography.tab,
-    opacity: 0.6,
+    opacity: 0.7,
     "&:hover": {
       opacity: 1,
     },
   },
   drawerItemSelected: {
-    opacity: 1,
+      opacity: 1,
   },
   drawerItemEstimate: {
+    ...theme.typography.tab,
     backgroundColor: theme.palette.common.blue,
-    opacity: 1,
     color:'white',
     "&:hover": {
       backgroundColor: theme.palette.common.hoverBlue,
@@ -114,10 +116,12 @@ const useStyles = makeStyles((theme) => ({
   drawerItemEstimateSelected: {
     backgroundColor: theme.palette.common.hoverBlue,
     opacity: 1,
-    color: 'white',
     "&:hover": {
       backgroundColor: theme.palette.common.hoverBlue,
     },
+  },
+  appbar: {
+    zIndex: theme.zIndex.modal + 1,
   }
 }));
 
@@ -201,9 +205,10 @@ const Header = (props) => {
         anchor="right"
         classes={{ paper: classes.drawer }}
       >
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           <ListItem
-            className={value === 0 ? [classes.drawerItemSelected, classes.drawerItem] : classes.drawerItem}
+            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
             divider
             button
             onClick={() => {setOpenDrawer(false); setValue(0)}}
@@ -214,7 +219,7 @@ const Header = (props) => {
             <ListItemText disableTypography>Home</ListItemText>
           </ListItem>
           <ListItem
-            className={value === 1 ? [classes.drawerItemSelected, classes.drawerItem] : classes.drawerItem}
+            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
             divider
             button
             onClick={() => {setOpenDrawer(false); setValue(1)}}
@@ -225,7 +230,7 @@ const Header = (props) => {
             <ListItemText disableTypography>Services</ListItemText>
           </ListItem>
           <ListItem
-            className={value === 2 ? [classes.drawerItemSelected, classes.drawerItem] : classes.drawerItem}
+            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
             divider
             button
             onClick={() => {setOpenDrawer(false); setValue(2)}}
@@ -236,7 +241,7 @@ const Header = (props) => {
             <ListItemText disableTypography>The Revolution</ListItemText>
           </ListItem>
           <ListItem
-            className={value === 3 ? [classes.drawerItemSelected, classes.drawerItem] : classes.drawerItem}
+            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
             divider
             button
             onClick={() => {setOpenDrawer(false); setValue(3)}}
@@ -247,7 +252,8 @@ const Header = (props) => {
             <ListItemText disableTypography>About Us</ListItemText>
           </ListItem>
           <ListItem
-            className={value === null ? [classes.drawerItemEstimateSelected, classes.drawerItem] : [classes.drawerItemEstimate, classes.drawerItem]}
+            classes={{root: classes.drawerItemEstimate, }}
+            className={value === null ? classes.drawerItemEstimateSelected : classes.drawerItemEstimate}
             divider
             button
             onClick={() => {setOpenDrawer(false); setValue(null)}}
@@ -274,7 +280,7 @@ const Header = (props) => {
     <React.Fragment>
       <Tabs
         className={classes.tabContainer}
-        value={value}
+        value={value ? value : false}
         onChange={handleChange}
         indicatorColor="primary"
       >
@@ -314,7 +320,7 @@ const Header = (props) => {
 
       <Popper
         open={openMenu}
-        anchorEl={anchorEl}
+        anchorEl={anchorEl ? anchorEl : undefined}
         role={undefined}
         transition
         disablePortal
@@ -407,7 +413,7 @@ const Header = (props) => {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position="fixed" color="primary">
+        <AppBar position="fixed" color="primary" className={classes.appbar}>
           <Toolbar disableGutters={true} variant="dense">
             <Button
               disableRipple
