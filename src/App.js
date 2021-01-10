@@ -46,7 +46,7 @@ const App = () => {
             <Route
               exact
               path="/estimate"
-              component={() => <div>Get you Estimate</div>}
+              component={() => <div>Get your Estimate</div>}
             />
           </Switch>
         </BrowserRouter>

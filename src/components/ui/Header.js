@@ -18,6 +18,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 import logo from "../../assets/logo.svg";
 
@@ -74,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
     },
     padding: 0,
-    marginRight: '0.75em',
+    marginRight: "0.75em",
     [theme.breakpoints.down("xs")]: {
       marginRight: "0.5em",
     },
@@ -84,7 +87,25 @@ const useStyles = makeStyles((theme) => ({
     width: "1.75em",
     [theme.breakpoints.down("xs")]: {
       height: "1.5em",
-      width: '1.5em',
+      width: "1.5em",
+    },
+  },
+  drawer: {
+    backgroundColor: theme.palette.common.orange,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    opacity: 0.6,
+    "&:hover": {
+      opacity: 1,
+    },
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.blue,
+    opacity: 1,
+    color:'white',
+    "&:hover": {
+      backgroundColor: theme.palette.common.hoverBlue,
     },
   },
 }));
@@ -166,8 +187,63 @@ const Header = (props) => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
+        anchor="right"
+        classes={{ paper: classes.drawer }}
       >
-        Deep Throats
+        <List disablePadding>
+          <ListItem
+            className={classes.drawerItem}
+            divider
+            button
+            onClick={() => setOpenDrawer(false)}
+            component={Link}
+            to="/"
+          >
+            <ListItemText disableTypography>Home</ListItemText>
+          </ListItem>
+          <ListItem
+            className={classes.drawerItem}
+            divider
+            button
+            onClick={() => setOpenDrawer(false)}
+            component={Link}
+            to="/services"
+          >
+            <ListItemText disableTypography>Services</ListItemText>
+          </ListItem>
+          <ListItem
+            className={classes.drawerItem}
+            divider
+            button
+            onClick={() => setOpenDrawer(false)}
+            component={Link}
+            to="/revolution"
+          >
+            <ListItemText disableTypography>The Revolution</ListItemText>
+          </ListItem>
+          <ListItem
+            className={classes.drawerItem}
+            divider
+            button
+            onClick={() => setOpenDrawer(false)}
+            component={Link}
+            to="/about"
+          >
+            <ListItemText disableTypography>About Us</ListItemText>
+          </ListItem>
+          <ListItem
+            className={[classes.drawerItemEstimate, classes.drawerItem]}
+            divider
+            button
+            onClick={() => setOpenDrawer(false)}
+            component={Link}
+            to="/estimate"
+          >
+            <ListItemText disableTypography>
+              Get Estimate
+            </ListItemText>
+          </ListItem>
+        </List>
       </SwipeableDrawer>
       <IconButton
         onClick={() => setOpenDrawer(!openDrawer)}
@@ -216,7 +292,7 @@ const Header = (props) => {
           to="/contact"
         />
       </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>
+      <Button onClick={()=>setValue(null)} component={Link} to="/estimate" variant="contained" color="secondary" className={classes.button}>
         Get Estimate
       </Button>
 
@@ -304,6 +380,9 @@ const Header = (props) => {
         break;
       case "/contact":
         if (value !== 4) setValue(4);
+        break;
+      case "/estimate": 
+        if (value !== null) setValue(null);
         break;
       default:
         break;

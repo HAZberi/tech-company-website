@@ -2,12 +2,14 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const blue = "#166EE9";
 const orange = "#E99116";
+const hoverBlue = "#0050C0"
 
 const theme = createMuiTheme({
   palette: {
     common: {
       blue: `${blue}`,
       orange: `${orange}`,
+      hoverBlue: `${hoverBlue}`,
     },
     type: "light",
     primary: {
