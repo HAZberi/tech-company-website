@@ -194,6 +194,14 @@ const Header = (props) => {
     setValue(newValue);
   };
 
+  const routes = [
+    {label: 'Home', link: '/', activeTabIndex: 0},
+    {label: 'Services', link: '/services', activeTabIndex: 1, ariaOwns: anchorEl ? "simple-menu" : undefined, ariahaspopup: anchorEl ? "true" : undefined, mouseover: (event)=>handleMouseOver(event), mouseleave: (event)=>handleClose(event)},
+    {label: 'Revolution', link: '/revolution', activeTabIndex: 2},
+    {label: 'About Us', link: '/about', activeTabIndex: 3},
+    {label: 'Contact Us', link: '/contact', activeTabIndex: 4},
+  ];
+
   const drawer = (
     <React.Fragment>
       <SwipeableDrawer
@@ -207,56 +215,26 @@ const Header = (props) => {
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          <ListItem
-            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
-            divider
-            button
-            onClick={() => {setOpenDrawer(false); setValue(0)}}
-            component={Link}
-            to="/"
-            selected={value === 0}
-          >
-            <ListItemText disableTypography>Home</ListItemText>
-          </ListItem>
-          <ListItem
-            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
-            divider
-            button
-            onClick={() => {setOpenDrawer(false); setValue(1)}}
-            component={Link}
-            to="/services"
-            selected={value === 1}
-          >
-            <ListItemText disableTypography>Services</ListItemText>
-          </ListItem>
-          <ListItem
-            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
-            divider
-            button
-            onClick={() => {setOpenDrawer(false); setValue(2)}}
-            component={Link}
-            to="/revolution"
-            selected={value === 2}
-          >
-            <ListItemText disableTypography>The Revolution</ListItemText>
-          </ListItem>
-          <ListItem
-            classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
-            divider
-            button
-            onClick={() => {setOpenDrawer(false); setValue(3)}}
-            component={Link}
-            to="/about"
-            selected={value === 3}
-          >
-            <ListItemText disableTypography>About Us</ListItemText>
-          </ListItem>
+          {routes.map(route => (
+            <ListItem
+              key={route.activeTabIndex}
+              classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
+              divider
+              button
+              onClick={() => {setOpenDrawer(false); setValue(route.activeTabIndex)}}
+              component={Link}
+              to="/"
+              selected={value === route.activeTabIndex}
+            >
+              <ListItemText disableTypography>{route.label}</ListItemText>
+            </ListItem>
+          ))}
           <ListItem
             classes={{root: classes.drawerItemEstimate, }}
-            className={value === null ? classes.drawerItemEstimateSelected : classes.drawerItemEstimate}
+            className={value === 5 ? classes.drawerItemEstimateSelected : classes.drawerItemEstimate}
             divider
             button
-            onClick={() => {setOpenDrawer(false); setValue(null)}}
+            onClick={() => {setOpenDrawer(false); setValue(5)}}
             component={Link}
             to="/estimate"
             selected={false}
@@ -276,45 +254,23 @@ const Header = (props) => {
       </IconButton>
     </React.Fragment>
   );
+
   const tabs = (
     <React.Fragment>
       <Tabs
         className={classes.tabContainer}
-        value={value ? value : false}
+        value={value<=4 ? value : false}
         onChange={handleChange}
         indicatorColor="primary"
       >
-        <Tab label="Home" className={classes.tab} component={Link} to="/" />
-        <Tab
-          aria-owns={anchorEl ? "simple-menu" : undefined}
-          aria-haspopup={anchorEl ? "true" : undefined}
-          onMouseOver={handleMouseOver}
-          onMouseLeave={handleClose}
-          label="Services"
-          className={classes.tab}
-          component={Link}
-          to="/services"
-        />
-        <Tab
-          label="The Revolution"
-          className={classes.tab}
-          component={Link}
-          to="/revolution"
-        />
-        <Tab
-          label="About Us"
-          className={classes.tab}
-          component={Link}
-          to="/about"
-        />
-        <Tab
-          label="Contact Us"
-          className={classes.tab}
-          component={Link}
-          to="/contact"
-        />
+        {routes.map(route => (
+          <Tab key={route.activeTabIndex} label={route.label} className={classes.tab} component={Link} to={route.link}           aria-owns={route.ariaOwns}
+          aria-haspopup={route.ariahaspopup}
+          onMouseOver={route.mouseover}
+          onMouseLeave={route.mouseleave}/>
+        ))}
       </Tabs>
-      <Button onClick={()=>setValue(null)} component={Link} to="/estimate" variant="contained" color="secondary" className={classes.button}>
+      <Button onClick={()=>setValue(5)} component={Link} to="/estimate" variant="contained" color="secondary" className={classes.button}>
         Get Estimate
       </Button>
 
@@ -404,7 +360,7 @@ const Header = (props) => {
         if (value !== 4) setValue(4);
         break;
       case "/estimate": 
-        if (value !== null) setValue(null);
+        if (value !== 5) setValue(5);
         break;
       default:
         break;
