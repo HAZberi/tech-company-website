@@ -21,10 +21,10 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 
 import logo from "../../assets/logo.svg";
 
@@ -114,14 +114,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.blue,
     color: "white",
     "&:hover": {
-      backgroundColor: theme.palette.common.hoverBlue,
+      backgroundColor: theme.palette.secondary.dark,
     },
   },
   drawerItemEstimateSelected: {
-    backgroundColor: theme.palette.common.hoverBlue,
+    backgroundColor: theme.palette.secondary.dark,
     opacity: 1,
     "&:hover": {
-      backgroundColor: theme.palette.common.hoverBlue,
+      backgroundColor: theme.palette.secondary.dark,
     },
   },
   appbar: {
@@ -129,13 +129,32 @@ const useStyles = makeStyles((theme) => ({
   },
   accordian: {
     backgroundColor: theme.palette.common.orange,
-    '&.Mui-expanded': {
+    "&.Mui-expanded": {
       margin: 0,
-    }
+      borderBottom: 0,
+    },
+    borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+    "&::before": {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+    },
   },
   accordianMenuDetail: {
     padding: 0,
-  }
+    backgroundColor: theme.palette.primary.light,
+  },
+  accordianSerivcesLink: {
+    color: "inherit",
+    textDecoration: "none",
+  },
+  accordianSummary: {
+    backgroundColor: theme.palette.common.orange,
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.08)",
+    },
+  },
+  accordianSummarySelected: {
+    backgroundColor: "rgba(0, 0, 0, 0.08)",
+  },
 }));
 
 const ElevationScroll = (props) => {
@@ -245,79 +264,111 @@ const Header = (props) => {
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          {routes.map((route) => route.label === 'Services' ? (
-            <Accordion classes={{root: classes.accordian}} elevation={0} key={route.activeTabIndex} expanded={openDrawerMenu} onChange={()=>{setOpenDrawerMenu(!openDrawerMenu)}}>
-              <AccordionSummary
-                expandIcon={<ExpandMore />}
-                aria-label="Expand"
-                aria-controls="services-list-expand"
-                id="list-of-services"
+          {routes.map((route) =>
+            route.label === "Services" ? (
+              <Accordion
+                classes={{ root: classes.accordian }}
+                elevation={0}
+                key={route.activeTabIndex}
+                expanded={openDrawerMenu}
+                onChange={() => {
+                  setOpenDrawerMenu(!openDrawerMenu);
+                }}
               >
-                <ListItem
-                  className={classes.drawerItem}
-                  disableRipple
-                  button
-                  onClick={() => {
-                    setOpenDrawer(false);
-                    setValue(route.activeTabIndex);
-                  }}
-                  component={Link}
-                  to={route.link}
-                  selected={value === route.activeTabIndex}
+                <AccordionSummary
+                  expandIcon={<ExpandMore color="secondary" />}
+                  aria-label="Expand"
+                  aria-controls="services-list-expand"
+                  id="list-of-services"
+                  className={
+                    value === 1
+                      ? classes.accordianSummarySelected
+                      : classes.accordianSummary
+                  }
                 >
-                  <ListItemText disableTypography>Services</ListItemText>
-                </ListItem>
-              </AccordionSummary>
-              <AccordionDetails className={classes.accordianMenuDetail}>
-                <List disablePadding>
-                  {menuOptions.map((route)=>(
-                    <ListItem
-                    key={route.activeMenuIndex}
-                    classes={{
-                      selected: classes.drawerItemSelected,
-                      root: classes.drawerItem,
-                    }}
-                    divider
-                    button
-                    onClick={() => {
+                  <ListItemText
+                    disableTypography
+                    classes={{ root: classes.drawerItem }}
+                    className={
+                      route.activeTabIndex === value
+                        ? classes.drawerItemSelected
+                        : classes.drawerItem
+                    }
+                    onClick={(e) => {
+                      e.stopPropagation();
                       setOpenDrawer(false);
-                      setSelected(route.activeMenuIndex);
+                      setOpenDrawerMenu(false);
+                      setSelected(null);
                       setValue(route.activeTabIndex);
                     }}
-                    component={Link}
-                    to={route.link}
-                    selected={selected === route.activeMenuIndex && value === route.activeTabIndex}
+                  >
+                    <Link
+                      to={route.link}
+                      className={classes.accordianSerivcesLink}
                     >
-                      <ListItemText disableTypography>{route.name}</ListItemText>
-                    </ListItem>
-                  ))}
-                </List>
-              </AccordionDetails>
-            </Accordion>
-          ): (
-            <ListItem
-              key={route.activeTabIndex}
-              classes={{
-                selected: classes.drawerItemSelected,
-                root: classes.drawerItem,
-              }}
-              divider
-              button
-              onClick={() => {
-                setOpenDrawer(false);
-                setValue(route.activeTabIndex);
-              }}
-              component={Link}
-              to={route.link}
-              selected={value === route.activeTabIndex}
-            >
-              <ListItemText disableTypography>{route.label}</ListItemText>
-            </ListItem>
-          ))}
+                      {route.label}
+                    </Link>
+                  </ListItemText>
+                </AccordionSummary>
+                <AccordionDetails className={classes.accordianMenuDetail}>
+                  <List disablePadding>
+                    {menuOptions.map((route) => (
+                      <ListItem
+                        key={route.activeMenuIndex}
+                        classes={{
+                          selected: classes.drawerItemSelected,
+                          root: classes.drawerItem,
+                        }}
+                        divider
+                        button
+                        onClick={() => {
+                          setOpenDrawer(false);
+                          setOpenDrawerMenu(false);
+                          setSelected(route.activeMenuIndex);
+                          setValue(route.activeTabIndex);
+                        }}
+                        component={Link}
+                        to={route.link}
+                        selected={
+                          selected === route.activeMenuIndex &&
+                          value === route.activeTabIndex
+                        }
+                      >
+                        <ListItemText disableTypography>
+                          {route.name}
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
+            ) : (
+              <ListItem
+                key={route.activeTabIndex}
+                classes={{
+                  selected: classes.drawerItemSelected,
+                  root: classes.drawerItem,
+                }}
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                  setValue(route.activeTabIndex);
+                  setOpenDrawerMenu(false);
+                  setSelected(null);
+                }}
+                component={Link}
+                to={route.link}
+                selected={value === route.activeTabIndex}
+              >
+                <ListItemText disableTypography>{route.label}</ListItemText>
+              </ListItem>
+            )
+          )}
           <ListItem
             classes={{ root: classes.drawerItemEstimate }}
             className={
-              value === 5
+              value === routes.length
                 ? classes.drawerItemEstimateSelected
                 : classes.drawerItemEstimate
             }
@@ -325,7 +376,9 @@ const Header = (props) => {
             button
             onClick={() => {
               setOpenDrawer(false);
-              setValue(5);
+              setOpenDrawerMenu(false);
+              setSelected(null);
+              setValue(routes.length);
             }}
             component={Link}
             to="/estimate"
@@ -336,7 +389,10 @@ const Header = (props) => {
         </List>
       </SwipeableDrawer>
       <IconButton
-        onClick={() => setOpenDrawer(!openDrawer)}
+        onClick={() => {
+          setOpenDrawer(!openDrawer);
+          setOpenDrawerMenu(false);
+        }}
         className={classes.drawerIconContainer}
         disableRipple
       >
@@ -349,7 +405,7 @@ const Header = (props) => {
     <React.Fragment>
       <Tabs
         className={classes.tabContainer}
-        value={value <= 4 ? value : false}
+        value={value <= routes.length - 1 ? value : false}
         onChange={handleChange}
         indicatorColor="primary"
       >
