@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menu: {
     backgroundColor: theme.palette.common.orange,
-    marginTop: '7px'
+    marginTop: "7px",
   },
   menuItem: {
     ...theme.typography.tab,
@@ -103,12 +103,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawerItemSelected: {
-      opacity: 1,
+    opacity: 1,
   },
   drawerItemEstimate: {
     ...theme.typography.tab,
     backgroundColor: theme.palette.common.blue,
-    color:'white',
+    color: "white",
     "&:hover": {
       backgroundColor: theme.palette.common.hoverBlue,
     },
@@ -122,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     zIndex: theme.zIndex.modal + 1,
-  }
+  },
 }));
 
 const ElevationScroll = (props) => {
@@ -141,14 +141,20 @@ const menuOptions = [
   {
     name: "Software Development",
     link: "/software",
+    activeTabIndex: 1,
+    activeMenuIndex: 0,
   },
   {
     name: "App Development",
     link: "/mobileapps",
+    activeTabIndex: 1,
+    activeMenuIndex: 1,
   },
   {
     name: "Web Development",
     link: "/websites",
+    activeTabIndex: 1,
+    activeMenuIndex: 2,
   },
 ];
 
@@ -170,7 +176,6 @@ const Header = (props) => {
   };
 
   const handleClose = (e) => {
-    setAnchorEl(null);
     setOpenMenu(false);
   };
 
@@ -194,13 +199,24 @@ const Header = (props) => {
     setValue(newValue);
   };
 
-  const routes = [
-    {label: 'Home', link: '/', activeTabIndex: 0},
-    {label: 'Services', link: '/services', activeTabIndex: 1, ariaOwns: anchorEl ? "simple-menu" : undefined, ariahaspopup: anchorEl ? "true" : undefined, mouseover: (event)=>handleMouseOver(event), mouseleave: (event)=>handleClose(event)},
-    {label: 'Revolution', link: '/revolution', activeTabIndex: 2},
-    {label: 'About Us', link: '/about', activeTabIndex: 3},
-    {label: 'Contact Us', link: '/contact', activeTabIndex: 4},
-  ];
+  const routes = useMemo(
+    () => [
+      { label: "Home", link: "/", activeTabIndex: 0 },
+      {
+        label: "Services",
+        link: "/services",
+        activeTabIndex: 1,
+        ariaOwns: anchorEl ? "simple-menu" : undefined,
+        ariahaspopup: anchorEl ? "true" : undefined,
+        mouseover: (event) => handleMouseOver(event),
+        mouseleave: (event) => handleClose(event),
+      },
+      { label: "Revolution", link: "/revolution", activeTabIndex: 2 },
+      { label: "About Us", link: "/about", activeTabIndex: 3 },
+      { label: "Contact Us", link: "/contact", activeTabIndex: 4 },
+    ],
+    [anchorEl]
+  );
 
   const drawer = (
     <React.Fragment>
@@ -215,33 +231,44 @@ const Header = (props) => {
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          {routes.map(route => (
+          {routes.map((route) => (
             <ListItem
               key={route.activeTabIndex}
-              classes={{selected: classes.drawerItemSelected, root: classes.drawerItem}}  
+              classes={{
+                selected: classes.drawerItemSelected,
+                root: classes.drawerItem,
+              }}
               divider
               button
-              onClick={() => {setOpenDrawer(false); setValue(route.activeTabIndex)}}
+              onClick={() => {
+                setOpenDrawer(false);
+                setValue(route.activeTabIndex);
+              }}
               component={Link}
-              to="/"
+              to={route.link}
               selected={value === route.activeTabIndex}
             >
               <ListItemText disableTypography>{route.label}</ListItemText>
             </ListItem>
           ))}
           <ListItem
-            classes={{root: classes.drawerItemEstimate, }}
-            className={value === 5 ? classes.drawerItemEstimateSelected : classes.drawerItemEstimate}
+            classes={{ root: classes.drawerItemEstimate }}
+            className={
+              value === 5
+                ? classes.drawerItemEstimateSelected
+                : classes.drawerItemEstimate
+            }
             divider
             button
-            onClick={() => {setOpenDrawer(false); setValue(5)}}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
             component={Link}
             to="/estimate"
             selected={false}
           >
-            <ListItemText disableTypography>
-              Get Estimate
-            </ListItemText>
+            <ListItemText disableTypography>Get Estimate</ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
@@ -259,24 +286,38 @@ const Header = (props) => {
     <React.Fragment>
       <Tabs
         className={classes.tabContainer}
-        value={value<=4 ? value : false}
+        value={value <= 4 ? value : false}
         onChange={handleChange}
         indicatorColor="primary"
       >
-        {routes.map(route => (
-          <Tab key={route.activeTabIndex} label={route.label} className={classes.tab} component={Link} to={route.link}           aria-owns={route.ariaOwns}
-          aria-haspopup={route.ariahaspopup}
-          onMouseOver={route.mouseover}
-          onMouseLeave={route.mouseleave}/>
+        {routes.map((route) => (
+          <Tab
+            key={route.activeTabIndex}
+            label={route.label}
+            className={classes.tab}
+            component={Link}
+            to={route.link}
+            aria-owns={route.ariaOwns}
+            aria-haspopup={route.ariahaspopup}
+            onMouseOver={route.mouseover}
+            onMouseLeave={route.mouseleave}
+          />
         ))}
       </Tabs>
-      <Button onClick={()=>setValue(5)} component={Link} to="/estimate" variant="contained" color="secondary" className={classes.button}>
+      <Button
+        onClick={() => setValue(5)}
+        component={Link}
+        to="/estimate"
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+      >
         Get Estimate
       </Button>
 
       <Popper
         open={openMenu}
-        anchorEl={anchorEl ? anchorEl : undefined}
+        anchorEl={anchorEl}
         role={undefined}
         transition
         disablePortal
@@ -301,7 +342,10 @@ const Header = (props) => {
                   {menuOptions.map((option, i) => (
                     <MenuItem
                       key={i}
-                      classes={{ root: classes.menuItem }}
+                      classes={{
+                        root: classes.menuItem,
+                        selected: classes.drawerItemSelected,
+                      }}
                       component={Link}
                       to={option.link}
                       onClick={(e) => {
@@ -324,48 +368,27 @@ const Header = (props) => {
   );
 
   useEffect(() => {
-    switch (window.location.pathname) {
-      case "/":
-        if (value !== 0) setValue(0);
-        break;
-      case "/services":
-        if (value !== 1) setValue(1);
-        else setSelected(null);
-        break;
-      case "/software":
-        if (value !== 1) {
-          setValue(1);
-          setSelected(0);
-        }
-        break;
-      case "/mobileapps":
-        if (value !== 1) {
-          setValue(1);
-          setSelected(1);
-        }
-        break;
-      case "/websites":
-        if (value !== 1) {
-          setValue(1);
-          setSelected(2);
-        }
-        break;
-      case "/revolution":
-        if (value !== 2) setValue(2);
-        break;
-      case "/about":
-        if (value !== 3) setValue(3);
-        break;
-      case "/contact":
-        if (value !== 4) setValue(4);
-        break;
-      case "/estimate": 
-        if (value !== 5) setValue(5);
-        break;
-      default:
-        break;
-    }
-  }, [value]);
+    [...menuOptions, ...routes].forEach((route) => {
+      switch (window.location.pathname) {
+        case `${route.link}`:
+          if (value !== route.activeTabIndex) {
+            setValue(route.activeTabIndex);
+            if (
+              route.activeMenuIndex >= 0 &&
+              selected !== route.activeMenuIndex
+            ) {
+              setSelected(route.activeMenuIndex);
+            } else {
+              setSelected(null);
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    });
+    if (window.location.pathname === "/estimate") setValue(5);
+  }, [value, selected, routes]);
   return (
     <React.Fragment>
       <ElevationScroll>
