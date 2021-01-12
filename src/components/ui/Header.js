@@ -232,6 +232,11 @@ const Header = (props) => {
     setValue(newValue);
   };
 
+  const closeDrawerAll = () => {
+    setOpenDrawer(false);
+    setOpenDrawerMenu(false);
+  };
+
   const routes = useMemo(
     () => [
       { label: "Home", link: "/", activeTabIndex: 0 },
@@ -296,8 +301,7 @@ const Header = (props) => {
                     }
                     onClick={(e) => {
                       e.stopPropagation();
-                      setOpenDrawer(false);
-                      setOpenDrawerMenu(false);
+                      closeDrawerAll();
                       setSelected(null);
                       setValue(route.activeTabIndex);
                     }}
@@ -322,8 +326,7 @@ const Header = (props) => {
                         divider
                         button
                         onClick={() => {
-                          setOpenDrawer(false);
-                          setOpenDrawerMenu(false);
+                          closeDrawerAll();
                           setSelected(route.activeMenuIndex);
                           setValue(route.activeTabIndex);
                         }}
@@ -352,9 +355,8 @@ const Header = (props) => {
                 divider
                 button
                 onClick={() => {
-                  setOpenDrawer(false);
+                  closeDrawerAll();
                   setValue(route.activeTabIndex);
-                  setOpenDrawerMenu(false);
                   setSelected(null);
                 }}
                 component={Link}
@@ -375,8 +377,7 @@ const Header = (props) => {
             divider
             button
             onClick={() => {
-              setOpenDrawer(false);
-              setOpenDrawerMenu(false);
+              closeDrawerAll();
               setSelected(null);
               setValue(routes.length);
             }}
