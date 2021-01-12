@@ -24,11 +24,11 @@ const theme = createMuiTheme({
         textTransform: 'none',
         fontWeight: 700,
         fontFamily: 'Raleway',
-        fontSize: '0.8rem',
+        fontSize: '1rem',
     },
     estimate: {
         textTransform: 'none',
-        fontSize: '0.8rem',  
+        fontSize: '1rem',  
     }
   },
 });
