@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 0,
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "-0.5em",
+      marginBottom: 0,
     },
   },
   logoContainer: {
@@ -46,10 +46,10 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "5.5em",
     [theme.breakpoints.down("sm")]: {
-      height: "4.5em",
+      height: "4.6em",
     },
     [theme.breakpoints.down("xs")]: {
-      height: "3.5em",
+      height: "4em",
     },
   },
   tabContainer: {
@@ -513,7 +513,7 @@ const Header = (props) => {
     <React.Fragment>
       <ElevationScroll>
         <AppBar position="fixed" color="primary" className={classes.appbar}>
-          <Toolbar disableGutters={true} variant="dense">
+          <Toolbar disableGutters={true}>
             <Button
               disableRipple
               className={classes.logoContainer}
