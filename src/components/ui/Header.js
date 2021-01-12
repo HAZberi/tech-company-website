@@ -21,6 +21,10 @@ import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 import logo from "../../assets/logo.svg";
 
@@ -123,6 +127,15 @@ const useStyles = makeStyles((theme) => ({
   appbar: {
     zIndex: theme.zIndex.modal + 1,
   },
+  accordian: {
+    backgroundColor: theme.palette.common.orange,
+    '&.Mui-expanded': {
+      margin: 0,
+    }
+  },
+  accordianMenuDetail: {
+    padding: 0,
+  }
 }));
 
 const ElevationScroll = (props) => {
@@ -168,6 +181,7 @@ const Header = (props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [selected, setSelected] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [openDrawerMenu, setOpenDrawerMenu] = useState(false);
 
   const handleMouseOver = (e) => {
     setAnchorEl(e.currentTarget);
@@ -231,7 +245,56 @@ const Header = (props) => {
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          {routes.map((route) => (
+          {routes.map((route) => route.label === 'Services' ? (
+            <Accordion classes={{root: classes.accordian}} elevation={0} key={route.activeTabIndex} expanded={openDrawerMenu} onChange={()=>{setOpenDrawerMenu(!openDrawerMenu)}}>
+              <AccordionSummary
+                expandIcon={<ExpandMore />}
+                aria-label="Expand"
+                aria-controls="services-list-expand"
+                id="list-of-services"
+              >
+                <ListItem
+                  className={classes.drawerItem}
+                  disableRipple
+                  button
+                  onClick={() => {
+                    setOpenDrawer(false);
+                    setValue(route.activeTabIndex);
+                  }}
+                  component={Link}
+                  to={route.link}
+                  selected={value === route.activeTabIndex}
+                >
+                  <ListItemText disableTypography>Services</ListItemText>
+                </ListItem>
+              </AccordionSummary>
+              <AccordionDetails className={classes.accordianMenuDetail}>
+                <List disablePadding>
+                  {menuOptions.map((route)=>(
+                    <ListItem
+                    key={route.activeMenuIndex}
+                    classes={{
+                      selected: classes.drawerItemSelected,
+                      root: classes.drawerItem,
+                    }}
+                    divider
+                    button
+                    onClick={() => {
+                      setOpenDrawer(false);
+                      setSelected(route.activeMenuIndex);
+                      setValue(route.activeTabIndex);
+                    }}
+                    component={Link}
+                    to={route.link}
+                    selected={selected === route.activeMenuIndex && value === route.activeTabIndex}
+                    >
+                      <ListItemText disableTypography>{route.name}</ListItemText>
+                    </ListItem>
+                  ))}
+                </List>
+              </AccordionDetails>
+            </Accordion>
+          ): (
             <ListItem
               key={route.activeTabIndex}
               classes={{
