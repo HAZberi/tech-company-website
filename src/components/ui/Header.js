@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     //toolbar minimum height
     ...theme.mixins.toolbar,
-    marginBottom: "1em",
+    marginBottom: "1.75em",
     [theme.breakpoints.down("sm")]: {
       marginBottom: 0,
     },
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   logo: {
-    height: "5.5em",
+    height: "6.5em",
     [theme.breakpoints.down("sm")]: {
       height: "4.6em",
     },
