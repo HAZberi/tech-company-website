@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
   adornment: {
     width: "20em",
+    verticalAlign: "bottom",
   },
 }));
 
