@@ -1,1 +1,18 @@
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.4 180"><style>.st1{fill:#fff}.st2{font-family:&apos;ArialMT&apos;}.st3{font-size:8px}</style><path d="M294.4 0L166.3 227H-4V0z"/><path fill="none" d="M111-24v376"/><text transform="translate(5 175)" class="st1 st2 st3">© Arc Development 2019</text><text transform="translate(147.442 175)" class="st1 st2 st3">Wichita, KS</text></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 294.4 180" style="enable-background:new 0 0 294.4 180;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:#FFFFFF;}
+	.st2{font-family:'ArialMT';}
+	.st3{font-size:8px;}
+</style>
+<path d="M294.4,0L168,227H0V0H294.4z"/>
+<g id="Full_Box">
+	<polyline points="168,227 294.4,227 294.4,0 	"/>
+</g>
+<path class="st0" d="M111-24v376"/>
+<text id="_xA9__BeriDev.to_2021" transform="matrix(1 0 0 1 5 175)" class="st1 st2 st3">© Beri.dev 2021</text>
+<text transform="matrix(1 0 0 1 246.1765 175)" class="st1 st2 st3">Calgary, AB</text>
+</svg>
