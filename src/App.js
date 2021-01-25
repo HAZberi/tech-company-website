@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./components/Theme.js";
 
 import Header from "./components/ui/Header.js";
+import Footer from "./components/ui/Footer.js";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -49,6 +50,7 @@ const App = () => {
               component={() => <div>Get your Estimate</div>}
             />
           </Switch>
+          <Footer />
         </BrowserRouter>
       </div>
     </ThemeProvider>
