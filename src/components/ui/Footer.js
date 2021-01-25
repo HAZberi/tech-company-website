@@ -6,6 +6,8 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.common.orange,
     width: "100%",
+    zIndex: theme.zIndex.modal + 1,
+    position: "relative"
   },
   adornment: {
     width: "20em",

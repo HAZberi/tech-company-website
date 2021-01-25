@@ -34,10 +34,10 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     marginBottom: "1.75em",
     [theme.breakpoints.down("md")]: {
-      marginBottom: "0.25em",
+      marginBottom: "0.2em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "0.5em",
+      marginBottom: "0.2em",
     },
   },
   logoContainer: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "6.5em",
     [theme.breakpoints.down("md")]: {
-      height: "4.6em",
+      height: "4.9em",
     },
     [theme.breakpoints.down("xs")]: {
       height: "4em",
@@ -57,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: {
     ...theme.typography.tab,
-    minWidth: 10,
-    marginLeft: "16px",
+    minWidth: 9,
+    marginLeft: "15px",
     [theme.breakpoints.up("lg")]: {
       fontSize: "1.25em",
       marginLeft: "30px",
@@ -67,8 +67,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     ...theme.typography.estimate,
     borderRadius: "30px",
-    marginLeft: "20px",
-    marginRight: "20px",
+    marginLeft: "15px",
+    marginRight: "15px",
+    padding: "0.6em",
     [theme.breakpoints.up("lg")]: {
       fontSize: "1.25em",
       marginLeft: "30px",

@@ -12,7 +12,7 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route exact path="/" component={() => <div>Home</div>} />
+            <Route exact path="/" component={() => <div style={{marginBottom: "2000px"}}>Home</div>} />
             <Route
               exact
               path="/services"
