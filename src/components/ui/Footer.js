@@ -10,6 +10,12 @@ const useStyles = makeStyles((theme) => ({
   adornment: {
     width: "20em",
     verticalAlign: "bottom",
+    [theme.breakpoints.down("md")]: {
+        width: "18em"
+    },
+    [theme.breakpoints.down("xs")]: {
+        width: "12em",
+    }
   },
 }));
 
