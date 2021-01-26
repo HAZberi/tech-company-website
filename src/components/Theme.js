@@ -32,6 +32,7 @@ const theme = createMuiTheme({
       fontFamily: 'Raleway',
       fontSize: '0.9rem',
       fontWeight: 700,
+      textTransform: 'none',
     },
     estimate: {
         textTransform: 'none',
