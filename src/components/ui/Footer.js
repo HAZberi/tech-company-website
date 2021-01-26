@@ -18,8 +18,19 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("xs")]: {
         width: "12em",
-    }
+    },
   },
+  mainContainer: {
+    position: "absolute",
+  },
+  link: {
+    ...theme.typography.link,
+    opacity: 0.7,
+    cursor: "pointer",
+    "&:hover": {
+      opacity: 1,
+    }
+  }
 }));
 
 const Footer = () => {
@@ -27,8 +38,8 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <Grid container>
-        <Grid item>
+      <Grid container justify="center" className={classes.mainContainer}>
+        <Grid item className={classes.link}>
           Home
         </Grid>
       </Grid>
