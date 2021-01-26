@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import footerAdornment from "../../assets/Footer Adornment.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,11 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
+      <Grid container>
+        <Grid item>
+          Home
+        </Grid>
+      </Grid>
       <img
         src={footerAdornment}
         alt="decorative box"
