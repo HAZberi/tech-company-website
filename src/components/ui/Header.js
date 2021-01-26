@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -205,18 +205,18 @@ const Header = (props) => {
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
-  
+
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openDrawerMenu, setOpenDrawerMenu] = useState(false);
 
-  const handleMouseOver = (e) => {
+  const handleMouseOver = useCallback((e) => {
     setAnchorEl(e.currentTarget);
     setOpenMenu(true);
     if (window.location.pathname === "/services") props.setSelected(null);
-  };
+  },[props]);
 
   const handleClose = (e) => {
     setOpenMenu(false);
@@ -263,7 +263,7 @@ const Header = (props) => {
       { label: "About Us", link: "/about", activeTabIndex: 3 },
       { label: "Contact Us", link: "/contact", activeTabIndex: 4 },
     ],
-    [anchorEl]
+    [anchorEl, handleMouseOver]
   );
 
   const drawer = (
