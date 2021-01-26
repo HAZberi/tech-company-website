@@ -6,6 +6,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import FooterAdornment from "../../svgToReact/FooterAdornment.js";
+import facebook from "../../assets/facebook.svg";
+import twitter from "../../assets/twitter.svg";
+import instagram from "../../assets/instagram.svg";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -42,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
       opacity: 1,
     },
   },
+  icon: {
+    width: "4rem",
+    height: "4rem",
+  }
 }));
 
 const Footer = (props) => {
@@ -248,6 +255,11 @@ const Footer = (props) => {
         </Grid>
       </Hidden>
       <FooterAdornment className={classes.adornment} />
+      <Grid container justify="flex-end" spacing={2}>
+        <Grid item component={'a'} href="https://facebook.com" className={classes.icon}><img alt="facebook-icon" src={facebook}  rel="noopener noreferrer" target="_blank" /></Grid>
+        <Grid item component={"a"} href="https://instagram.com" className={classes.icon}><img alt="facebook-icon" src={instagram} rel="noopener noreferrer" target="_blank" /></Grid>
+        <Grid item component={"a"} href="https://twitter.com"  className={classes.icon}><img alt="facebook-icon" src={twitter} rel="noopener noreferrer" target="_blank" /></Grid>
+      </Grid>
     </footer>
   );
 };
