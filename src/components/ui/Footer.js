@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import FooterAdornment from "../../svgToReact/FooterAdornment.js";
 
@@ -24,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
     position: "absolute",
     marginTop: "auto",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "0.5rem",
+      justifyContent: "flex-end",
+      paddingRight: "12.5%",
+    },
   },
   link: {
     ...theme.typography.link,
@@ -38,14 +45,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = (props) => {
   const classes = useStyles();
-
+  const theme = useTheme();
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <footer className={classes.footer}>
       <Grid
         container
         justify="center"
         className={classes.mainContainer}
-        spacing={10}
+        spacing={medium ? 5 : 10}
       >
         <Grid item>
           <Grid container direction="column" spacing={2}>

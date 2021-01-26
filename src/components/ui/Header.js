@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     ...theme.typography.estimate,
     borderRadius: "30px",
-    marginLeft: "15px",
+    marginLeft: "12px",
     marginRight: "15px",
     padding: "0.6em",
     [theme.breakpoints.up("lg")]: {

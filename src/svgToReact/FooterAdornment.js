@@ -20,6 +20,8 @@ const FooterAdornment = (props) => {
       x="0px"
       y="0px"
       viewBox="0 0 294.4 180"
+      //receiving svg styles as className props
+      //if no class is available then svg will fallback on viewBox;
       className={props.className}
       xmlSpace="preserve"
     >
