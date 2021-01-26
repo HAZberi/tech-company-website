@@ -205,17 +205,17 @@ const Header = (props) => {
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const [value, setValue] = useState(0);
+  
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selected, setSelected] = useState(null);
+  
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openDrawerMenu, setOpenDrawerMenu] = useState(false);
 
   const handleMouseOver = (e) => {
     setAnchorEl(e.currentTarget);
     setOpenMenu(true);
-    if (window.location.pathname === "/services") setSelected(null);
+    if (window.location.pathname === "/services") props.setSelected(null);
   };
 
   const handleClose = (e) => {
@@ -234,12 +234,12 @@ const Header = (props) => {
   };
 
   const handleClickMenu = (e, i) => {
-    setSelected(i);
+    props.setSelected(i);
   };
 
-  const handleCompanyLogo = () => setValue(0);
+  const handleCompanyLogo = () => props.setValue(0);
   const handleChange = (e, newValue) => {
-    setValue(newValue);
+    props.setValue(newValue);
   };
 
   const closeDrawerAll = () => {
@@ -296,7 +296,7 @@ const Header = (props) => {
                   aria-controls="services-list-expand"
                   id="list-of-services"
                   className={
-                    value === 1
+                    props.value === 1
                       ? classes.accordianSummarySelected
                       : classes.accordianSummary
                   }
@@ -305,15 +305,15 @@ const Header = (props) => {
                     disableTypography
                     classes={{ root: classes.drawerItem }}
                     className={
-                      route.activeTabIndex === value
+                      route.activeTabIndex === props.value
                         ? classes.drawerItemSelected
                         : classes.drawerItem
                     }
                     onClick={(e) => {
                       e.stopPropagation();
                       closeDrawerAll();
-                      setSelected(null);
-                      setValue(route.activeTabIndex);
+                      props.setSelected(null);
+                      props.setValue(route.activeTabIndex);
                     }}
                   >
                     <Link
@@ -337,14 +337,14 @@ const Header = (props) => {
                         button
                         onClick={() => {
                           closeDrawerAll();
-                          setSelected(route.activeMenuIndex);
-                          setValue(route.activeTabIndex);
+                          props.setSelected(route.activeMenuIndex);
+                          props.setValue(route.activeTabIndex);
                         }}
                         component={Link}
                         to={route.link}
                         selected={
-                          selected === route.activeMenuIndex &&
-                          value === route.activeTabIndex
+                          props.selected === route.activeMenuIndex &&
+                          props.value === route.activeTabIndex
                         }
                       >
                         <ListItemText disableTypography>
@@ -366,12 +366,12 @@ const Header = (props) => {
                 button
                 onClick={() => {
                   closeDrawerAll();
-                  setValue(route.activeTabIndex);
-                  setSelected(null);
+                  props.setValue(route.activeTabIndex);
+                  props.setSelected(null);
                 }}
                 component={Link}
                 to={route.link}
-                selected={value === route.activeTabIndex}
+                selected={props.value === route.activeTabIndex}
               >
                 <ListItemText disableTypography>{route.label}</ListItemText>
               </ListItem>
@@ -380,7 +380,7 @@ const Header = (props) => {
           <ListItem
             classes={{ root: classes.drawerItemEstimate }}
             className={
-              value === routes.length
+              props.value === routes.length
                 ? classes.drawerItemEstimateSelected
                 : classes.drawerItemEstimate
             }
@@ -388,8 +388,8 @@ const Header = (props) => {
             button
             onClick={() => {
               closeDrawerAll();
-              setSelected(null);
-              setValue(routes.length);
+              props.setSelected(null);
+              props.setValue(routes.length);
             }}
             component={Link}
             to="/estimate"
@@ -416,7 +416,7 @@ const Header = (props) => {
     <React.Fragment>
       <Tabs
         className={classes.tabContainer}
-        value={value <= routes.length - 1 ? value : false}
+        value={props.value <= routes.length - 1 ? props.value : false}
         onChange={handleChange}
         indicatorColor="primary"
       >
@@ -435,7 +435,7 @@ const Header = (props) => {
         ))}
       </Tabs>
       <Button
-        onClick={() => setValue(5)}
+        onClick={() => props.setValue(5)}
         component={Link}
         to="/estimate"
         variant="contained"
@@ -481,9 +481,9 @@ const Header = (props) => {
                       onClick={(e) => {
                         handleClickMenu(e, i);
                         handleClose();
-                        setValue(1);
+                        props.setValue(1);
                       }}
-                      selected={i === selected && value === 1}
+                      selected={i === props.selected && props.value === 1}
                     >
                       {option.name}
                     </MenuItem>
@@ -501,15 +501,15 @@ const Header = (props) => {
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
-          if (value !== route.activeTabIndex) {
-            setValue(route.activeTabIndex);
+          if (props.value !== route.activeTabIndex) {
+            props.setValue(route.activeTabIndex);
             if (
               route.activeMenuIndex >= 0 &&
-              selected !== route.activeMenuIndex
+              props.selected !== route.activeMenuIndex
             ) {
-              setSelected(route.activeMenuIndex);
+              props.setSelected(route.activeMenuIndex);
             } else {
-              setSelected(null);
+              props.setSelected(null);
             }
           }
           break;
@@ -517,8 +517,8 @@ const Header = (props) => {
           break;
       }
     });
-    if (window.location.pathname === "/estimate") setValue(5);
-  }, [value, selected, routes]);
+    if (window.location.pathname === "/estimate") props.setValue(5);
+  }, [props.value, props.selected, routes, props]);
   return (
     <React.Fragment>
       <ElevationScroll>

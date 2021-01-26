@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Footer = () => {
+const Footer = (props) => {
   const classes = useStyles();
 
   return (
@@ -44,36 +44,36 @@ const Footer = () => {
       <Grid container justify="center" className={classes.mainContainer} spacing={10}>
         <Grid item>
           <Grid container direction="column" spacing={2}>
-            <Grid item className={classes.link} component={Link} to="/">Home</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(0); props.setSelected(null)}}component={Link} to="/">Home</Grid>
           </Grid>
         </Grid>
         <Grid item>
           <Grid container direction="column" spacing={2}>
-            <Grid item className={classes.link} component={Link} to="/services">Services</Grid>
-            <Grid item className={classes.link} component={Link} to="/software">Software Development</Grid>
-            <Grid item className={classes.link} component={Link} to="/mobileapps">App Development</Grid>
-            <Grid item className={classes.link} component={Link} to="/websites">Web Development</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(1); props.setSelected(null)}}component={Link} to="/services">Services</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(1); props.setSelected(0)}}component={Link} to="/software">Software Development</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(1); props.setSelected(1)}}component={Link} to="/mobileapps">App Development</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(1); props.setSelected(2)}}component={Link} to="/websites">Web Development</Grid>
           </Grid>
         </Grid>
         <Grid item>
           <Grid container direction="column" spacing={2}>
-            <Grid item className={classes.link} component={Link} to="/revolution">Revolution</Grid>
-            <Grid item className={classes.link} component={Link} to="/revolution">Vision</Grid>
-            <Grid item className={classes.link} component={Link} to="/revolution">Technology</Grid>
-            <Grid item className={classes.link} component={Link} to="/revolution">Process</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(2); props.setSelected(null)}}component={Link} to="/revolution">Revolution</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(2); props.setSelected(null)}}component={Link} to="/revolution">Vision</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(2); props.setSelected(null)}}component={Link} to="/revolution">Technology</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(2); props.setSelected(null)}}component={Link} to="/revolution">Process</Grid>
           </Grid>
         </Grid>
         <Grid item>
           <Grid container direction="column" spacing={2}>
-            <Grid item className={classes.link} component={Link} to="/about">About Us</Grid>
-            <Grid item className={classes.link} component={Link} to="/about">History</Grid>
-            <Grid item className={classes.link} component={Link} to="/about">Team</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(3); props.setSelected(null)}}component={Link} to="/about">About Us</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(3); props.setSelected(null)}}component={Link} to="/about">History</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(3); props.setSelected(null)}}component={Link} to="/about">Team</Grid>
           </Grid>
         </Grid>
         <Grid item>
           <Grid container direction="column" spacing={2}>
-            <Grid item className={classes.link} component={Link} to="/contact">Contact Us</Grid>
-            <Grid item className={classes.link} component={Link} to="/estimate">Get Estimate</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(4); props.setSelected(null)}}component={Link} to="/contact">Contact Us</Grid>
+            <Grid item className={classes.link} onClick={()=>{props.setValue(5); props.setSelected(null)}}component={Link} to="/estimate">Get Estimate</Grid>
           </Grid>
         </Grid>
       </Grid>
