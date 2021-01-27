@@ -6,6 +6,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import FooterAdornment from "../../svgToReact/FooterAdornment.js";
+import MobileFooterAdornment from "../../svgToReact/MobileFooterAdornment.js";
 import facebook from "../../assets/facebook.svg";
 import twitter from "../../assets/twitter.svg";
 import instagram from "../../assets/instagram.svg";
@@ -16,15 +17,18 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: theme.zIndex.modal + 1,
     position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      height: "5em",
+    },
   },
   adornment: {
     width: "20em",
     verticalAlign: "bottom",
     [theme.breakpoints.down("md")]: {
-      width: "18em",
+      width: "20em",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: "12em",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
     },
   },
   mainContainer: {
@@ -46,8 +50,33 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   icon: {
-    width: "4rem",
-    height: "4rem",
+    width: "3.5rem",
+    height: "3.5rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "7rem",
+      height: "7rem"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "6rem",
+      height: "6rem"
+    }
+  },
+  mediaIconsContainer: {
+    position: "absolute",
+    marginTop: "-3.5rem",
+    right: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      justifyContent: "center",
+      marginTop: "-10.25rem",
+      right: "0rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      position: "absolute",
+      justifyContent: "center",
+      marginTop: "-6.5rem",
+      right: "0rem",
+    },
   }
 }));
 
@@ -55,6 +84,7 @@ const Footer = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <footer className={classes.footer}>
       <Hidden smDown>
@@ -69,6 +99,7 @@ const Footer = (props) => {
               <Grid
                 item
                 className={classes.link}
+                style={window.matchMedia('(min-width: 768px)').matches ? {} : {display: "none"}}
                 onClick={() => {
                   props.setValue(0);
                   props.setSelected(null);
@@ -254,8 +285,8 @@ const Footer = (props) => {
           </Grid>
         </Grid>
       </Hidden>
-      <FooterAdornment className={classes.adornment} />
-      <Grid container justify="flex-end" spacing={2}>
+      {smaller ? <MobileFooterAdornment className={classes.adornment} /> : <FooterAdornment className={classes.adornment} />}
+      <Grid container justify="flex-end" spacing={smaller ? 7 : 2} className={classes.mediaIconsContainer}>
         <Grid item component={'a'} href="https://facebook.com" className={classes.icon}><img alt="facebook-icon" src={facebook}  rel="noopener noreferrer" target="_blank" /></Grid>
         <Grid item component={"a"} href="https://instagram.com" className={classes.icon}><img alt="facebook-icon" src={instagram} rel="noopener noreferrer" target="_blank" /></Grid>
         <Grid item component={"a"} href="https://twitter.com"  className={classes.icon}><img alt="facebook-icon" src={twitter} rel="noopener noreferrer" target="_blank" /></Grid>
