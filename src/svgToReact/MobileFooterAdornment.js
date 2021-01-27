@@ -8,7 +8,7 @@ const MobileFooterAdornment = (props) => {
     st1: {
       fill: "#FFFFFF",
       fontFamily: "Raleway",
-      fontSize: "1rem",
+      fontSize: "0.9rem",
     },
   };
   return (
@@ -38,7 +38,7 @@ const MobileFooterAdornment = (props) => {
         © beri.dev {new Date().getFullYear()}
       </text>
       <text
-        transform="matrix(1 0 0 1 197.1765 65)"
+        transform="matrix(1 0 0 1 207.1765 65)"
         style={svgStyles.st1}
       >
         Calgary, AB
