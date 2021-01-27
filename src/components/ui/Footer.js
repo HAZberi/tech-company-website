@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.7,
     textDecoration: "none",
     cursor: "pointer",
+    whiteSpace: "nowrap",
     "&:hover": {
       opacity: 1,
     },
