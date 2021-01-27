@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   adornment: {
-    width: "20em",
+    width: "21em",
     verticalAlign: "bottom",
     [theme.breakpoints.down("md")]: {
       width: "20em",
@@ -66,16 +66,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-3.5rem",
     right: "1rem",
     [theme.breakpoints.down("sm")]: {
-      position: "absolute",
       justifyContent: "center",
       marginTop: "-10.25rem",
       right: "0rem",
     },
     [theme.breakpoints.down("xs")]: {
-      position: "absolute",
-      justifyContent: "center",
       marginTop: "-6.5rem",
-      right: "0rem",
     },
   }
 }));
@@ -99,7 +95,7 @@ const Footer = (props) => {
               <Grid
                 item
                 className={classes.link}
-                style={window.matchMedia('(min-width: 768px)').matches ? {} : {display: "none"}}
+                style={window.matchMedia('(max-width: 1050px)').matches ? {display: "none"} : {}}
                 onClick={() => {
                   props.setValue(0);
                   props.setSelected(null);
