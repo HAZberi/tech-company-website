@@ -5,6 +5,7 @@ import theme from "./components/Theme.js";
 
 import Header from "./components/ui/Header.js";
 import Footer from "./components/ui/Footer.js";
+import LandingPage from "./components/LandingPage.js"
 const App = () => {
   const [value, setValue] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -14,7 +15,7 @@ const App = () => {
         <BrowserRouter>
           <Header value={value} setValue={setValue} selected={selected} setSelected={setSelected}/>
           <Switch>
-            <Route exact path="/" component={() => <div style={{marginBottom: "2000px"}}>Home</div>} />
+            <Route exact path="/" component={LandingPage} />
             <Route
               exact
               path="/services"
