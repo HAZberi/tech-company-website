@@ -15,15 +15,18 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.common.orange,
     width: "100%",
+    overflowX: "hidden",
     zIndex: theme.zIndex.modal + 1,
     position: "relative",
     [theme.breakpoints.down("sm")]: {
       height: "5em",
+      overflowX: "visible"
     },
   },
   adornment: {
     width: "21em",
     verticalAlign: "bottom",
+    overflowY: "visible",
     [theme.breakpoints.down("md")]: {
       width: "20em",
     },
