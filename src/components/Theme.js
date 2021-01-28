@@ -27,6 +27,12 @@ const theme = createMuiTheme({
         fontFamily: 'Raleway',
         fontSize: '1rem',
     },
+    h2 : {
+      fontFamily: "Raleway",
+      fontWeight: 700,
+      fontSize: "2.5rem",
+      lineHeight: 1.5,
+    },
     link:{
       color: `${linkColor}`,
       fontFamily: 'Raleway',
