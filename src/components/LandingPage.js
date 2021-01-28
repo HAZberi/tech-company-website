@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import animationData from "../animations/landinganimation/data.js";
 import ButtonArrow from "./ui/ButtonArrow";
+import softwareIcon from "../assets/Custom Software Icon.svg";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 3,
     height: "35px",
     opacity: 0.7,
+    marginLeft: 0,
 
   },
   mainContainer: {
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "3em",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "1.5em",
+      marginTop: "1em",
     }
   }, 
   heroTextContainer: {
@@ -61,6 +63,27 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
     }
+  },
+  subtitle: {
+    marginBottom: "2rem",
+  },
+  icon: {
+    marginLeft: "2em",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
+    }
+  },
+  serviceContainer: {
+    marginTop: "18em",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "14em",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "7em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "3em",
+    },
   }
 }));
 
@@ -80,7 +103,7 @@ const LandingPage = () => {
       <Grid container direction="column" className={classes.mainContainer}>
         <Grid item>{/* ------- Hero Block --------- */}
           <Grid container justify="flex-end" alignItems="center">
-            <Grid item sm className={classes.heroTextContainer}>
+            <Grid item md className={classes.heroTextContainer}>
               <Typography variant="h2" align="center">
                 Bringing West Coast Technology
                 <br />
@@ -98,21 +121,24 @@ const LandingPage = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sm xs className={classes.animation}>
+            <Grid item md xs className={classes.animation}>
               <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
             </Grid>
           </Grid>
         </Grid>
         <Grid item>{/* ------ Services Block ------- */}
-          <Grid container>
-            <Grid item>
+          <Grid container direction="row" className={classes.serviceContainer}>
+            <Grid item style={{marginLeft: "5em"}}>
               <Typography variant="h4">Software Development</Typography>
-              <Typography variant="subtitle1">Save Time. Save Energy. Save Money.</Typography>
-              <Typography variant="subtitle1">Complete Digital Solutions, from investigation to <span>celebration.</span></Typography>
+              <Typography variant="subtitle1" className={classes.subtitle}>Save Time. Save Energy. Save Money.</Typography>
+              <Typography variant="subtitle1">Complete digital solutions, from investigation to <span>celebration.</span></Typography>
               <Button variant="outlined" className={classes.learnOutlineButton}>
                     Learn More
                     <ButtonArrow width={25} height={18} fill="black" />
                   </Button>
+            </Grid>
+            <Grid item className={classes.icon}>
+              <img src={softwareIcon} alt="Sotware Icon" />
             </Grid>
           </Grid>
         </Grid>

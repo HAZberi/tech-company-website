@@ -4,6 +4,7 @@ const blue = "#166EE9";
 const orange = "#E99116";
 const hoverBlue = "#0050C0";
 const linkColor = "#000000";
+const grey = "#868686"
 
 const theme = createMuiTheme({
   palette: {
@@ -32,6 +33,16 @@ const theme = createMuiTheme({
       fontWeight: 700,
       fontSize: "2.5rem",
       lineHeight: 1.5,
+    },
+    h4: {
+      fontFamily: "Raleway",
+      fontSize: "1.75rem",
+      fontWeight: 700,
+    },
+    subtitle1: {
+      fontSize: "1.25rem",
+      fontWeight: 400,
+      color: `${grey}`
     },
     link: {
       color: `${linkColor}`,
