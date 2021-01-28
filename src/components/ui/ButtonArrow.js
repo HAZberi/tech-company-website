@@ -8,9 +8,9 @@ export default function ButtonArrow(props) {
       width={props.width}
       height={props.height}
       fill={props.fill}
-      viewBox="0 0 22 22"
+      viewBox="-5 0 16 18"
     >
-      <path d="M9 3L7.94 4.06l4.19 4.19H3v1.5h9.13l-4.19 4.19L9 15l6-6z" />
+      <path d="M 9 3 L 7.94 4.06 l 4.06 3.94 H -1.998 v 1.538 h 14.012 l -4.19 4.19 L 9.061 14.986 l 5.986 -6.324 z" />
     </svg>
   );
 }

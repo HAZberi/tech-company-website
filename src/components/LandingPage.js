@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import animationData from "../animations/landinganimation/data.js";
+import ButtonArrow from "./ui/ButtonArrow";
 
 const useStyles =  makeStyles(theme => ({
 
@@ -32,7 +33,7 @@ const LandingPage = () => {
                   <Grid item>
                     <Button variant="contained">
                       Learn More
-
+                      <ButtonArrow width={25} height={18} fill="orange" />
                     </Button>
                   </Grid>
                 </Grid>
