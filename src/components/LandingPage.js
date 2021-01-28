@@ -12,7 +12,14 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "50em",
     minWidth: "21em",
     marginTop: "2em",
-    marginLeft: "5%"
+    marginLeft: "5%",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "30em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0,
+      maxWidth: "40em",
+    }
   },
   estimate: {
     ...theme.typography.estimate,
@@ -49,7 +56,14 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "3em",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: "1em",
+      marginTop: "1.5em",
+    }
+  }, 
+  heroTextContainer: {
+    minWidth: "22.5em",
+    marginLeft: "1em",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
     }
   }
 }));
@@ -70,7 +84,7 @@ const LandingPage = () => {
       <Grid container direction="column" className={classes.mainContainer}>
         <Grid item>
           <Grid container justify="flex-end" alignItems="center">
-            <Grid item sm>
+            <Grid item sm className={classes.heroTextContainer}>
               <Typography variant="h2" align="center">
                 Bringing West Coast Technology
                 <br />
@@ -88,7 +102,7 @@ const LandingPage = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item sm className={classes.animation}>
+            <Grid item sm xs className={classes.animation}>
               <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
             </Grid>
           </Grid>
