@@ -33,41 +33,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.5rem",
   },
   learnHeroButton: {
+    ...theme.typography.learnButton,
     backgroundColor: theme.palette.common.orange,
-    color: "black",
-    marginLeft: "20px",
-    marginRight: "20px",
-    marginTop: "0.5rem",
-    textTransform: "none",
-    borderRadius: "30px",
-    fontFamily: "Roboto",
     height: "45px",
-    fontSize: "1rem",
-    fontWeight: "bold",
     opacity: 0.85,
-    "&:hover": {
-      backgroundColor: theme.palette.common.orange,
-      opacity: 1,
-    }
   },
   learnOutlineButton: {
+    ...theme.typography.learnButton,
     borderColor: theme.palette.common.orange,
     borderWidth: 3,
-    color: "black",
-    marginLeft: "20px",
-    marginRight: "20px",
-    marginTop: "0.5rem",
-    textTransform: "none",
-    borderRadius: "30px",
-    fontFamily: "Roboto",
     height: "35px",
-    fontSize: "1rem",
-    fontWeight: "bold",
     opacity: 0.7,
-    "&:hover": {
-      backgroundColor: theme.palette.common.orange,
-      opacity: 1,
-    }
+
   },
   mainContainer: {
     marginTop: "4em",

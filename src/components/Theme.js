@@ -3,7 +3,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const blue = "#166EE9";
 const orange = "#E99116";
 const hoverBlue = "#0050C0";
-const linkColor = "#000000"
+const linkColor = "#000000";
 
 const theme = createMuiTheme({
   palette: {
@@ -22,28 +22,43 @@ const theme = createMuiTheme({
   },
   typography: {
     tab: {
-        textTransform: 'none',
-        fontWeight: 700,
-        fontFamily: 'Raleway',
-        fontSize: '1rem',
+      textTransform: "none",
+      fontWeight: 700,
+      fontFamily: "Raleway",
+      fontSize: "1rem",
     },
-    h2 : {
+    h2: {
       fontFamily: "Raleway",
       fontWeight: 700,
       fontSize: "2.5rem",
       lineHeight: 1.5,
     },
-    link:{
+    link: {
       color: `${linkColor}`,
-      fontFamily: 'Raleway',
-      fontSize: '0.9rem',
+      fontFamily: "Raleway",
+      fontSize: "0.9rem",
       fontWeight: 700,
-      textTransform: 'none',
+      textTransform: "none",
     },
     estimate: {
-        textTransform: 'none',
-        fontSize: '1rem',  
-    }
+      textTransform: "none",
+      fontSize: "1rem",
+    },
+    learnButton: {
+      color: "black",
+      marginLeft: "20px",
+      marginRight: "20px",
+      marginTop: "0.5rem",
+      textTransform: "none",
+      borderRadius: "30px",
+      fontFamily: "Roboto",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      "&:hover": {
+        backgroundColor: `${orange}`,
+        opacity: 1,
+      },
+    },
   },
 });
 
