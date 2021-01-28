@@ -4,9 +4,11 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import animationData from "../animations/landinganimation/data.js";
 import ButtonArrow from "./ui/ButtonArrow";
 import softwareIcon from "../assets/Custom Software Icon.svg";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -18,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "30em",
     },
     [theme.breakpoints.down("sm")]: {
-      marginLeft: 0,
-      maxWidth: "40em",
-    }
+      marginLeft: "15%",
+      minWidth: "100%"
+    },
+
   },
   estimate: {
     ...theme.typography.estimate,
@@ -65,11 +68,11 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   subtitle: {
-    marginBottom: "2rem",
+    marginBottom: "2.5rem",
   },
   icon: {
     marginLeft: "2em",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
     }
   },
@@ -87,9 +90,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const LandingPage = () => {
   const classes = useStyles();
   const theme =  useTheme();
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const softwareIconJSX =  <Grid item className={classes.icon}><img src={softwareIcon} alt="Sotware Icon" /></Grid>
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -102,7 +110,7 @@ const LandingPage = () => {
     <div style={{marginBottom: "1500px"}}>
       <Grid container direction="column" className={classes.mainContainer}>
         <Grid item>{/* ------- Hero Block --------- */}
-          <Grid container justify="flex-end" alignItems="center">
+          <Grid container justify={smaller ? "center" : "flex-end"} alignItems="center">
             <Grid item md className={classes.heroTextContainer}>
               <Typography variant="h2" align="center">
                 Bringing West Coast Technology
@@ -127,8 +135,9 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>{/* ------ Services Block ------- */}
-          <Grid container direction="row" className={classes.serviceContainer}>
-            <Grid item style={{marginLeft: "5em"}}>
+          <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : undefined}>
+            <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
+              {smaller ? softwareIconJSX : ""}
               <Typography variant="h4">Software Development</Typography>
               <Typography variant="subtitle1" className={classes.subtitle}>Save Time. Save Energy. Save Money.</Typography>
               <Typography variant="subtitle1">Complete digital solutions, from investigation to <span>celebration.</span></Typography>
@@ -137,9 +146,7 @@ const LandingPage = () => {
                     <ButtonArrow width={25} height={18} fill="black" />
                   </Button>
             </Grid>
-            <Grid item className={classes.icon}>
-              <img src={softwareIcon} alt="Sotware Icon" />
-            </Grid>
+            {smaller ? "" : softwareIconJSX}
           </Grid>
         </Grid>
       </Grid>
