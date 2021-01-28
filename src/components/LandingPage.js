@@ -50,6 +50,25 @@ const useStyles = makeStyles((theme) => ({
       opacity: 1,
     }
   },
+  learnOutlineButton: {
+    borderColor: theme.palette.common.orange,
+    borderWidth: 3,
+    color: "black",
+    marginLeft: "20px",
+    marginRight: "20px",
+    marginTop: "0.5rem",
+    textTransform: "none",
+    borderRadius: "30px",
+    fontFamily: "Roboto",
+    height: "35px",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    opacity: 0.7,
+    "&:hover": {
+      backgroundColor: theme.palette.common.orange,
+      opacity: 1,
+    }
+  },
   mainContainer: {
     marginTop: "4em",
     [theme.breakpoints.down("md")]: {
@@ -82,7 +101,7 @@ const LandingPage = () => {
   return (
     <div style={{marginBottom: "1500px"}}>
       <Grid container direction="column" className={classes.mainContainer}>
-        <Grid item>
+        <Grid item>{/* ------- Hero Block --------- */}
           <Grid container justify="flex-end" alignItems="center">
             <Grid item sm className={classes.heroTextContainer}>
               <Typography variant="h2" align="center">
@@ -104,6 +123,19 @@ const LandingPage = () => {
             </Grid>
             <Grid item sm xs className={classes.animation}>
               <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>{/* ------ Services Block ------- */}
+          <Grid container>
+            <Grid item>
+              <Typography variant="h4">Software Development</Typography>
+              <Typography variant="subtitle1">Save Time. Save Energy. Save Money.</Typography>
+              <Typography variant="subtitle1">Complete Digital Solutions, from investigation to <span>celebration.</span></Typography>
+              <Button variant="outlined" className={classes.learnOutlineButton}>
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
             </Grid>
           </Grid>
         </Grid>
