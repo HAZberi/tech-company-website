@@ -159,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingPage = () => {
   const classes = useStyles();
   const theme = useTheme();
-  //const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const softwareIconJSX = (
     <Grid container justify={smaller ? "center" : undefined}>
@@ -363,9 +363,9 @@ const LandingPage = () => {
         </Grid>
           <Grid item>
             {/* Information Block */}
-            <Grid container direction="row" style={{height: "60em"}} alignItems="center">
-              <Grid item container style={{position: "absolute"}}>
-                <Grid sm item style={{marginLeft: "5em"}}>
+            <Grid container style={{height: "60em"}} alignItems="center">
+              <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"} spacing={smallest ? 10 : 0}>
+                <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
                   <Grid container direction="column">
                     <Typography variant="h2" gutterBottom>About Us</Typography>
                     <Typography variant="subtitle1" gutterBottom>Let's get personal.</Typography>
@@ -377,7 +377,7 @@ const LandingPage = () => {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid sm item style={{marginRight: "5em", textAlign: "right"}}>
+                <Grid sm item style={{marginRight: smallest ? 0 : smaller ? "3em" : "5em", textAlign: smallest ? "center" : "right"}}>
                   <Grid container direction="column">
                     <Typography variant="h2" gutterBottom>Contact Us</Typography>
                     <Typography variant="subtitle1" gutterBottom>Say Hello! 🙌</Typography>
