@@ -12,6 +12,7 @@ import ButtonArrow from "./ui/ButtonArrow";
 import softwareIcon from "../assets/Custom Software Icon.svg";
 import appsIcon from "../assets/mobile.svg";
 import webIcon from "../assets/website.svg";
+import repeatingBackground from "../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -117,6 +118,14 @@ const useStyles = makeStyles((theme) => ({
   },
   appDevDescription: {
     maxWidth: "25em",
+  },
+  revolutionBackground: {
+    backgroundImage: `url(${repeatingBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
   },
 }));
 
@@ -298,27 +307,30 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <Card>
-            <CardContent>
-              <Grid container direction="column" style={{textAlign: "center"}}>
-                <Grid item>
-                  <Typography variant="h3">The Revolution</Typography>
+          <Grid container alignItems="center" justify="center">
+            <Card>
+              <CardContent>
+                <Grid container direction="column" style={{textAlign: "center"}}>
+                  <Grid item>
+                    <Typography variant="h2">The Revolution</Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="subtitle1">
+                      Visionary insights coupled with cutting-edge technology is a recipe for revolution.
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      className={classes.learnHeroButton}
+                    >
+                      Learn More
+                      <ButtonArrow width={25} height={18} fill="black" />
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  <Typography variant="subtitle1">
-                    Visionary insights coupled with cutting-edge technology is a recipe for revolution.
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    className={classes.learnHeroButton}
-                  >
-                    Learn More
-                    <ButtonArrow width={25} height={18} fill="black" />
-                  </Button>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+            <div className={classes.revolutionBackground} />
+          </Grid>
         </Grid>
       </Grid>
     </div>
