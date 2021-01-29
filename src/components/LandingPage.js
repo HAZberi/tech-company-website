@@ -196,7 +196,6 @@ const LandingPage = () => {
     },
   };
   return (
-    <div style={{ marginBottom: "1500px" }}>
       <Grid container direction="column" className={classes.mainContainer}>
         <Grid item>
           {/* ------- Hero Block --------- */}
@@ -394,7 +393,6 @@ const LandingPage = () => {
             </Grid>
           </Grid>
       </Grid>
-    </div>
   );
 };
 
