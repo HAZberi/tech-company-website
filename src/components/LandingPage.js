@@ -8,7 +8,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import animationData from "../animations/landinganimation/data.js";
 import ButtonArrow from "./ui/ButtonArrow";
 import softwareIcon from "../assets/Custom Software Icon.svg";
-import zIndex from "@material-ui/core/styles/zIndex";
+import appsIcon from "../assets/mobile.svg";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -79,10 +79,31 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     }
   },
-  serviceContainer: {
+  mobileAppIcon: {
+    minWidth: "15em",
+    marginLeft: "2em",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "0.5em",
+      maxWidth: "5em",
+    },
+  },
+  softDevContainer: {
     marginTop: "18em",
     [theme.breakpoints.down("lg")]: {
       marginTop: "15em",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "7em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "3em",
+      padding: "20px",
+    },
+  },
+  devContainer: {
+    marginTop: "12em",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "9em",
     },
     [theme.breakpoints.down("md")]: {
       marginTop: "7em",
@@ -103,7 +124,8 @@ const LandingPage = () => {
   const theme =  useTheme();
   //const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
-  const softwareIconJSX =  <Grid item className={classes.icon}><img src={softwareIcon} alt="Sotware Icon" /></Grid>
+  const softwareIconJSX =  <Grid item className={classes.icon}><img src={softwareIcon} alt="Software Icon" /></Grid>
+  const mobileIconJSX =  <Grid container justify={smaller ? "center" : undefined}><Grid item className={classes.mobileAppIcon} style={{marginRight: smaller ? 0 : "5em"}}><img src={appsIcon} alt="Mobile Icon" /></Grid></Grid>
 
   const defaultOptions = {
     loop: true,
@@ -142,7 +164,7 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>{/* ------ Software Block ------- */}
-          <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : undefined}>
+          <Grid container direction="row" className={classes.softDevContainer} justify={smaller ? "center" : undefined}>
             <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
               {smaller ? softwareIconJSX : ""}
               <Typography variant="h4">Software Development</Typography>
@@ -157,9 +179,9 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>{/* ------ App Block ------- */}
-          <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : "flex-end"}>
-            <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
-              {smaller ? softwareIconJSX : ""}
+          <Grid container direction="row" className={classes.devContainer} justify={smaller ? "center" : "flex-end"}>
+            <Grid item style={{textAlign: smaller ? "center" : undefined}}>
+              {smaller ? mobileIconJSX : ""}
               <Typography variant="h4">Mobile App Development</Typography>
               <Typography variant="subtitle1" className={classes.subtitle}>Extend Functionality. Extend Access. Increase Engagement.</Typography>
               <Typography variant="subtitle1" className={classes.appDevDescription}>Integrate your web experience or create a standalone app with either iOS or Android platforms</Typography>
@@ -168,11 +190,13 @@ const LandingPage = () => {
                     <ButtonArrow width={25} height={18} fill="black" />
                   </Button>
             </Grid>
-            {smaller ? "" : softwareIconJSX}
+            <Grid item>
+              {smaller ? "" : mobileIconJSX}
+            </Grid>
           </Grid>
         </Grid>
         <Grid item>{/* ------ Website Block ------- */}
-          <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : undefined}>
+          <Grid container direction="row" className={classes.devContainer} justify={smaller ? "center" : undefined}>
             <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
               {smaller ? softwareIconJSX : ""}
               <Typography variant="h4">Website Development</Typography>
