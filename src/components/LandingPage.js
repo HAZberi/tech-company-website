@@ -127,6 +127,23 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
+  revolutionCard: {
+    position: "absolute",
+    boxShadow: theme.shadows[10],
+    padding: "10em",
+    borderRadius: 20,
+    [theme.breakpoints.down("md")]: {
+      padding: "5em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "5em",
+      paddingBottom: "5em",
+      paddingLeft: 0,
+      paddingRight: 0,
+      width: "100%",
+      borderRadius: 0,
+    },
+  },
 }));
 
 const LandingPage = () => {
@@ -307,15 +324,15 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <Grid container alignItems="center" justify="center" style={{height: "50em"}}>
-            <Card>
+          <Grid container alignItems="center" justify="center" style={{height: "50em"}} className={classes.devContainer}>
+            <Card className={classes.revolutionCard}>
               <CardContent>
                 <Grid container direction="column" style={{textAlign: "center"}}>
                   <Grid item>
-                    <Typography variant="h2">The Revolution</Typography>
+                    <Typography variant="h2" gutterBottom>The Revolution</Typography>
                   </Grid>
                   <Grid item>
-                    <Typography variant="subtitle1">
+                    <Typography variant="subtitle1" gutterBottom>
                       Visionary insights coupled with cutting-edge technology is a recipe for revolution.
                     </Typography>
                     <Button
