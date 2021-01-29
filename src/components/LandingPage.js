@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import animationData from "../animations/landinganimation/data.js";
 import ButtonArrow from "./ui/ButtonArrow";
 import softwareIcon from "../assets/Custom Software Icon.svg";
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 3,
     height: "35px",
     opacity: 0.7,
-    marginLeft: 0,
+    margin: 0,
   },
   mainContainer: {
     marginTop: "4em",
@@ -254,7 +256,7 @@ const LandingPage = () => {
                 className={classes.appDevDescription}
               >
                 Integrate your web experience or create a standalone app with
-                either iOS or Android platforms
+                either iOS or Android platforms.
               </Typography>
               <Button variant="outlined" className={classes.learnOutlineButton}>
                 Learn More
@@ -294,6 +296,29 @@ const LandingPage = () => {
             </Grid>
             <Grid item>{smaller ? "" : websiteIconJSX}</Grid>
           </Grid>
+        </Grid>
+        <Grid item>
+          <Card>
+            <CardContent>
+              <Grid container direction="column" style={{textAlign: "center"}}>
+                <Grid item>
+                  <Typography variant="h3">The Revolution</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="subtitle1">
+                    Visionary insights coupled with cutting-edge technology is a recipe for revolution.
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    className={classes.learnHeroButton}
+                  >
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </div>
