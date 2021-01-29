@@ -13,7 +13,7 @@ import softwareIcon from "../assets/Custom Software Icon.svg";
 import appsIcon from "../assets/mobile.svg";
 import webIcon from "../assets/website.svg";
 import repeatingBackground from "../assets/repeatingBackground.svg";
-import infoBackground from "../assets/infoBackground.svg";
+import infoBackground from "../assets/infoBackground.jpg";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
