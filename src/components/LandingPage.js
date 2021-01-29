@@ -51,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 3,
     height: "35px",
     opacity: 0.7,
-    margin: 0,
+    marginRight: 0,
+    marginLeft: 0,
   },
   mainContainer: {
     marginTop: "4em",
@@ -324,6 +325,7 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>
+          {/* ------ Revolution Block ------- */}
           <Grid container alignItems="center" justify="center" style={{height: "50em"}} className={classes.devContainer}>
             <Card className={classes.revolutionCard}>
               <CardContent>
@@ -338,6 +340,7 @@ const LandingPage = () => {
                     <Button
                       variant="contained"
                       className={classes.learnHeroButton}
+                      style={{margin: 0, marginTop: "15px"}}
                     >
                       Learn More
                       <ButtonArrow width={25} height={18} fill="black" />
@@ -349,6 +352,21 @@ const LandingPage = () => {
             <div className={classes.revolutionBackground} />
           </Grid>
         </Grid>
+          <Grid item>
+            {/* Information Block */}
+            <Grid container direction="row" style={{height: "60em"}} alignItems="center">
+              <Grid item>
+                <Grid container direction="column">
+                  <Typography variant="h2">About Us</Typography>
+                  <Typography variant="subtitle1">Let's get personal.</Typography>
+                  <Button variant="outlined" className={classes.learnOutlineButton}>
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
       </Grid>
     </div>
   );
