@@ -13,6 +13,7 @@ import softwareIcon from "../assets/Custom Software Icon.svg";
 import appsIcon from "../assets/mobile.svg";
 import webIcon from "../assets/website.svg";
 import repeatingBackground from "../assets/repeatingBackground.svg";
+import infoBackground from "../assets/infoBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -144,6 +145,14 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       borderRadius: 0,
     },
+  },
+  infoBackground: {
+    backgroundImage: `url(${infoBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
   },
 }));
 
@@ -355,16 +364,33 @@ const LandingPage = () => {
           <Grid item>
             {/* Information Block */}
             <Grid container direction="row" style={{height: "60em"}} alignItems="center">
-              <Grid item>
-                <Grid container direction="column">
-                  <Typography variant="h2">About Us</Typography>
-                  <Typography variant="subtitle1">Let's get personal.</Typography>
-                  <Button variant="outlined" className={classes.learnOutlineButton}>
-                    Learn More
-                    <ButtonArrow width={25} height={18} fill="black" />
-                  </Button>
+              <Grid item container style={{position: "absolute"}}>
+                <Grid sm item style={{marginLeft: "5em"}}>
+                  <Grid container direction="column">
+                    <Typography variant="h2" gutterBottom>About Us</Typography>
+                    <Typography variant="subtitle1" gutterBottom>Let's get personal.</Typography>
+                    <Grid item>
+                      <Button variant="outlined" className={classes.learnOutlineButton}>
+                        Learn More
+                        <ButtonArrow width={25} height={18} fill="black" />
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid sm item style={{marginRight: "5em", textAlign: "right"}}>
+                  <Grid container direction="column">
+                    <Typography variant="h2" gutterBottom>Contact Us</Typography>
+                    <Typography variant="subtitle1" gutterBottom>Say Hello! 🙌</Typography>
+                    <Grid item>
+                      <Button variant="outlined" className={classes.learnOutlineButton}>
+                        Learn More
+                        <ButtonArrow width={25} height={18} fill="black" />
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
+            <div className={classes.infoBackground} />
             </Grid>
           </Grid>
       </Grid>
