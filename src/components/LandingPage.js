@@ -69,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     marginBottom: "2.5rem",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "1em",
+    },
   },
   icon: {
     marginLeft: "2em",
@@ -79,14 +82,18 @@ const useStyles = makeStyles((theme) => ({
   serviceContainer: {
     marginTop: "18em",
     [theme.breakpoints.down("lg")]: {
-      marginTop: "14em",
+      marginTop: "15em",
     },
     [theme.breakpoints.down("md")]: {
       marginTop: "7em",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "3em",
+      padding: "20px",
     },
+  },
+  appDevDescription : {
+    maxWidth : "25em"
   }
 }));
 
@@ -94,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingPage = () => {
   const classes = useStyles();
   const theme =  useTheme();
-  const medium = useMediaQuery(theme.breakpoints.down("md"));
+  //const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const softwareIconJSX =  <Grid item className={classes.icon}><img src={softwareIcon} alt="Sotware Icon" /></Grid>
 
@@ -134,7 +141,7 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item>{/* ------ Services Block ------- */}
+        <Grid item>{/* ------ Software Block ------- */}
           <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : undefined}>
             <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
               {smaller ? softwareIconJSX : ""}
@@ -149,6 +156,22 @@ const LandingPage = () => {
             {smaller ? "" : softwareIconJSX}
           </Grid>
         </Grid>
+        <Grid item>{/* ------ App Block ------- */}
+          <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : "flex-end"}>
+            <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
+              {smaller ? softwareIconJSX : ""}
+              <Typography variant="h4">Mobile App Development</Typography>
+              <Typography variant="subtitle1" className={classes.subtitle}>Extend Functionality. Extend Access. Increase Engagement.</Typography>
+              <Typography variant="subtitle1" className={classes.appDevDescription}>Integrate your web experience or create a standalone app with either iOS or Android platforms</Typography>
+              <Button variant="outlined" className={classes.learnOutlineButton}>
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
+            </Grid>
+            {smaller ? "" : softwareIconJSX}
+          </Grid>
+        </Grid>
+
       </Grid>
     </div>
   );
