@@ -307,7 +307,7 @@ const LandingPage = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <Grid container alignItems="center" justify="center">
+          <Grid container alignItems="center" justify="center" style={{height: "50em"}}>
             <Card>
               <CardContent>
                 <Grid container direction="column" style={{textAlign: "center"}}>
