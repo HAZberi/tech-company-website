@@ -171,7 +171,21 @@ const LandingPage = () => {
             {smaller ? "" : softwareIconJSX}
           </Grid>
         </Grid>
-
+        <Grid item>{/* ------ Website Block ------- */}
+          <Grid container direction="row" className={classes.serviceContainer} justify={smaller ? "center" : undefined}>
+            <Grid item style={{marginLeft: smaller ? 0 : "5em", textAlign: smaller ? "center" : undefined}}>
+              {smaller ? softwareIconJSX : ""}
+              <Typography variant="h4">Website Development</Typography>
+              <Typography variant="subtitle1" className={classes.subtitle}>Discover More. Reach More. Sell More.</Typography>
+              <Typography variant="subtitle1">Optimized for Search Engines, built for speed.</Typography>
+              <Button variant="outlined" className={classes.learnOutlineButton}>
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
+            </Grid>
+            {smaller ? "" : softwareIconJSX}
+          </Grid>
+        </Grid>
       </Grid>
     </div>
   );
