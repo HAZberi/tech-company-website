@@ -71,10 +71,11 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     marginTop: "-3.5rem",
     right: "1rem",
+    margin: 0,
     [theme.breakpoints.down("sm")]: {
-      justifyContent: "center",
       marginTop: "-10.25rem",
-      right: "0rem",
+      right: 0,
+      paddingLeft: "56px"
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-6.5rem",
@@ -288,7 +289,7 @@ const Footer = (props) => {
         </Grid>
       </Hidden>
       {smaller ? <MobileFooterAdornment className={classes.adornment} /> : <FooterAdornment className={classes.adornment} />}
-      <Grid container justify="flex-end" spacing={smaller ? 7 : 2} className={classes.mediaIconsContainer}>
+      <Grid container justify={smaller ? "center" : "flex-end"} spacing={smaller ? 7 : 2} className={classes.mediaIconsContainer}>
         <Grid item component={'a'} href="https://facebook.com" className={classes.icon}><img alt="facebook-icon" src={facebook}  rel="noopener noreferrer" target="_blank" /></Grid>
         <Grid item component={"a"} href="https://instagram.com" className={classes.icon}><img alt="facebook-icon" src={instagram} rel="noopener noreferrer" target="_blank" /></Grid>
         <Grid item component={"a"} href="https://twitter.com"  className={classes.icon}><img alt="facebook-icon" src={twitter} rel="noopener noreferrer" target="_blank" /></Grid>
