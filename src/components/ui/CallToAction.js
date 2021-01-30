@@ -13,15 +13,17 @@ const useStyles = makeStyles((theme) => ({
   learnOutlineButton: {
     ...theme.typography.learnButton,
     borderColor: theme.palette.common.orange,
+    backgroundColor: "rgba(0,0,0,0.1)",
     borderWidth: 3,
     height: "35px",
-    opacity: 0.8,
+    opacity: 0.9,
     marginRight: 0,
     marginLeft: 0,
   },
   estimateOutlineButton: {
     ...theme.typography.learnButton,
     borderColor: theme.palette.common.hoverBlue,
+    backgroundColor: "rgba(0,0,0,0.1)",
     borderWidth: 3,
     height: "35px",
     opacity: 0.9,
