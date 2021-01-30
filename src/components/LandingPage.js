@@ -14,6 +14,7 @@ import appsIcon from "../assets/mobile.svg";
 import webIcon from "../assets/website.svg";
 import repeatingBackground from "../assets/repeatingBackground.svg";
 import infoBackground from "../assets/infoBackground.jpg";
+import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles((theme) => ({
   animation: {
@@ -360,38 +361,42 @@ const LandingPage = () => {
             <div className={classes.revolutionBackground} />
           </Grid>
         </Grid>
-          <Grid item>
-            {/* Information Block */}
-            <Grid container style={{height: "60em"}} alignItems="center">
-              <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"} spacing={smallest ? 10 : 0}>
-                <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
-                  <Grid container direction="column">
-                    <Typography variant="h2" gutterBottom>About Us</Typography>
-                    <Typography variant="subtitle1" gutterBottom>Let's get personal.</Typography>
-                    <Grid item>
-                      <Button variant="outlined" className={classes.learnOutlineButton}>
-                        Learn More
-                        <ButtonArrow width={25} height={18} fill="black" />
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid sm item style={{marginRight: smallest ? 0 : smaller ? "3em" : "5em", textAlign: smallest ? "center" : "right"}}>
-                  <Grid container direction="column">
-                    <Typography variant="h2" gutterBottom>Contact Us</Typography>
-                    <Typography variant="subtitle1" gutterBottom>Say Hello! 🙌</Typography>
-                    <Grid item>
-                      <Button variant="outlined" className={classes.learnOutlineButton}>
-                        Learn More
-                        <ButtonArrow width={25} height={18} fill="black" />
-                      </Button>
-                    </Grid>
+        <Grid item>
+          {/* Information Block */}
+          <Grid container style={{height: "60em"}} alignItems="center">
+            <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"} spacing={smallest ? 10 : 0}>
+              <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
+                <Grid container direction="column">
+                  <Typography variant="h2" gutterBottom>About Us</Typography>
+                  <Typography variant="subtitle1" gutterBottom>Let's get personal.</Typography>
+                  <Grid item>
+                    <Button variant="outlined" className={classes.learnOutlineButton}>
+                      Learn More
+                      <ButtonArrow width={25} height={18} fill="black" />
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
-            <div className={classes.infoBackground} />
+              <Grid sm item style={{marginRight: smallest ? 0 : smaller ? "3em" : "5em", textAlign: smallest ? "center" : "right"}}>
+                <Grid container direction="column">
+                  <Typography variant="h2" gutterBottom>Contact Us</Typography>
+                  <Typography variant="subtitle1" gutterBottom>Say Hello! 🙌</Typography>
+                  <Grid item>
+                    <Button variant="outlined" className={classes.learnOutlineButton}>
+                      Learn More
+                      <ButtonArrow width={25} height={18} fill="black" />
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
+          <div className={classes.infoBackground} />
           </Grid>
+        </Grid>
+        <Grid item>
+          {/* Call to Action Block */}
+          <CallToAction />
+        </Grid>
       </Grid>
   );
 };
