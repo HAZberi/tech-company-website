@@ -37,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
     position: "absolute",
     marginTop: "auto",
+    marginRight: 0,
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       marginTop: "0.5rem",
       justifyContent: "flex-end",

@@ -53,9 +53,9 @@ const CallToAction = () => {
 
 
   return (
-    <Grid container style={{height: smaller ? "85em" : "60em"}} alignItems="start">
+    <Grid container style={{height: smaller ? "85em" : "60em"}} alignItems="flex-start">
       <Grid item container style={{position: "absolute", marginLeft: smaller ? 0 : "5em", marginTop: smaller ? "5em" : "7.5em", textAlign: smaller ? "center" : "inherit"}}>
-        <Grid sm container direction="column">
+        <Grid container direction="column">
           <Grid item>
             <Typography variant="h2" gutterBottom>
               Simple Software.

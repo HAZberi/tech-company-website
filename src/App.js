@@ -53,7 +53,7 @@ const App = () => {
               component={() => <div>Get your Estimate</div>}
             />
           </Switch>
-          <Footer value={value} setValue={setValue} selected={selected} setSelected={setSelected}/>
+          {/* <Footer value={value} setValue={setValue} selected={selected} setSelected={setSelected}/> */}
         </BrowserRouter>
       </div>
     </ThemeProvider>

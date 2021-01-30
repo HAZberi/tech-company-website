@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "21em",
     marginTop: "2em",
     marginLeft: "5%",
+    overflow: "hidden",
     [theme.breakpoints.down("xs")]: {
       maxWidth: "30em",
     },
@@ -200,7 +201,7 @@ const LandingPage = () => {
       <Grid container direction="column" className={classes.mainContainer}>
         <Grid item>
           {/* ------- Hero Block --------- */}
-          <Grid
+{/*           <Grid
             container
             justify={smaller ? "center" : "flex-end"}
             alignItems="center"
@@ -239,11 +240,11 @@ const LandingPage = () => {
             <Grid item md xs className={classes.animation}>
               <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
             </Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item>
           {/* ------ Software Block ------- */}
-          <Grid
+{/*           <Grid
             container
             direction="row"
             className={classes.softDevContainer}
@@ -272,10 +273,10 @@ const LandingPage = () => {
             </Grid>
             <Grid item>{smaller ? "" : softwareIconJSX}</Grid>
           </Grid>
-        </Grid>
+ */}        </Grid>
         <Grid item>
           {/* ------ App Block ------- */}
-          <Grid
+          {/* <Grid
             container
             direction="row"
             className={classes.devContainer}
@@ -300,11 +301,11 @@ const LandingPage = () => {
               </Button>
             </Grid>
             <Grid item>{smaller ? "" : mobileIconJSX}</Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item>
           {/* ------ Website Block ------- */}
-          <Grid
+          {/* <Grid
             container
             direction="row"
             className={classes.devContainer}
@@ -331,11 +332,11 @@ const LandingPage = () => {
               </Button>
             </Grid>
             <Grid item>{smaller ? "" : websiteIconJSX}</Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item>
           {/* ------ Revolution Block ------- */}
-          <Grid container alignItems="center" justify="center" style={{height: "50em"}} className={classes.devContainer}>
+{/*           <Grid container alignItems="center" justify="center" style={{height: "50em"}} className={classes.devContainer}>
             <Card className={classes.revolutionCard}>
               <CardContent>
                 <Grid container direction="column" style={{textAlign: "center"}}>
@@ -360,10 +361,10 @@ const LandingPage = () => {
             </Card>
             <div className={classes.revolutionBackground} />
           </Grid>
-        </Grid>
+ */}        </Grid>
         <Grid item>
           {/* Information Block */}
-          <Grid container style={{height: "40em"}} alignItems="center">
+{/*           <Grid container style={{height: "40em"}} alignItems="center">
             <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"} spacing={smallest ? 10 : 0}>
               <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
                 <Grid container direction="column">
@@ -392,7 +393,7 @@ const LandingPage = () => {
             </Grid>
           <div className={classes.infoBackground} />
           </Grid>
-        </Grid>
+ */}        </Grid>
         <Grid item>
           {/* Call to Action Block */}
           <CallToAction />
