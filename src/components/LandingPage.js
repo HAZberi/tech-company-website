@@ -363,7 +363,7 @@ const LandingPage = () => {
         </Grid>
         <Grid item>
           {/* Information Block */}
-          <Grid container style={{height: "60em"}} alignItems="center">
+          <Grid container style={{height: "40em"}} alignItems="center">
             <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"} spacing={smallest ? 10 : 0}>
               <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
                 <Grid container direction="column">
