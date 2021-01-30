@@ -365,10 +365,10 @@ const LandingPage = () => {
         </Grid>
         <Grid item>
           {/* Information Block */}
-{/*          <Grid container style={{height: "40em"}} alignItems="center">
-            <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"} spacing={smallest ? 10 : 0}>
+         <Grid container style={{height: "45em"}} alignItems="center">
+            <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"}>
               <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
-                <Grid container direction="column">
+                <Grid container direction="column">{/* The issue is here */}
                   <Typography variant="h2" gutterBottom>About Us</Typography>
                   <Typography variant="subtitle1" gutterBottom>Let's get personal.</Typography>
                   <Grid item>
@@ -379,7 +379,7 @@ const LandingPage = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid sm item style={{marginRight: smallest ? 0 : smaller ? "3em" : "5em", textAlign: smallest ? "center" : "right"}}>
+              <Grid sm item style={{marginRight: smallest ? 0 : smaller ? "3em" : "5em", marginTop: smallest ? "5em" : 0, textAlign: smallest ? "center" : "right"}}>
                 <Grid container direction="column">
                   <Typography variant="h2" gutterBottom>Contact Us</Typography>
                   <Typography variant="subtitle1" gutterBottom>Say Hello! 🙌</Typography>
@@ -394,7 +394,7 @@ const LandingPage = () => {
             </Grid>
           <div className={classes.infoBackground} />
           </Grid>
- */}        </Grid>
+        </Grid>
         <Grid item>
           {/* Call to Action Block */}
           <CallToAction />
