@@ -11,65 +11,69 @@ import appsIcon from "../assets/mobile.svg";
 import webIcon from "../assets/website.svg";
 
 const useStyles = makeStyles((theme) => ({
-    learnOutlineButton: {
-        ...theme.typography.learnButton,
-        borderColor: theme.palette.common.orange,
-        borderWidth: 3,
-        height: "35px",
-        opacity: 0.7,
-        marginRight: 0,
-        marginLeft: 0,
-      },
-    subtitle: {
-        marginBottom: "2.5rem",
-        [theme.breakpoints.down("sm")]: {
-          marginBottom: "1em",
-        },
-      },
-      icon: {
-        marginLeft: "2em",
-        [theme.breakpoints.down("sm")]: {
-          marginLeft: 0,
-        },
-      },
-      serviceIcon: {
-        minWidth: "15em",
-        marginLeft: "2em",
-        [theme.breakpoints.down("sm")]: {
-          marginBottom: "0.5em",
-          maxWidth: "5em",
-          marginLeft: 0,
-        },
-      },
-      softDevContainer: {
-        marginTop: "18em",
-        [theme.breakpoints.down("lg")]: {
-          marginTop: "15em",
-        },
-        [theme.breakpoints.down("md")]: {
-          marginTop: "7em",
-        },
-        [theme.breakpoints.down("sm")]: {
-          marginTop: "3em",
-          padding: "20px",
-        },
-      },
-      devContainer: {
-        marginTop: "12em",
-        [theme.breakpoints.down("lg")]: {
-          marginTop: "9em",
-        },
-        [theme.breakpoints.down("md")]: {
-          marginTop: "7em",
-        },
-        [theme.breakpoints.down("sm")]: {
-          marginTop: "3em",
-          padding: "20px",
-        },
-      },
-      appDevDescription: {
-        maxWidth: "25em",
-      },
+  learnOutlineButton: {
+    ...theme.typography.learnButton,
+    borderColor: theme.palette.common.orange,
+    borderWidth: 3,
+    height: "35px",
+    opacity: 0.7,
+    marginRight: 0,
+    marginLeft: 0,
+  },
+  subtitle: {
+    marginBottom: "2.5rem",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "1em",
+    },
+  },
+  icon: {
+    marginLeft: "2em",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0,
+    },
+  },
+  serviceIcon: {
+    minWidth: "15em",
+    marginLeft: "2em",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "0.5em",
+      maxWidth: "5em",
+      marginLeft: 0,
+    },
+  },
+  webDevContainer: {
+    marginTop: "12em",
+    marginBottom: "12em",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "9em",
+      marginBottom: "9em",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "7em",
+      marginBottom: "7em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "3em",
+      marginBottom: "3em",
+      padding: "20px",
+    },
+  },
+  devContainer: {
+    marginTop: "12em",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "9em",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "7em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "3em",
+      padding: "20px",
+    },
+  },
+  appDevDescription: {
+    maxWidth: "25em",
+  },
 }));
 
 const Services = (props) => {
@@ -85,7 +89,7 @@ const Services = (props) => {
     </Grid>
   );
   const websiteIconJSX = (
-    <Grid container justify={smaller ? "center" : undefined}>
+    <Grid container justify={smaller ? "center" : undefined} style={{marginRight: smaller ? 0 : "5em",}}>
       <Grid item className={classes.serviceIcon}>
         <img src={webIcon} alt="Software Icon" />
       </Grid>
@@ -106,6 +110,43 @@ const Services = (props) => {
   return (
     <Grid container direction="column">
       <Grid item>
+        {/* ------ App Block ------- */}
+        <Grid
+          container
+          direction="row"
+          className={classes.devContainer}
+          justify={smaller ? "center" : "flex-end"}
+        >
+          <Grid item className={classes.appDevDescription} style={{ textAlign: smaller ? "center" : undefined }}>
+            {smaller ? mobileIconJSX : ""}
+            <Typography variant="h4">Mobile App Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Extend Functionality. Extend Access. Increase Engagement.
+            </Typography>
+            <Typography
+              variant="subtitle1"
+            >
+              Integrate your web experience or create a standalone app with
+              either iOS or Android platforms.
+            </Typography>
+            <Button
+              component={Link}
+              to="/mobileapps"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(1);
+              }}
+              variant="outlined"
+              className={classes.learnOutlineButton}
+            >
+              Learn More
+              <ButtonArrow width={25} height={18} fill="black" />
+            </Button>
+          </Grid>
+          <Grid item>{smaller ? "" : mobileIconJSX}</Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
         {/* ------ Software Block ------- */}
         <Grid
           container
@@ -115,6 +156,7 @@ const Services = (props) => {
         >
           <Grid
             item
+            className={classes.appDevDescription}
             style={{
               marginLeft: smaller ? 0 : "5em",
               textAlign: smaller ? "center" : undefined,
@@ -147,55 +189,17 @@ const Services = (props) => {
         </Grid>
       </Grid>
       <Grid item>
-        {/* ------ App Block ------- */}
-        <Grid
-          container
-          direction="row"
-          className={classes.devContainer}
-          justify={smaller ? "center" : "flex-end"}
-        >
-          <Grid item style={{ textAlign: smaller ? "center" : undefined }}>
-            {smaller ? mobileIconJSX : ""}
-            <Typography variant="h4">Mobile App Development</Typography>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              Extend Functionality. Extend Access. Increase Engagement.
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className={classes.appDevDescription}
-            >
-              Integrate your web experience or create a standalone app with
-              either iOS or Android platforms.
-            </Typography>
-            <Button
-              component={Link}
-              to="/mobileapps"
-              onClick={() => {
-                props.setValue(1);
-                props.setSelected(1);
-              }}
-              variant="outlined"
-              className={classes.learnOutlineButton}
-            >
-              Learn More
-              <ButtonArrow width={25} height={18} fill="black" />
-            </Button>
-          </Grid>
-          <Grid item>{smaller ? "" : mobileIconJSX}</Grid>
-        </Grid>
-      </Grid>
-      <Grid item>
         {/* ------ Website Block ------- */}
         <Grid
           container
           direction="row"
-          className={classes.devContainer}
-          justify={smaller ? "center" : undefined}
+          className={classes.webDevContainer}
+          justify={smaller ? "center" : "flex-end"}
         >
           <Grid
             item
+            className={classes.appDevDescription}
             style={{
-              marginLeft: smaller ? 0 : "5em",
               textAlign: smaller ? "center" : undefined,
             }}
           >
