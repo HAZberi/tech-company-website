@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import useMediaQuery from "@material-ui/core/useMediaQuery"
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import ButtonArrow from "./ButtonArrow";
 
 import background from "../../assets/background.jpg";
@@ -31,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     marginTop: "15px",
     "&:hover": {
-        backgroundColor: theme.palette.common.hoverBlue,
-        color: "white",
-        opacity: 1,
-      },
+      backgroundColor: theme.palette.common.hoverBlue,
+      color: "white",
+      opacity: 1,
+    },
   },
   background: {
     backgroundImage: `url(${background})`,
@@ -58,29 +59,60 @@ const CallToAction = () => {
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
 
-
   return (
-    <Grid container style={{height: smaller ? "85em" : "60em"}} alignItems="flex-start">
-      <Grid item container style={{position: "absolute", marginTop: smaller ? "5em" : "7.5em", textAlign: smaller ? "center" : "inherit",}}>
-        <Grid container direction="column" style={{marginLeft: smaller ? 0 : "5em",}}>
+    <Grid
+      container
+      style={{ height: smaller ? "85em" : "60em" }}
+      alignItems="flex-start"
+    >
+      <Grid
+        item
+        container
+        style={{
+          position: "absolute",
+          marginTop: smaller ? "5em" : "7.5em",
+          textAlign: smaller ? "center" : "inherit",
+        }}
+      >
+        <Grid
+          container
+          direction="column"
+          style={{ marginLeft: smaller ? 0 : "5em" }}
+        >
           <Grid item>
             <Typography variant="h2" gutterBottom>
               Simple Software.
               <br />
               Revolutionary Results.
             </Typography>
-            <Typography variant="subtitle1" style={{fontWeight: 500, color: "#383838"}} gutterBottom>
+            <Typography
+              variant="subtitle1"
+              style={{ fontWeight: 500, color: "#383838" }}
+              gutterBottom
+            >
               Take advantage of the 21st Century.
             </Typography>
           </Grid>
-          <Grid item style={{marginTop: smaller ? "4em" : 0}}>
-            <Button variant="outlined" className={classes.learnOutlineButton}>
+          <Grid item style={{ marginTop: smaller ? "4em" : 0 }}>
+            <Button
+              component={Link}
+              to="/revolution"
+              onClick={() => undefined}
+              variant="outlined"
+              className={classes.learnOutlineButton}
+            >
               Learn More
               <ButtonArrow width={25} height={18} fill="black" />
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="outlined" className={classes.estimateOutlineButton}>
+            <Button
+              component={Link}
+              to="/estimate"
+              onClick={() => undefined}
+              variant="outlined"
+              className={classes.estimateOutlineButton}
+            >
               Get Estimate
               <ButtonArrow width={25} height={18} fill="black" />
             </Button>

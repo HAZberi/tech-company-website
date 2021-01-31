@@ -1,5 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
+import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -199,38 +200,242 @@ const LandingPage = () => {
     },
   };
   return (
-      <Grid container direction="column" className={classes.mainContainer}>
-        <Grid item>
-          {/* ------- Hero Block --------- */}
+    <Grid container direction="column" className={classes.mainContainer}>
+      <Grid item>
+        {/* ------- Hero Block --------- */}
+        <Grid
+          container
+          justify={smaller ? "center" : "flex-end"}
+          alignItems="center"
+        >
+          <Grid item md className={classes.heroTextContainer}>
+            <Typography variant="h2" align="center">
+              Bringing West Coast Technology
+              <br />
+              to the Canadian Prairies
+            </Typography>
+            <Grid
+              container
+              justify="center"
+              className={classes.buttonContainer}
+            >
+              <Grid item>
+                <Button
+                  component={Link}
+                  to="/estimate"
+                  onClick={() => undefined}
+                  color="secondary"
+                  variant="contained"
+                  className={classes.estimate}
+                >
+                  Get Estimate
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  component={Link}
+                  to="/revolution"
+                  onClick={() => undefined}
+                  variant="contained"
+                  className={classes.learnHeroButton}
+                >
+                  Learn More
+                  <ButtonArrow width={25} height={18} fill="black" />
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item md xs className={classes.animation}>
+            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/* ------ Software Block ------- */}
+        <Grid
+          container
+          direction="row"
+          className={classes.softDevContainer}
+          justify={smaller ? "center" : undefined}
+        >
           <Grid
-            container
-            justify={smaller ? "center" : "flex-end"}
-            alignItems="center"
+            item
+            style={{
+              marginLeft: smaller ? 0 : "5em",
+              textAlign: smaller ? "center" : undefined,
+            }}
           >
-            <Grid item md className={classes.heroTextContainer}>
-              <Typography variant="h2" align="center">
-                Bringing West Coast Technology
-                <br />
-                to the Canadian Prairies
-              </Typography>
+            {smaller ? softwareIconJSX : ""}
+            <Typography variant="h4">Software Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Save Time. Save Energy. Save Money.
+            </Typography>
+            <Typography variant="subtitle1">
+              Complete digital solutions, from investigation to{" "}
+              <span>celebration.</span>
+            </Typography>
+            <Button
+              component={Link}
+              to="/software"
+              onClick={() => undefined}
+              variant="outlined"
+              className={classes.learnOutlineButton}
+            >
+              Learn More
+              <ButtonArrow width={25} height={18} fill="black" />
+            </Button>
+          </Grid>
+          <Grid item>{smaller ? "" : softwareIconJSX}</Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/* ------ App Block ------- */}
+        <Grid
+          container
+          direction="row"
+          className={classes.devContainer}
+          justify={smaller ? "center" : "flex-end"}
+        >
+          <Grid item style={{ textAlign: smaller ? "center" : undefined }}>
+            {smaller ? mobileIconJSX : ""}
+            <Typography variant="h4">Mobile App Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Extend Functionality. Extend Access. Increase Engagement.
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              className={classes.appDevDescription}
+            >
+              Integrate your web experience or create a standalone app with
+              either iOS or Android platforms.
+            </Typography>
+            <Button
+              component={Link}
+              to="/mobileapps"
+              onClick={() => undefined}
+              variant="outlined"
+              className={classes.learnOutlineButton}
+            >
+              Learn More
+              <ButtonArrow width={25} height={18} fill="black" />
+            </Button>
+          </Grid>
+          <Grid item>{smaller ? "" : mobileIconJSX}</Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/* ------ Website Block ------- */}
+        <Grid
+          container
+          direction="row"
+          className={classes.devContainer}
+          justify={smaller ? "center" : undefined}
+        >
+          <Grid
+            item
+            style={{
+              marginLeft: smaller ? 0 : "5em",
+              textAlign: smaller ? "center" : undefined,
+            }}
+          >
+            {smaller ? websiteIconJSX : ""}
+            <Typography variant="h4">Website Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Discover More. Reach More. Sell More.
+            </Typography>
+            <Typography variant="subtitle1">
+              Optimized for Search Engines, built for speed.
+            </Typography>
+            <Button
+              component={Link}
+              to="/websites"
+              onClick={() => undefined}
+              variant="outlined"
+              className={classes.learnOutlineButton}
+            >
+              Learn More
+              <ButtonArrow width={25} height={18} fill="black" />
+            </Button>
+          </Grid>
+          <Grid item>{smaller ? "" : websiteIconJSX}</Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/* ------ Revolution Block ------- */}
+        <Grid
+          container
+          alignItems="center"
+          justify="center"
+          style={{ height: "50em" }}
+          className={classes.devContainer}
+        >
+          <Card className={classes.revolutionCard}>
+            <CardContent>
               <Grid
                 container
-                justify="center"
-                className={classes.buttonContainer}
+                direction="column"
+                style={{ textAlign: "center" }}
               >
                 <Grid item>
-                  <Button
-                    color="secondary"
-                    variant="contained"
-                    className={classes.estimate}
-                  >
-                    Get Estimate
-                  </Button>
+                  <Typography variant="h2" gutterBottom>
+                    The Revolution
+                  </Typography>
                 </Grid>
                 <Grid item>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Visionary insights coupled with cutting-edge technology is a
+                    recipe for revolution.
+                  </Typography>
                   <Button
+                    component={Link}
+                    to="/revolution"
+                    onClick={() => undefined}
                     variant="contained"
                     className={classes.learnHeroButton}
+                    style={{ margin: 0, marginTop: "15px" }}
+                  >
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+          <div className={classes.revolutionBackground} />
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/* Information Block */}
+        <Grid container style={{ height: "45em" }} alignItems="center">
+          <Grid
+            item
+            container
+            style={{
+              position: "absolute",
+              textAlign: smallest ? "center" : "inherit",
+            }}
+            direction={smallest ? "column" : "row"}
+          >
+            <Grid
+              sm
+              item
+              style={{ marginLeft: smallest ? 0 : smaller ? "3em" : "5em" }}
+            >
+              <Grid container direction="column">
+                {/* The issue is here */}
+                <Typography variant="h2" gutterBottom>
+                  About Us
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom>
+                  Let's get personal.
+                </Typography>
+                <Grid item>
+                  <Button
+                    component={Link}
+                    to="/about"
+                    onClick={() => undefined}
+                    variant="outlined"
+                    className={classes.learnOutlineButton}
                   >
                     Learn More
                     <ButtonArrow width={25} height={18} fill="black" />
@@ -238,168 +443,45 @@ const LandingPage = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md xs className={classes.animation}>
-              <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item>
-          {/* ------ Software Block ------- */}
-          <Grid
-            container
-            direction="row"
-            className={classes.softDevContainer}
-            justify={smaller ? "center" : undefined}
-          >
             <Grid
+              sm
               item
               style={{
-                marginLeft: smaller ? 0 : "5em",
-                textAlign: smaller ? "center" : undefined,
+                marginRight: smallest ? 0 : smaller ? "3em" : "5em",
+                marginTop: smallest ? "5em" : 0,
+                textAlign: smallest ? "center" : "right",
               }}
             >
-              {smaller ? softwareIconJSX : ""}
-              <Typography variant="h4">Software Development</Typography>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                Save Time. Save Energy. Save Money.
-              </Typography>
-              <Typography variant="subtitle1">
-                Complete digital solutions, from investigation to{" "}
-                <span>celebration.</span>
-              </Typography>
-              <Button variant="outlined" className={classes.learnOutlineButton}>
-                Learn More
-                <ButtonArrow width={25} height={18} fill="black" />
-              </Button>
-            </Grid>
-            <Grid item>{smaller ? "" : softwareIconJSX}</Grid>
-          </Grid>
-        </Grid>
-        <Grid item>
-          {/* ------ App Block ------- */}
-          <Grid
-            container
-            direction="row"
-            className={classes.devContainer}
-            justify={smaller ? "center" : "flex-end"}
-          >
-            <Grid item style={{ textAlign: smaller ? "center" : undefined }}>
-              {smaller ? mobileIconJSX : ""}
-              <Typography variant="h4">Mobile App Development</Typography>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                Extend Functionality. Extend Access. Increase Engagement.
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                className={classes.appDevDescription}
-              >
-                Integrate your web experience or create a standalone app with
-                either iOS or Android platforms.
-              </Typography>
-              <Button variant="outlined" className={classes.learnOutlineButton}>
-                Learn More
-                <ButtonArrow width={25} height={18} fill="black" />
-              </Button>
-            </Grid>
-            <Grid item>{smaller ? "" : mobileIconJSX}</Grid>
-          </Grid>
-        </Grid>
-        <Grid item>
-          {/* ------ Website Block ------- */}
-          <Grid
-            container
-            direction="row"
-            className={classes.devContainer}
-            justify={smaller ? "center" : undefined}
-          >
-            <Grid
-              item
-              style={{
-                marginLeft: smaller ? 0 : "5em",
-                textAlign: smaller ? "center" : undefined,
-              }}
-            >
-              {smaller ? websiteIconJSX : ""}
-              <Typography variant="h4">Website Development</Typography>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                Discover More. Reach More. Sell More.
-              </Typography>
-              <Typography variant="subtitle1">
-                Optimized for Search Engines, built for speed.
-              </Typography>
-              <Button variant="outlined" className={classes.learnOutlineButton}>
-                Learn More
-                <ButtonArrow width={25} height={18} fill="black" />
-              </Button>
-            </Grid>
-            <Grid item>{smaller ? "" : websiteIconJSX}</Grid>
-          </Grid>
-        </Grid>
-        <Grid item>
-          {/* ------ Revolution Block ------- */}
-          <Grid container alignItems="center" justify="center" style={{height: "50em"}} className={classes.devContainer}>
-            <Card className={classes.revolutionCard}>
-              <CardContent>
-                <Grid container direction="column" style={{textAlign: "center"}}>
-                  <Grid item>
-                    <Typography variant="h2" gutterBottom>The Revolution</Typography>
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="subtitle1" gutterBottom>
-                      Visionary insights coupled with cutting-edge technology is a recipe for revolution.
-                    </Typography>
-                    <Button
-                      variant="contained"
-                      className={classes.learnHeroButton}
-                      style={{margin: 0, marginTop: "15px"}}
-                    >
-                      Learn More
-                      <ButtonArrow width={25} height={18} fill="black" />
-                    </Button>
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
-            <div className={classes.revolutionBackground} />
-          </Grid>
-        </Grid>
-        <Grid item>
-          {/* Information Block */}
-         <Grid container style={{height: "45em"}} alignItems="center">
-            <Grid item container style={{position: "absolute", textAlign: smallest ? "center" : "inherit"}} direction={smallest ? "column" : "row"}>
-              <Grid sm item style={{marginLeft: smallest ? 0 : smaller ? "3em" : "5em"}}>
-                <Grid container direction="column">{/* The issue is here */}
-                  <Typography variant="h2" gutterBottom>About Us</Typography>
-                  <Typography variant="subtitle1" gutterBottom>Let's get personal.</Typography>
-                  <Grid item>
-                    <Button variant="outlined" className={classes.learnOutlineButton}>
-                      Learn More
-                      <ButtonArrow width={25} height={18} fill="black" />
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid sm item style={{marginRight: smallest ? 0 : smaller ? "3em" : "5em", marginTop: smallest ? "5em" : 0, textAlign: smallest ? "center" : "right"}}>
-                <Grid container direction="column">
-                  <Typography variant="h2" gutterBottom>Contact Us</Typography>
-                  <Typography variant="subtitle1" gutterBottom>Say Hello! 🙌</Typography>
-                  <Grid item>
-                    <Button variant="outlined" className={classes.learnOutlineButton}>
-                      Learn More
-                      <ButtonArrow width={25} height={18} fill="black" />
-                    </Button>
-                  </Grid>
+              <Grid container direction="column">
+                <Typography variant="h2" gutterBottom>
+                  Contact Us
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom>
+                  Say Hello! 🙌
+                </Typography>
+                <Grid item>
+                  <Button
+                    component={Link}
+                    to="/contact"
+                    onClick={() => undefined}
+                    variant="outlined"
+                    className={classes.learnOutlineButton}
+                  >
+                    Learn More
+                    <ButtonArrow width={25} height={18} fill="black" />
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>
+          </Grid>
           <div className={classes.infoBackground} />
-          </Grid>
-        </Grid>
-        <Grid item>
-          {/* Call to Action Block */}
-          <CallToAction />
         </Grid>
       </Grid>
+      <Grid item>
+        {/* Call to Action Block */}
+        <CallToAction />
+      </Grid>
+    </Grid>
   );
 };
 
