@@ -6,6 +6,7 @@ import theme from "./components/Theme.js";
 import Header from "./components/ui/Header.js";
 import Footer from "./components/ui/Footer.js";
 import LandingPage from "./components/LandingPage.js";
+import Services from "./components/Services.js";
 const App = () => {
   const [value, setValue] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -40,7 +41,13 @@ const App = () => {
             <Route
               exact
               path="/services"
-              component={() => <div>Services</div>}
+              render={(props) => (
+                <Services
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
             />
             <Route
               exact
