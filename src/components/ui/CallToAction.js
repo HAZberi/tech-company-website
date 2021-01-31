@@ -41,10 +41,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    //This property introduces a parallax effect
+    //backgroundAttachment: "fixed",
     height: "100%",
     width: "100%",
     [theme.breakpoints.down("sm")]: {
       backgroundImage: `url(${mobileBackground})`,
+      //This property removes a parallax effect.
+      //backgroundAttachment: "inherit",
     },
   },
 }));
