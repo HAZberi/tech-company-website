@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     marginTop: "auto",
     marginRight: 0,
+    paddingLeft: "2rem",
     width: "100%",
     overflow: "hidden",
     [theme.breakpoints.down("md")]: {
