@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     overflowX: "hidden",
     zIndex: theme.zIndex.modal + 1,
-    position: "relative",
     [theme.breakpoints.down("sm")]: {
-      height: "5em",
+      height: "7.5em",
       overflowX: "visible",
     },
   },
@@ -31,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
       width: "20em",
     },
     [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      zIndex: 1302,
       width: "100%",
     },
   },
@@ -38,11 +39,13 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     marginTop: "auto",
     marginRight: 0,
+    width: "100%",
     overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       marginTop: "0.5rem",
       justifyContent: "flex-end",
-      paddingRight: "12.5%",
+      paddingRight: "9%",
+      margin: 0,
     },
   },
   link: {
@@ -58,9 +61,11 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     width: "3.5rem",
     height: "3.5rem",
+    padding: "0.5rem",
     [theme.breakpoints.down("sm")]: {
       width: "7rem",
       height: "7rem",
+      padding: "1rem",
     },
     [theme.breakpoints.down("xs")]: {
       width: "6rem",
@@ -68,17 +73,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mediaIconsContainer: {
-    position: "absolute",
     marginTop: "-3.5rem",
-    right: "1rem",
+    paddingRight: "2rem",
     margin: 0,
     [theme.breakpoints.down("sm")]: {
-      marginTop: "-10.25rem",
-      right: 0,
-      paddingLeft: "56px",
+      margin: "auto",
+      padding: "1.5rem",
+      position: "absolute",
+      zIndex: 1303,
     },
     [theme.breakpoints.down("xs")]: {
-      marginTop: "-6.5rem",
+      paddingTop: "0.5rem",
+      padding: 0,
     },
   },
 }));
@@ -89,9 +95,10 @@ const Footer = (props) => {
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <footer className={classes.footer}>
+    <Grid container className={classes.footer}>
       <Hidden smDown>
         <Grid
+          item
           container
           justify="center"
           className={classes.mainContainer}
@@ -291,59 +298,62 @@ const Footer = (props) => {
             </Grid>
           </Grid>
         </Grid>
-      </Hidden>
-      {smaller ? (
-        <MobileFooterAdornment className={classes.adornment} />
-      ) : (
         <FooterAdornment className={classes.adornment} />
-      )}
-      <Grid
-        container
-        justify={smaller ? "center" : "flex-end"}
-        spacing={smaller ? 7 : 2}
-        className={classes.mediaIconsContainer}
-      >
+      </Hidden>
+      <Grid container direction="column" alignItems="center">
         <Grid
           item
-          component={"a"}
-          href="https://facebook.com"
-          className={classes.icon}
+          container
+          justify={smaller ? "center" : "flex-end"}
+          className={classes.mediaIconsContainer}
         >
-          <img
-            alt="facebook-icon"
-            src={facebook}
-            rel="noopener noreferrer"
-            target="_blank"
-          />
+          <Grid
+            item
+            component={"a"}
+            href="https://facebook.com"
+            className={classes.icon}
+          >
+            <img
+              alt="facebook-icon"
+              src={facebook}
+              rel="noopener noreferrer"
+              target="_blank"
+            />
+          </Grid>
+          <Grid
+            item
+            component={"a"}
+            href="https://instagram.com"
+            className={classes.icon}
+          >
+            <img
+              alt="facebook-icon"
+              src={instagram}
+              rel="noopener noreferrer"
+              target="_blank"
+            />
+          </Grid>
+          <Grid
+            item
+            component={"a"}
+            href="https://twitter.com"
+            className={classes.icon}
+          >
+            <img
+              alt="facebook-icon"
+              src={twitter}
+              rel="noopener noreferrer"
+              target="_blank"
+            />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          component={"a"}
-          href="https://instagram.com"
-          className={classes.icon}
-        >
-          <img
-            alt="facebook-icon"
-            src={instagram}
-            rel="noopener noreferrer"
-            target="_blank"
-          />
-        </Grid>
-        <Grid
-          item
-          component={"a"}
-          href="https://twitter.com"
-          className={classes.icon}
-        >
-          <img
-            alt="facebook-icon"
-            src={twitter}
-            rel="noopener noreferrer"
-            target="_blank"
-          />
-        </Grid>
+        {smaller ? (
+          <Grid item className={classes.adornment}>
+            <MobileFooterAdornment />
+          </Grid>
+        ) : null}
       </Grid>
-    </footer>
+    </Grid>
   );
 };
 

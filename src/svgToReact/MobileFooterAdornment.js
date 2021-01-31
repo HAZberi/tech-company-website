@@ -19,7 +19,7 @@ const MobileFooterAdornment = (props) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 1 294.4 70"
+      viewBox="0 1 294.4 100"
       //receiving svg styles as className props
       //if no class is available then svg will fallback on viewBox;
       className={props.className}
@@ -32,13 +32,13 @@ const MobileFooterAdornment = (props) => {
       <path style={svgStyles.st0} d="M111-24v376" />
       <text
         id="_xA9__BeriDev.to"
-        transform="matrix(1 0 0 1 5 65)"
+        transform="matrix(1 0 0 1 5 95)"
         style={svgStyles.st1}
       >
         © beri.dev {new Date().getFullYear()}
       </text>
       <text
-        transform="matrix(1 0 0 1 207.1765 65)"
+        transform="matrix(1 0 0 1 207.1765 95)"
         style={svgStyles.st1}
       >
         Calgary, AB

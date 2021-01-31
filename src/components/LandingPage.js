@@ -132,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     height: "100%",
     width: "100%",
+    
   },
   revolutionCard: {
     position: "absolute",
