@@ -125,6 +125,10 @@ const CallToAction = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      {/* HINT: a background image can be set directly on the Grid Container
+          as className Prop and then we dont need to set the inner container with
+          absolute positioning
+        */}
       <div className={classes.background} />
     </Grid>
   );

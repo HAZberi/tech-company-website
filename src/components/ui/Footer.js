@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Hidden from "@material-ui/core/Hidden"
+import Hidden from "@material-ui/core/Hidden";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     [theme.breakpoints.down("sm")]: {
       height: "5em",
-      overflowX: "visible"
+      overflowX: "visible",
     },
   },
   adornment: {
@@ -60,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
     height: "3.5rem",
     [theme.breakpoints.down("sm")]: {
       width: "7rem",
-      height: "7rem"
+      height: "7rem",
     },
     [theme.breakpoints.down("xs")]: {
       width: "6rem",
-      height: "6rem"
-    }
+      height: "6rem",
+    },
   },
   mediaIconsContainer: {
     position: "absolute",
@@ -75,12 +75,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "-10.25rem",
       right: 0,
-      paddingLeft: "56px"
+      paddingLeft: "56px",
     },
     [theme.breakpoints.down("xs")]: {
       marginTop: "-6.5rem",
     },
-  }
+  },
 }));
 
 const Footer = (props) => {
@@ -102,7 +102,11 @@ const Footer = (props) => {
               <Grid
                 item
                 className={classes.link}
-                style={window.matchMedia('(max-width: 1050px)').matches ? {display: "none"} : {}}
+                style={
+                  window.matchMedia("(max-width: 1050px)").matches
+                    ? { display: "none" }
+                    : {}
+                }
                 onClick={() => {
                   props.setValue(0);
                   props.setSelected(null);
@@ -288,11 +292,56 @@ const Footer = (props) => {
           </Grid>
         </Grid>
       </Hidden>
-      {smaller ? <MobileFooterAdornment className={classes.adornment} /> : <FooterAdornment className={classes.adornment} />}
-      <Grid container justify={smaller ? "center" : "flex-end"} spacing={smaller ? 7 : 2} className={classes.mediaIconsContainer}>
-        <Grid item component={'a'} href="https://facebook.com" className={classes.icon}><img alt="facebook-icon" src={facebook}  rel="noopener noreferrer" target="_blank" /></Grid>
-        <Grid item component={"a"} href="https://instagram.com" className={classes.icon}><img alt="facebook-icon" src={instagram} rel="noopener noreferrer" target="_blank" /></Grid>
-        <Grid item component={"a"} href="https://twitter.com"  className={classes.icon}><img alt="facebook-icon" src={twitter} rel="noopener noreferrer" target="_blank" /></Grid>
+      {smaller ? (
+        <MobileFooterAdornment className={classes.adornment} />
+      ) : (
+        <FooterAdornment className={classes.adornment} />
+      )}
+      <Grid
+        container
+        justify={smaller ? "center" : "flex-end"}
+        spacing={smaller ? 7 : 2}
+        className={classes.mediaIconsContainer}
+      >
+        <Grid
+          item
+          component={"a"}
+          href="https://facebook.com"
+          className={classes.icon}
+        >
+          <img
+            alt="facebook-icon"
+            src={facebook}
+            rel="noopener noreferrer"
+            target="_blank"
+          />
+        </Grid>
+        <Grid
+          item
+          component={"a"}
+          href="https://instagram.com"
+          className={classes.icon}
+        >
+          <img
+            alt="facebook-icon"
+            src={instagram}
+            rel="noopener noreferrer"
+            target="_blank"
+          />
+        </Grid>
+        <Grid
+          item
+          component={"a"}
+          href="https://twitter.com"
+          className={classes.icon}
+        >
+          <img
+            alt="facebook-icon"
+            src={twitter}
+            rel="noopener noreferrer"
+            target="_blank"
+          />
+        </Grid>
       </Grid>
     </footer>
   );

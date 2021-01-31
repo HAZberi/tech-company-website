@@ -503,7 +503,14 @@ const LandingPage = (props) => {
       </Grid>
       <Grid item>
         {/* Call to Action Block */}
-        <CallToAction setValue={props.setValue} setSelected={props.setSelected}/>
+        {/* HINT: a background image can be set directly on the Grid Container
+          as className Prop and then we dont need to set the inner container with
+          absolute positioning
+        */}
+        <CallToAction
+          setValue={props.setValue}
+          setSelected={props.setSelected}
+        />
       </Grid>
     </Grid>
   );
