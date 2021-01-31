@@ -42,15 +42,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   webDevContainer: {
-    marginTop: "12em",
-    marginBottom: "12em",
+    marginTop: "10em",
+    marginBottom: "10em",
     [theme.breakpoints.down("lg")]: {
-      marginTop: "9em",
-      marginBottom: "9em",
+      marginTop: "8em",
+      marginBottom: "8em",
     },
     [theme.breakpoints.down("md")]: {
-      marginTop: "7em",
-      marginBottom: "7em",
+      marginTop: "6em",
+      marginBottom: "6em",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "3em",
@@ -59,12 +59,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   devContainer: {
-    marginTop: "12em",
+    marginTop: "10em",
     [theme.breakpoints.down("lg")]: {
-      marginTop: "9em",
+      marginTop: "8em",
     },
     [theme.breakpoints.down("md")]: {
-      marginTop: "7em",
+      marginTop: "6em",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: "3em",
@@ -72,8 +72,29 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appDevDescription: {
-    maxWidth: "25em",
+    width: "40em",
+    [theme.breakpoints.down("lg")]: {
+        width: "32em",
+      },
+    [theme.breakpoints.down("md")]: {
+        maxWidth: "25em",
+      },
+    [theme.breakpoints.down("sm")]: {
+        width: "40em",
+        maxWidth: "40em",
+        padding: "20px",
+      },
+    [theme.breakpoints.down("xs")]: {
+        width: "auto",
+        padding: "20px",
+    },
   },
+  serviceLabelContainer : {
+    [theme.breakpoints.down("sm")]: {
+        width: "auto",
+        padding: "20px",
+    },
+  }
 }));
 
 const Services = (props) => {
@@ -82,7 +103,7 @@ const Services = (props) => {
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
 
   const softwareIconJSX = (
-    <Grid container justify={smaller ? "center" : undefined}>
+    <Grid container justify={smaller ? "center" : undefined} >
       <Grid item className={classes.serviceIcon}>
         <img src={softwareIcon} alt="Software Icon" />
       </Grid>
@@ -109,6 +130,9 @@ const Services = (props) => {
 
   return (
     <Grid container direction="column">
+        <Grid item container className={classes.serviceLabelContainer} justify={smaller ? "center" : "flex-start"} style={{paddingLeft: smaller ? "20px" : "5em", marginTop: "2em"}}>
+            <Typography variant="h2">Services</Typography>
+        </Grid>
       <Grid item>
         {/* ------ App Block ------- */}
         <Grid
