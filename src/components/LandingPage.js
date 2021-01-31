@@ -160,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
@@ -223,7 +223,10 @@ const LandingPage = () => {
                 <Button
                   component={Link}
                   to="/estimate"
-                  onClick={() => undefined}
+                  onClick={() => {
+                    props.setValue(5);
+                    props.setSelected(null);
+                  }}
                   color="secondary"
                   variant="contained"
                   className={classes.estimate}
@@ -235,7 +238,10 @@ const LandingPage = () => {
                 <Button
                   component={Link}
                   to="/revolution"
-                  onClick={() => undefined}
+                  onClick={() => {
+                    props.setValue(2);
+                    props.setSelected(null);
+                  }}
                   variant="contained"
                   className={classes.learnHeroButton}
                 >
@@ -277,7 +283,10 @@ const LandingPage = () => {
             <Button
               component={Link}
               to="/software"
-              onClick={() => undefined}
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(0);
+              }}
               variant="outlined"
               className={classes.learnOutlineButton}
             >
@@ -312,7 +321,10 @@ const LandingPage = () => {
             <Button
               component={Link}
               to="/mobileapps"
-              onClick={() => undefined}
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(1);
+              }}
               variant="outlined"
               className={classes.learnOutlineButton}
             >
@@ -349,7 +361,10 @@ const LandingPage = () => {
             <Button
               component={Link}
               to="/websites"
-              onClick={() => undefined}
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(2);
+              }}
               variant="outlined"
               className={classes.learnOutlineButton}
             >
@@ -389,7 +404,10 @@ const LandingPage = () => {
                   <Button
                     component={Link}
                     to="/revolution"
-                    onClick={() => undefined}
+                    onClick={() => {
+                      props.setValue(2);
+                      props.setSelected(null);
+                    }}
                     variant="contained"
                     className={classes.learnHeroButton}
                     style={{ margin: 0, marginTop: "15px" }}
@@ -433,7 +451,10 @@ const LandingPage = () => {
                   <Button
                     component={Link}
                     to="/about"
-                    onClick={() => undefined}
+                    onClick={() => {
+                      props.setValue(3);
+                      props.setSelected(null);
+                    }}
                     variant="outlined"
                     className={classes.learnOutlineButton}
                   >
@@ -463,7 +484,10 @@ const LandingPage = () => {
                   <Button
                     component={Link}
                     to="/contact"
-                    onClick={() => undefined}
+                    onClick={() => {
+                      props.setValue(4);
+                      props.setSelected(null);
+                    }}
                     variant="outlined"
                     className={classes.learnOutlineButton}
                   >
@@ -479,7 +503,7 @@ const LandingPage = () => {
       </Grid>
       <Grid item>
         {/* Call to Action Block */}
-        <CallToAction />
+        <CallToAction setValue={props.setValue} setSelected={props.setSelected}/>
       </Grid>
     </Grid>
   );

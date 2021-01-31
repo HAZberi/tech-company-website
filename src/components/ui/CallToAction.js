@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CallToAction = () => {
+const CallToAction = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
@@ -97,7 +97,10 @@ const CallToAction = () => {
             <Button
               component={Link}
               to="/revolution"
-              onClick={() => undefined}
+              onClick={() => {
+                props.setValue(2);
+                props.setSelected(null);
+              }}
               variant="outlined"
               className={classes.learnOutlineButton}
             >
@@ -109,7 +112,10 @@ const CallToAction = () => {
             <Button
               component={Link}
               to="/estimate"
-              onClick={() => undefined}
+              onClick={() => {
+                props.setValue(5);
+                props.setSelected(null);
+              }}
               variant="outlined"
               className={classes.estimateOutlineButton}
             >
