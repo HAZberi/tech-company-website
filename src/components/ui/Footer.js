@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     zIndex: theme.zIndex.modal + 1,
     [theme.breakpoints.down("sm")]: {
+      backgroundColor: "black",
       height: "7.5em",
       overflowX: "visible",
     },
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       marginTop: "0.5rem",
       justifyContent: "flex-end",
-      paddingRight: "9%",
+      paddingRight: "12.5%",
       margin: 0,
     },
   },
@@ -298,8 +299,12 @@ const Footer = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <FooterAdornment className={classes.adornment} />
       </Hidden>
+      {smaller ? null : (
+        <Grid item className={classes.adornment}>
+          <FooterAdornment className={classes.adornment} />
+        </Grid>
+      )}
       <Grid container direction="column" alignItems="center">
         <Grid
           item

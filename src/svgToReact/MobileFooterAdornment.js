@@ -25,7 +25,7 @@ const MobileFooterAdornment = (props) => {
       className={props.className}
       xmlSpace="preserve"
     >
-      <path d="M294.4,0L168,227H0V0H294.4z" />
+      <path d="M294.4,0L168,228H0V0H294.4z" />
       <g id="Full_Box">
         <polyline points="168,227 294.4,227 294.4,-1" />
       </g>
