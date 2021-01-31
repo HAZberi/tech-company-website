@@ -21,10 +21,10 @@ const App = () => {
           />
           <Switch>
             {
-              {
+              
                 /* if we need to passdown props to a component within a route tag
                 We should use render prop function to do so. See below using diff */
-              }
+              
             }
             <Route
               exact
