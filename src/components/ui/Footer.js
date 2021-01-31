@@ -42,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 0,
     width: "100%",
     overflow: "hidden",
+    paddingLeft: "2rem",
     [theme.breakpoints.down("md")]: {
       marginTop: "0.5rem",
       justifyContent: "flex-end",
-      paddingRight: "12.5%",
+      paddingRight: "9%",
       margin: 0,
     },
   },
