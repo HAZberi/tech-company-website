@@ -9,22 +9,39 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+    heading: {
+        maxWidth: "60em",
+        [theme.breakpoints.down("md")]: {
+            maxWidth: "45em",
+        }
+    },
+    arrowContainer: {
+        marginTop: "0.5em"
+    },
+    mainContainer: {
+        paddingLeft: "5em",
+        paddingRight: "5em",
+        paddingTop: "2em",
+        paddingBottom: "10em",
+    }
+}));
 
-const Software = () => {
+const Software = (props) => {
 
     const classes = useStyles();
     const theme = useTheme();
     const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+    const medium = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" className={classes.mainContainer}>
       <Grid item container direction="row">
-        <Grid item>
-          <IconButton>
+        <Grid item className={classes.arrowContainer} style={{marginRight: medium ? "1rem" : "2.5em", marginLeft: "-2.5em"}}>
+          <IconButton component={Link} to="/services" onClick={()=>{props.setValue(1); props.setSelected(null)}}>
             <img src={backArrow} alt="Back to Services Page" />
           </IconButton>
         </Grid>
-        <Grid item container direction="column">
+        <Grid item container direction="column" className={classes.heading}>
           <Grid item>
             <Typography variant="h2" gutterBottom>
               Software Development
@@ -54,11 +71,14 @@ const Software = () => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item>
-          <IconButton>
+        <Grid item className={classes.arrowContainer}>
+          <IconButton component={Link} to="/mobileapps" onClick={()=>{props.setValue(1); props.setSelected(1)}}>
             <img src={forwardArrow} alt="Forward to App Development Page" />
           </IconButton>
         </Grid>
+      </Grid>
+      <Grid item container direction="row">
+          
       </Grid>
     </Grid>
   );
