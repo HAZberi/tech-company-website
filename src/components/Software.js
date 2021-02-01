@@ -22,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   arrowContainer: {
     marginTop: "0.5em",
   },
+  arrowIcons: {
+      "&:hover" : {
+          backgroundColor: "transparent"
+      }
+  },
   mainContainer: {
     paddingLeft: "5em",
     paddingRight: "5em",
@@ -37,7 +42,7 @@ const Software = (props) => {
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item container direction="row">
+      <Grid item container direction="row" justify="space-around">
         <Grid
           item
           className={classes.arrowContainer}
@@ -47,6 +52,7 @@ const Software = (props) => {
           }}
         >
           <IconButton
+            className={classes.arrowIcons}
             component={Link}
             to="/services"
             onClick={() => {
@@ -83,12 +89,13 @@ const Software = (props) => {
               options.
             </Typography>
             <Typography variant="body1" paragraph>
-              We create exactly what you what, exactly how you want it.
+              We create exactly what you want, exactly how you want it.
             </Typography>
           </Grid>
         </Grid>
         <Grid item className={classes.arrowContainer}>
           <IconButton
+            className={classes.arrowIcons}
             component={Link}
             to="/mobileapps"
             onClick={() => {
