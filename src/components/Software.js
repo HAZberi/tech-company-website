@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Lottie from "react-lottie";
+//import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const Software = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  //const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid container direction="column" className={classes.mainContainer}>
