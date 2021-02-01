@@ -7,6 +7,7 @@ import Header from "./components/ui/Header.js";
 import Footer from "./components/ui/Footer.js";
 import LandingPage from "./components/LandingPage.js";
 import Services from "./components/Services.js";
+import Software from "./components/Software.js";
 const App = () => {
   const [value, setValue] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -52,7 +53,13 @@ const App = () => {
             <Route
               exact
               path="/software"
-              component={() => <div>Custom Software Developement</div>}
+              render={(props) => (
+                <Software
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
             />
             <Route
               exact
