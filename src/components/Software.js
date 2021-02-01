@@ -100,7 +100,7 @@ const Software = (props) => {
           </IconButton>
         </Grid>
       </Grid>
-      <Grid item container direction="row">
+      <Grid item container direction="row" justify="center" style={{marginTop: "10em", marginBottom: "10em"}}>
         <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
           <Grid item>
             <img src={stopwatch} alt="stopWatch icon" />
