@@ -8,36 +8,52 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
+import lightbulb from "../assets/bulb.svg";
+import cash from "../assets/cash.svg";
+import stopwatch from "../assets/stopwatch.svg";
 
 const useStyles = makeStyles((theme) => ({
-    heading: {
-        maxWidth: "60em",
-        [theme.breakpoints.down("md")]: {
-            maxWidth: "45em",
-        }
+  heading: {
+    maxWidth: "60em",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "45em",
     },
-    arrowContainer: {
-        marginTop: "0.5em"
-    },
-    mainContainer: {
-        paddingLeft: "5em",
-        paddingRight: "5em",
-        paddingTop: "2em",
-        paddingBottom: "10em",
-    }
+  },
+  arrowContainer: {
+    marginTop: "0.5em",
+  },
+  mainContainer: {
+    paddingLeft: "5em",
+    paddingRight: "5em",
+    paddingTop: "2em",
+    paddingBottom: "10em",
+  },
 }));
 
 const Software = (props) => {
-
-    const classes = useStyles();
-    const theme = useTheme();
-    const smaller = useMediaQuery(theme.breakpoints.down("sm"));
-    const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const classes = useStyles();
+  const theme = useTheme();
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item container direction="row">
-        <Grid item className={classes.arrowContainer} style={{marginRight: medium ? "1rem" : "2.5em", marginLeft: "-2.5em"}}>
-          <IconButton component={Link} to="/services" onClick={()=>{props.setValue(1); props.setSelected(null)}}>
+        <Grid
+          item
+          className={classes.arrowContainer}
+          style={{
+            marginRight: medium ? "1rem" : "2.5em",
+            marginLeft: "-2.5em",
+          }}
+        >
+          <IconButton
+            component={Link}
+            to="/services"
+            onClick={() => {
+              props.setValue(1);
+              props.setSelected(null);
+            }}
+          >
             <img src={backArrow} alt="Back to Services Page" />
           </IconButton>
         </Grid>
@@ -50,7 +66,7 @@ const Software = (props) => {
           <Grid item>
             <Typography variant="body1" paragraph>
               Whether we’re replacing old software or inventing new solutions,
-              Arc Development is here to help your business tackle technology.
+              our experts are here to help your business tackle technology.
             </Typography>
             <Typography variant="body1" paragraph>
               Using regular commercial software leaves you with a lot of stuff
@@ -72,13 +88,43 @@ const Software = (props) => {
           </Grid>
         </Grid>
         <Grid item className={classes.arrowContainer}>
-          <IconButton component={Link} to="/mobileapps" onClick={()=>{props.setValue(1); props.setSelected(1)}}>
+          <IconButton
+            component={Link}
+            to="/mobileapps"
+            onClick={() => {
+              props.setValue(1);
+              props.setSelected(1);
+            }}
+          >
             <img src={forwardArrow} alt="Forward to App Development Page" />
           </IconButton>
         </Grid>
       </Grid>
       <Grid item container direction="row">
-          
+        <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
+          <Grid item>
+            <img src={stopwatch} alt="stopWatch icon" />
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">Save Time</Typography>
+          </Grid>
+        </Grid>
+        <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
+          <Grid item>
+            <img src={lightbulb} alt="lightbulb icon" />
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">Save Energy</Typography>
+          </Grid>
+        </Grid>
+        <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
+          <Grid item>
+            <img src={cash} alt="cash icon" />
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">Save Money</Typography>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
