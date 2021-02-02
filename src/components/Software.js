@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import Lottie from "react-lottie";
+import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,6 +11,7 @@ import forwardArrow from "../assets/forwardArrow.svg";
 import lightbulb from "../assets/bulb.svg";
 import cash from "../assets/cash.svg";
 import stopwatch from "../assets/stopwatch.svg";
+import documentsAnimation from "../animations/documentsAnimation/data.js";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -23,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.5em",
   },
   arrowIcons: {
-      "&:hover" : {
-          backgroundColor: "transparent"
-      }
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
   mainContainer: {
     paddingLeft: "5em",
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "2em",
     paddingBottom: "10em",
   },
+  itemContainer: {
+    maxWidth: "40em",
+  }
 }));
 
 const Software = (props) => {
@@ -40,6 +44,14 @@ const Software = (props) => {
   const theme = useTheme();
   //const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const documentsAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: documentsAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item container direction="row" justify="space-around">
@@ -48,7 +60,7 @@ const Software = (props) => {
           className={classes.arrowContainer}
           style={{
             marginRight: medium ? "1rem" : "2.5em",
-            marginLeft: "-2.5em",
+            marginLeft: medium ? "1rem" : "-2.5em",
           }}
         >
           <IconButton
@@ -107,8 +119,21 @@ const Software = (props) => {
           </IconButton>
         </Grid>
       </Grid>
-      <Grid item container direction="row" justify="center" style={{marginTop: "10em", marginBottom: "10em"}}>
-        <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
+      <Grid
+        item
+        container
+        direction="row"
+        justify="center"
+        style={{ marginTop: "10em", marginBottom: "10em" }}
+      >
+        <Grid
+          item
+          container
+          md
+          direction="column"
+          alignItems="center"
+          style={{ maxWidth: "40em" }}
+        >
           <Grid item>
             <img src={stopwatch} alt="stopWatch icon" />
           </Grid>
@@ -116,7 +141,14 @@ const Software = (props) => {
             <Typography variant="h4">Save Time</Typography>
           </Grid>
         </Grid>
-        <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
+        <Grid
+          item
+          container
+          md
+          direction="column"
+          alignItems="center"
+          style={{ maxWidth: "40em" }}
+        >
           <Grid item>
             <img src={lightbulb} alt="lightbulb icon" />
           </Grid>
@@ -124,13 +156,45 @@ const Software = (props) => {
             <Typography variant="h4">Save Energy</Typography>
           </Grid>
         </Grid>
-        <Grid item container md direction="column" alignItems="center" style={{maxWidth: "40em"}}>
+        <Grid
+          item
+          container
+          md
+          direction="column"
+          alignItems="center"
+          style={{ maxWidth: "40em" }}
+        >
           <Grid item>
             <img src={cash} alt="cash icon" />
           </Grid>
           <Grid item>
             <Typography variant="h4">Save Money</Typography>
           </Grid>
+        </Grid>
+      </Grid>
+      <Grid item container direction="row">
+        <Grid item container className={classes.itemContainer}>
+          <Grid item container direction="column" md>
+            <Grid item>
+              <Typography variant="h4">Digital Documents & Data</Typography>
+              <Typography variant="body1" paragraph>
+                Reduce Errors. Reduce Waste. Reduce Costs.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Billions are spent annually on the purchasing, printing, and
+                distribution of paper. On top of the massive environmental
+                impact this has, it causes harm to your bottom line as well.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                By utilizing digital forms and documents you can remove these
+                obsolete expenses, accelerate your communication, and help the
+                Earth.
+              </Typography>
+            </Grid>
+          </Grid>
+            <Grid item md>
+              <Lottie options={documentsAnimationOptions} style={{ maxWidth: 275, maxHeight: 375, minHeight: 275}}/>
+            </Grid>
         </Grid>
       </Grid>
     </Grid>
