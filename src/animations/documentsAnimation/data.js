@@ -1,7 +1,7 @@
 import img0 from "./img_0.png";
 import img1 from "./img_1.png";
 
-export default {
+const documentsAnimation = {
   v: "5.5.9",
   fr: 29.9700012207031,
   ip: 0,
@@ -109,3 +109,5 @@ export default {
   ],
   markers: []
 };
+
+export default documentsAnimation;

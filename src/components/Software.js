@@ -41,10 +41,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "2.5em",
       paddingRight: "2.55em",
-    }
+    },
   },
   itemContainer: {
-    maxWidth: "40em",
+    maxWidth: "50em",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "70rem",
+      marginBottom: "5em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "40rem",
+    },
   },
 }));
 
@@ -61,6 +68,14 @@ const Software = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const documentsAnimationJSX = (
+    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+      <Lottie
+        options={documentsAnimationOptions}
+        style={{ maxWidth: 275, maxHeight: 275, minHeight: 250 }}
+      />
+    </Grid>
+  );
   const scaleAnimationOptions = {
     loop: true,
     autoplay: true,
@@ -69,6 +84,14 @@ const Software = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const scaleAnimationJSX = (
+    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+      <Lottie
+        options={scaleAnimationOptions}
+        style={{ maxWidth: 280, maxHeight: 260 }}
+      />
+    </Grid>
+  );
   const automationAnimationOptions = {
     loop: true,
     autoplay: true,
@@ -77,6 +100,7 @@ const Software = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  //const automationAnimationJSX = ()
   const uxAnimationOptions = {
     loop: true,
     autoplay: true,
@@ -85,9 +109,15 @@ const Software = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  //const uxAnimationJSX = ()
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item container direction="row" justify={medium ? "space-around" : "center"}>
+      <Grid
+        item
+        container
+        direction="row"
+        justify={medium ? "space-around" : "center"}
+      >
         <Hidden smDown>
           <Grid
             item
@@ -112,7 +142,11 @@ const Software = (props) => {
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography variant="h2" align={smaller ? "center" : "left"} gutterBottom >
+            <Typography
+              variant="h2"
+              align={smaller ? "center" : "left"}
+              gutterBottom
+            >
               Software Development
             </Typography>
           </Grid>
@@ -141,7 +175,11 @@ const Software = (props) => {
           </Grid>
         </Grid>
         <Hidden smDown>
-          <Grid item className={classes.arrowContainer} style={{marginRight: medium ? "-1.5rem" : 0}}>
+          <Grid
+            item
+            className={classes.arrowContainer}
+            style={{ marginRight: medium ? "-1.5rem" : 0 }}
+          >
             <IconButton
               className={classes.arrowIcons}
               component={Link}
@@ -209,13 +247,20 @@ const Software = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row" justify="space-around">
-        <Grid item container className={classes.itemContainer} md>
+      <Grid
+        item
+        container
+        direction={medium ? "column" : "row"}
+        alignItems={smaller ? "center" : "inherit"}
+        justify="space-around"
+      >
+        <Grid item container alignItems={smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
+          {medium ? documentsAnimationJSX : null}
           <Grid item container direction="column" md>
-            <Grid item>
-              <Typography variant="h4">Digital Documents & Data</Typography>
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="h4" gutterBottom>Digital Documents & Data</Typography>
             </Grid>
-            <Grid item>
+            <Grid item align={smaller ? "center" : "left"}>
               <Typography variant="body1" paragraph>
                 Reduce Errors. Reduce Waste. Reduce Costs.
               </Typography>
@@ -231,25 +276,15 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid item md>
-            <Lottie
-              options={documentsAnimationOptions}
-              style={{ maxWidth: 275, maxHeight: 275, minHeight: 250 }}
-            />
-          </Grid>
+          {medium ? null : documentsAnimationJSX}
         </Grid>
-        <Grid item container className={classes.itemContainer} md>
-          <Grid item md>
-            <Lottie
-              options={scaleAnimationOptions}
-              style={{ maxWidth: 280, maxHeight: 260 }}
-            />
-          </Grid>
-          <Grid item container align="right" direction="column" md>
-            <Grid item>
-              <Typography variant="h4">Scale</Typography>
+        <Grid item container alignItems={medium ? "center" : smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
+          {medium ? smaller ? scaleAnimationJSX : null : scaleAnimationJSX}
+          <Grid item container alignItems={smaller ? "center" : "flex-end"} direction="column" md>
+            <Grid item align={smaller ? "center" : "right"}>
+              <Typography variant="h4" gutterBottom>Scale</Typography>
             </Grid>
-            <Grid item>
+            <Grid item align={smaller ? "center" : "right"}>
               <Typography variant="body1" paragraph>
                 Whether you’re a large brand, just getting started, or taking
                 off right now, our application architecture ensures pain-free
@@ -257,11 +292,17 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
+          {medium ? smaller ? null : scaleAnimationJSX : null}
         </Grid>
       </Grid>
-      <Grid item container direction="row" style={{marginTop: "10em", marginBottom: "15em"}}>
+      <Grid
+        item
+        container
+        direction="row"
+        style={{ marginTop: medium ? "5rem" : "10rem", marginBottom: medium ? "10rem" : "15rem" }}
+      >
         <Grid item container direction="column" alignItems="center">
-          <Grid item>
+          <Grid item style={{marginBottom: "2.5rem"}}>
             <img
               src={rootTree}
               alt="a tree with roots"
@@ -309,7 +350,7 @@ const Software = (props) => {
           <Grid item md>
             <Lottie
               options={automationAnimationOptions}
-              style={{ maxWidth: 280, maxHeight: 290}}
+              style={{ maxWidth: 280, maxHeight: 290 }}
             />
           </Grid>
         </Grid>
