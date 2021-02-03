@@ -13,6 +13,8 @@ import cash from "../assets/cash.svg";
 import stopwatch from "../assets/stopwatch.svg";
 import documentsAnimation from "../animations/documentsAnimation/data.js";
 import scaleAnimation from "../animations/scaleAnimation/data.json";
+import automationAnimation from "../animations/automationAnimation/data.json";
+import uxAnimation from "../animations/uxAnimation/data.js";
 import rootTree from "../assets/root.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +60,22 @@ const Software = (props) => {
     loop: true,
     autoplay: true,
     animationData: scaleAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const automationAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: automationAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const uxAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: uxAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -232,7 +250,7 @@ const Software = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row">
+      <Grid item container direction="row" style={{marginTop: "10em", marginBottom: "15em"}}>
         <Grid item container direction="column" alignItems="center">
           <Grid item>
             <img
@@ -247,15 +265,70 @@ const Software = (props) => {
               Root-Cause Analysis
             </Typography>
           </Grid>
-          <Grid item className={classes.heading}>
-            <Typography variant="body1" align="center" gutterBottom>
+          <Grid item className={classes.heading} align="center">
+            <Typography variant="body1" gutterBottom>
               Many problems are merely symptoms of larger, underlying issues.
             </Typography>
-            <Typography variant="body1" align="center" gutterBottom>
+            <Typography variant="body1" gutterBottom>
               We can help you thoroughly examine all areas of your business to
               develop a holistic plan for the most effective implementation of
               technology.
             </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item container direction="row" justify="space-around">
+        <Grid item container className={classes.itemContainer} md>
+          <Grid item container direction="column" md>
+            <Grid item>
+              <Typography variant="h4">Automation</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1" paragraph>
+                Why waste time when you don’t have to?
+              </Typography>
+              <Typography variant="body1" paragraph>
+                We can help you identify processes with time or event based
+                actions which can now easily be automated.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Increasing efficiency increases profits, leaving you more time
+                to focus on your business, not busywork.
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item md>
+            <Lottie
+              options={automationAnimationOptions}
+              style={{ maxWidth: 280, maxHeight: 290}}
+            />
+          </Grid>
+        </Grid>
+        <Grid item container className={classes.itemContainer} md>
+          <Grid item md>
+            <Lottie
+              options={uxAnimationOptions}
+              style={{ maxWidth: 155, maxHeight: 310 }}
+            />
+          </Grid>
+          <Grid item container align="right" direction="column" md>
+            <Grid item>
+              <Typography variant="h4">User Experience Design</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1" paragraph>
+                A good design that isn’t usable isn’t a good design.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                So why are so many pieces of software complicated, confusing,
+                and frustrating?
+              </Typography>
+              <Typography variant="body1" paragraph>
+                By prioritizing users and the real ways they interact with
+                technology we’re able to develop unique, personable experiences
+                that solve problems rather than create new ones.
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
