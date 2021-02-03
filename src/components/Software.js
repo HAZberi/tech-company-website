@@ -100,7 +100,15 @@ const Software = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  //const automationAnimationJSX = ()
+  const automationAnimationJSX = (
+    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+      <Lottie
+        options={automationAnimationOptions}
+        style={{ maxWidth: 280, maxHeight: 290 }}
+      />
+    </Grid>
+
+  );
   const uxAnimationOptions = {
     loop: true,
     autoplay: true,
@@ -109,7 +117,14 @@ const Software = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  //const uxAnimationJSX = ()
+  const uxAnimationJSX = (
+    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+      <Lottie
+        options={uxAnimationOptions}
+        style={{ maxWidth: 155, maxHeight: 310 }}
+      />
+    </Grid>
+  );
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid
@@ -327,13 +342,14 @@ const Software = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row" justify="space-around">
-        <Grid item container className={classes.itemContainer} md>
+      <Grid item container direction={medium ? "column" : "row"} alignItems={smaller ? "center" : "inherit"} justify="space-around">
+        <Grid item container alignItems={smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
+          {medium ? automationAnimationJSX : null}
           <Grid item container direction="column" md>
-            <Grid item>
+            <Grid item align={smaller ? "center" : "left"}>
               <Typography variant="h4">Automation</Typography>
             </Grid>
-            <Grid item>
+            <Grid item align={smaller ? "center" : "left"}>
               <Typography variant="body1" paragraph>
                 Why waste time when you don’t have to?
               </Typography>
@@ -347,25 +363,15 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid item md>
-            <Lottie
-              options={automationAnimationOptions}
-              style={{ maxWidth: 280, maxHeight: 290 }}
-            />
-          </Grid>
+          {medium ? null : automationAnimationJSX}
         </Grid>
-        <Grid item container className={classes.itemContainer} md>
-          <Grid item md>
-            <Lottie
-              options={uxAnimationOptions}
-              style={{ maxWidth: 155, maxHeight: 310 }}
-            />
-          </Grid>
-          <Grid item container align="right" direction="column" md>
-            <Grid item>
+        <Grid item container alignItems={smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
+          {medium ? smaller ? uxAnimationJSX : null : uxAnimationJSX}
+          <Grid item container alignItems={smaller ? "center" : "flex-end"} direction="column" md>
+            <Grid item align={smaller ? "center" : "right"}>
               <Typography variant="h4">User Experience Design</Typography>
             </Grid>
-            <Grid item>
+            <Grid item align={smaller ? "center" : "right"}>
               <Typography variant="body1" paragraph>
                 A good design that isn’t usable isn’t a good design.
               </Typography>
@@ -380,6 +386,7 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
+          {medium ? smaller ? null : uxAnimationJSX : null}
         </Grid>
       </Grid>
     </Grid>
