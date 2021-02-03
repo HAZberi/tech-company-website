@@ -13,6 +13,7 @@ import cash from "../assets/cash.svg";
 import stopwatch from "../assets/stopwatch.svg";
 import documentsAnimation from "../animations/documentsAnimation/data.js";
 import scaleAnimation from "../animations/scaleAnimation/data.json";
+import rootTree from "../assets/root.svg";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -204,30 +205,57 @@ const Software = (props) => {
             </Grid>
           </Grid>
           <Grid item md>
-              <Lottie
-                options={documentsAnimationOptions}
-                style={{ maxWidth: 275, maxHeight: 275, minHeight: 250 }}
-              />
+            <Lottie
+              options={documentsAnimationOptions}
+              style={{ maxWidth: 275, maxHeight: 275, minHeight: 250 }}
+            />
           </Grid>
         </Grid>
         <Grid item container className={classes.itemContainer} md>
-            <Grid item md>
-              <Lottie
-                options={scaleAnimationOptions}
-                style={{ maxWidth: 280, maxHeight: 260 }}
-              />
+          <Grid item md>
+            <Lottie
+              options={scaleAnimationOptions}
+              style={{ maxWidth: 280, maxHeight: 260 }}
+            />
+          </Grid>
+          <Grid item container align="right" direction="column" md>
+            <Grid item>
+              <Typography variant="h4">Scale</Typography>
             </Grid>
-            <Grid item container align="right" direction="column" md>
-              <Grid item>
-                <Typography variant="h4">Scale</Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body1" paragraph>
-                  Whether you’re a large brand, just getting started, or taking
-                  off right now, our application architecture ensures pain-free
-                  growth and reliability.
-                </Typography>
-              </Grid>
+            <Grid item>
+              <Typography variant="body1" paragraph>
+                Whether you’re a large brand, just getting started, or taking
+                off right now, our application architecture ensures pain-free
+                growth and reliability.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item container direction="row">
+        <Grid item container direction="column" alignItems="center">
+          <Grid item>
+            <img
+              src={rootTree}
+              alt="a tree with roots"
+              height="400em"
+              width="400"
+            />
+          </Grid>
+          <Grid item>
+            <Typography variant="h4" align="center" gutterBottom>
+              Root-Cause Analysis
+            </Typography>
+          </Grid>
+          <Grid item className={classes.heading}>
+            <Typography variant="body1" align="center" gutterBottom>
+              Many problems are merely symptoms of larger, underlying issues.
+            </Typography>
+            <Typography variant="body1" align="center" gutterBottom>
+              We can help you thoroughly examine all areas of your business to
+              develop a holistic plan for the most effective implementation of
+              technology.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
