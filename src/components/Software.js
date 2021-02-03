@@ -12,6 +12,7 @@ import lightbulb from "../assets/bulb.svg";
 import cash from "../assets/cash.svg";
 import stopwatch from "../assets/stopwatch.svg";
 import documentsAnimation from "../animations/documentsAnimation/data.js";
+import scaleAnimation from "../animations/scaleAnimation/data.json";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   itemContainer: {
     maxWidth: "40em",
-  }
+  },
 }));
 
 const Software = (props) => {
@@ -48,6 +49,14 @@ const Software = (props) => {
     loop: true,
     autoplay: true,
     animationData: documentsAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const scaleAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: scaleAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -172,11 +181,13 @@ const Software = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="row">
-        <Grid item container className={classes.itemContainer}>
+      <Grid item container direction="row" justify="space-around">
+        <Grid item container className={classes.itemContainer} md>
           <Grid item container direction="column" md>
             <Grid item>
               <Typography variant="h4">Digital Documents & Data</Typography>
+            </Grid>
+            <Grid item>
               <Typography variant="body1" paragraph>
                 Reduce Errors. Reduce Waste. Reduce Costs.
               </Typography>
@@ -192,9 +203,32 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
+          <Grid item md>
+              <Lottie
+                options={documentsAnimationOptions}
+                style={{ maxWidth: 275, maxHeight: 275, minHeight: 250 }}
+              />
+          </Grid>
+        </Grid>
+        <Grid item container className={classes.itemContainer} md>
             <Grid item md>
-              <Lottie options={documentsAnimationOptions} style={{ maxWidth: 275, maxHeight: 375, minHeight: 275}}/>
+              <Lottie
+                options={scaleAnimationOptions}
+                style={{ maxWidth: 280, maxHeight: 260 }}
+              />
             </Grid>
+            <Grid item container align="right" direction="column" md>
+              <Grid item>
+                <Typography variant="h4">Scale</Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="body1" paragraph>
+                  Whether you’re a large brand, just getting started, or taking
+                  off right now, our application architecture ensures pain-free
+                  growth and reliability.
+                </Typography>
+              </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
