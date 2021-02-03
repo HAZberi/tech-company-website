@@ -17,6 +17,7 @@ import scaleAnimation from "../animations/scaleAnimation/data.json";
 import automationAnimation from "../animations/automationAnimation/data.json";
 import uxAnimation from "../animations/uxAnimation/data.js";
 import rootTree from "../assets/root.svg";
+import CallToAction from "./ui/CallToAction";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -33,21 +34,20 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
     },
   },
-  mainContainer: {
+  rowContainer: {
     paddingLeft: "5em",
     paddingRight: "5em",
-    paddingTop: "2em",
-    paddingBottom: "10em",
+    marginBottom: "10em",
     [theme.breakpoints.down("sm")]: {
-      paddingLeft: "2.5em",
-      paddingRight: "2.55em",
+      paddingLeft: "1.5em",
+      paddingRight: "1.5em",
     },
   },
   itemContainer: {
     maxWidth: "50em",
     [theme.breakpoints.down("md")]: {
       maxWidth: "70rem",
-      marginBottom: "5em",
+      marginBottom: "3em",
     },
     [theme.breakpoints.down("sm")]: {
       maxWidth: "40rem",
@@ -59,6 +59,7 @@ const Software = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const documentsAnimationOptions = {
     loop: true,
@@ -69,7 +70,14 @@ const Software = (props) => {
     },
   };
   const documentsAnimationJSX = (
-    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+    <Grid
+      item
+      style={{
+        maxWidth: medium ? "20rem" : "inherit",
+        marginBottom: smaller ? "1em" : "inherit",
+      }}
+      md
+    >
       <Lottie
         options={documentsAnimationOptions}
         style={{ maxWidth: 275, maxHeight: 275, minHeight: 250 }}
@@ -85,7 +93,14 @@ const Software = (props) => {
     },
   };
   const scaleAnimationJSX = (
-    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+    <Grid
+      item
+      style={{
+        maxWidth: medium ? "20rem" : "inherit",
+        marginBottom: smaller ? "1em" : "inherit",
+      }}
+      md
+    >
       <Lottie
         options={scaleAnimationOptions}
         style={{ maxWidth: 280, maxHeight: 260 }}
@@ -101,13 +116,19 @@ const Software = (props) => {
     },
   };
   const automationAnimationJSX = (
-    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+    <Grid
+      item
+      style={{
+        maxWidth: medium ? "20rem" : "inherit",
+        marginBottom: smaller ? "1em" : "inherit",
+      }}
+      md
+    >
       <Lottie
         options={automationAnimationOptions}
         style={{ maxWidth: 280, maxHeight: 290 }}
       />
     </Grid>
-
   );
   const uxAnimationOptions = {
     loop: true,
@@ -118,7 +139,14 @@ const Software = (props) => {
     },
   };
   const uxAnimationJSX = (
-    <Grid item style={{maxWidth: medium ? "20rem" : "inherit", marginBottom: smaller ? "2.5em" : "inherit"}} md>
+    <Grid
+      item
+      style={{
+        maxWidth: medium ? "20rem" : "inherit",
+        marginBottom: smaller ? "1em" : "inherit",
+      }}
+      md
+    >
       <Lottie
         options={uxAnimationOptions}
         style={{ maxWidth: 155, maxHeight: 310 }}
@@ -126,12 +154,16 @@ const Software = (props) => {
     </Grid>
   );
   return (
-    <Grid container direction="column" className={classes.mainContainer}>
+    <Grid container direction="column">
       <Grid
         item
         container
         direction="row"
         justify={medium ? "space-around" : "center"}
+        className={classes.rowContainer}
+        style={{
+          marginTop: medium ? "1rem" : "2rem",
+        }}
       >
         <Hidden smDown>
           <Grid
@@ -212,9 +244,10 @@ const Software = (props) => {
       <Grid
         item
         container
-        direction="row"
+        direction={smallest ? "column" : "row"}
+        alignItems={smallest ? "center" : undefined}
         justify="center"
-        style={{ marginTop: "10em", marginBottom: "10em" }}
+        className={classes.rowContainer}
       >
         <Grid
           item
@@ -222,7 +255,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: "40em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "2em" }}
         >
           <Grid item>
             <img src={stopwatch} alt="stopWatch icon" />
@@ -237,7 +270,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: "40em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "2em" }}
         >
           <Grid item>
             <img src={lightbulb} alt="lightbulb icon" />
@@ -252,7 +285,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: "40em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "2em" }}
         >
           <Grid item>
             <img src={cash} alt="cash icon" />
@@ -268,12 +301,22 @@ const Software = (props) => {
         direction={medium ? "column" : "row"}
         alignItems={smaller ? "center" : "inherit"}
         justify="space-around"
+        className={classes.rowContainer}
       >
-        <Grid item container alignItems={smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
+        <Grid
+          item
+          container
+          alignItems={smaller ? "center" : "flex-start"}
+          direction={smaller ? "column" : "row"}
+          className={classes.itemContainer}
+          md
+        >
           {medium ? documentsAnimationJSX : null}
           <Grid item container direction="column" md>
             <Grid item align={smaller ? "center" : "left"}>
-              <Typography variant="h4" gutterBottom>Digital Documents & Data</Typography>
+              <Typography variant="h4" gutterBottom>
+                Digital Documents & Data
+              </Typography>
             </Grid>
             <Grid item align={smaller ? "center" : "left"}>
               <Typography variant="body1" paragraph>
@@ -293,11 +336,27 @@ const Software = (props) => {
           </Grid>
           {medium ? null : documentsAnimationJSX}
         </Grid>
-        <Grid item container alignItems={medium ? "center" : smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
-          {medium ? smaller ? scaleAnimationJSX : null : scaleAnimationJSX}
-          <Grid item container alignItems={smaller ? "center" : "flex-end"} direction="column" md>
+        <Grid
+          item
+          container
+          alignItems={medium ? "center" : smaller ? "center" : "flex-start"}
+          direction={smaller ? "column" : "row"}
+          className={classes.itemContainer}
+          style={{marginBottom: 0}}
+          md
+        >
+          {medium ? (smaller ? scaleAnimationJSX : null) : scaleAnimationJSX}
+          <Grid
+            item
+            container
+            alignItems={smaller ? "center" : "flex-end"}
+            direction="column"
+            md
+          >
             <Grid item align={smaller ? "center" : "right"}>
-              <Typography variant="h4" gutterBottom>Scale</Typography>
+              <Typography variant="h4" gutterBottom>
+                Scale
+              </Typography>
             </Grid>
             <Grid item align={smaller ? "center" : "right"}>
               <Typography variant="body1" paragraph>
@@ -307,22 +366,22 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
-          {medium ? smaller ? null : scaleAnimationJSX : null}
+          {medium ? (smaller ? null : scaleAnimationJSX) : null}
         </Grid>
       </Grid>
       <Grid
         item
+        className={classes.rowContainer}
         container
         direction="row"
-        style={{ marginTop: medium ? "5rem" : "10rem", marginBottom: medium ? "10rem" : "15rem" }}
       >
         <Grid item container direction="column" alignItems="center">
-          <Grid item style={{marginBottom: "2.5rem"}}>
+          <Grid item style={{ marginBottom: "1rem" }}>
             <img
               src={rootTree}
               alt="a tree with roots"
-              height="400em"
-              width="400"
+              height={smallest ? "300em" : "400em"}
+              width={smallest ? "300em" : "400em"}
             />
           </Grid>
           <Grid item>
@@ -342,8 +401,22 @@ const Software = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction={medium ? "column" : "row"} alignItems={smaller ? "center" : "inherit"} justify="space-around">
-        <Grid item container alignItems={smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
+      <Grid
+        item
+        container
+        className={classes.rowContainer}
+        direction={medium ? "column" : "row"}
+        alignItems={smaller ? "center" : "inherit"}
+        justify="space-around"
+      >
+        <Grid
+          item
+          container
+          alignItems={smaller ? "center" : "flex-start"}
+          direction={smaller ? "column" : "row"}
+          className={classes.itemContainer}
+          md
+        >
           {medium ? automationAnimationJSX : null}
           <Grid item container direction="column" md>
             <Grid item align={smaller ? "center" : "left"}>
@@ -365,9 +438,22 @@ const Software = (props) => {
           </Grid>
           {medium ? null : automationAnimationJSX}
         </Grid>
-        <Grid item container alignItems={smaller ? "center" : "flex-start"} direction={smaller ? "column" : "row"} className={classes.itemContainer} md>
-          {medium ? smaller ? uxAnimationJSX : null : uxAnimationJSX}
-          <Grid item container alignItems={smaller ? "center" : "flex-end"} direction="column" md>
+        <Grid
+          item
+          container
+          alignItems={smaller ? "center" : "flex-start"}
+          direction={smaller ? "column" : "row"}
+          className={classes.itemContainer}
+          md
+        >
+          {medium ? (smaller ? uxAnimationJSX : null) : uxAnimationJSX}
+          <Grid
+            item
+            container
+            alignItems={smaller ? "center" : "flex-end"}
+            direction="column"
+            md
+          >
             <Grid item align={smaller ? "center" : "right"}>
               <Typography variant="h4">User Experience Design</Typography>
             </Grid>
@@ -386,8 +472,19 @@ const Software = (props) => {
               </Typography>
             </Grid>
           </Grid>
-          {medium ? smaller ? null : uxAnimationJSX : null}
+          {medium ? (smaller ? null : uxAnimationJSX) : null}
         </Grid>
+      </Grid>
+      <Grid item>
+        {/* Call to Action Block */}
+        {/* HINT: a background image can be set directly on the Grid Container
+            as className Prop and then we dont need to set the inner container with
+            absolute positioning
+          */}
+        <CallToAction
+          setValue={props.setValue}
+          setSelected={props.setSelected}
+        />
       </Grid>
     </Grid>
   );
