@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Hidden from "@material-ui/core/Hidden";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import lightbulb from "../assets/bulb.svg";
@@ -37,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: "5em",
     paddingTop: "2em",
     paddingBottom: "10em",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "2.5em",
+      paddingRight: "2.55em",
+    }
   },
   itemContainer: {
     maxWidth: "40em",
@@ -46,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 const Software = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  //const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const documentsAnimationOptions = {
     loop: true,
@@ -82,30 +87,32 @@ const Software = (props) => {
   };
   return (
     <Grid container direction="column" className={classes.mainContainer}>
-      <Grid item container direction="row" justify="space-around">
-        <Grid
-          item
-          className={classes.arrowContainer}
-          style={{
-            marginRight: medium ? "1rem" : "2.5em",
-            marginLeft: medium ? "1rem" : "-2.5em",
-          }}
-        >
-          <IconButton
-            className={classes.arrowIcons}
-            component={Link}
-            to="/services"
-            onClick={() => {
-              props.setValue(1);
-              props.setSelected(null);
+      <Grid item container direction="row" justify={medium ? "space-around" : "center"}>
+        <Hidden smDown>
+          <Grid
+            item
+            className={classes.arrowContainer}
+            style={{
+              marginRight: medium ? "1rem" : "2.5em",
+              marginLeft: medium ? "-1.5rem" : "-2.5em",
             }}
           >
-            <img src={backArrow} alt="Back to Services Page" />
-          </IconButton>
-        </Grid>
+            <IconButton
+              className={classes.arrowIcons}
+              component={Link}
+              to="/services"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(null);
+              }}
+            >
+              <img src={backArrow} alt="Back to Services Page" />
+            </IconButton>
+          </Grid>
+        </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h2" align={smaller ? "center" : "left"} gutterBottom >
               Software Development
             </Typography>
           </Grid>
@@ -133,19 +140,21 @@ const Software = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item className={classes.arrowContainer}>
-          <IconButton
-            className={classes.arrowIcons}
-            component={Link}
-            to="/mobileapps"
-            onClick={() => {
-              props.setValue(1);
-              props.setSelected(1);
-            }}
-          >
-            <img src={forwardArrow} alt="Forward to App Development Page" />
-          </IconButton>
-        </Grid>
+        <Hidden smDown>
+          <Grid item className={classes.arrowContainer} style={{marginRight: medium ? "-1.5rem" : 0}}>
+            <IconButton
+              className={classes.arrowIcons}
+              component={Link}
+              to="/mobileapps"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(1);
+              }}
+            >
+              <img src={forwardArrow} alt="Forward to App Development Page" />
+            </IconButton>
+          </Grid>
+        </Hidden>
       </Grid>
       <Grid
         item
