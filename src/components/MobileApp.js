@@ -11,6 +11,9 @@ import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import CallToAction from "./ui/CallToAction";
 import integrationAnimation from "../animations/integrationAnimation/data.json";
+import knife from "../assets/swissKnife.svg";
+import extendingAccess from "../assets/extendAccess.svg";
+import engagement from "../assets/increaseEngagement.svg";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -48,7 +51,7 @@ const MobileApps = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
-  //const smallest = useMediaQuery(theme.breakpoints.down("xs"));
+  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
 
   const integrationAnimationOptions = {
@@ -162,7 +165,7 @@ const MobileApps = (props) => {
         item
         container
         direction={smaller ? "column" : "row"}
-        alignItems={smaller ? "center" : "inherit"}
+        alignItems={smaller ? "center" : "flex-start"}
         className={classes.rowContainer}
       >
         {/* md lg or sm on grid containers mean items will share space at corresponding screen size or up */}
@@ -212,6 +215,78 @@ const MobileApps = (props) => {
               This significantly reduces costs and creates a more unified brand
               experience across all devices.
             </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        direction={smaller ? "column" : "row"}
+        alignItems={smaller ? "center" : undefined}
+        justify="space-around"
+        className={classes.rowContainer}
+      >
+        <Grid
+          item
+          container
+          md
+          direction="column"
+          alignItems="center"
+          style={{ maxWidth: smaller ? "100%" : "30em" }}
+        >
+          <Grid item align="center">
+            <Typography variant="h4">Extend Functionality</Typography>
+          </Grid>
+          <Grid item style={{ marginTop: "2em" }}>
+            <img
+              style={{ maxWidth: 200 }}
+              src={knife}
+              alt="army swiss knife  icon"
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          md
+          direction="column"
+          alignItems="center"
+          style={{
+            maxWidth: smaller ? "100%" : "30em",
+            marginLeft: medium ? smaller ? 0 : "2em" : 0,
+            marginRight: medium ? smaller ? 0 : "2em" : 0,
+            marginTop: smaller ? "7em" : 0,
+            marginBottom: smaller ? "7em" : 0,
+          }}
+        >
+          <Grid item align="center">
+            <Typography variant="h4">Extend Access</Typography>
+          </Grid>
+          <Grid item style={{ marginTop: "2em" }}>
+            <img
+              style={{ maxWidth: smallest ? 250 : 280 }}
+              src={extendingAccess}
+              alt="army swiss knife  icon"
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          md
+          direction="column"
+          alignItems="center"
+          style={{ maxWidth: smaller ? "100%" : "30em" }}
+        >
+          <Grid item align="center">
+            <Typography variant="h4">Increase Engagement</Typography>
+          </Grid>
+          <Grid item style={{ marginTop: "2em" }}>
+            <img
+              style={{ maxWidth: 180 }}
+              src={engagement}
+              alt="army swiss knife  icon"
+            />
           </Grid>
         </Grid>
       </Grid>
