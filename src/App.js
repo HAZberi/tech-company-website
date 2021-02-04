@@ -8,6 +8,7 @@ import Footer from "./components/ui/Footer.js";
 import LandingPage from "./components/LandingPage.js";
 import Services from "./components/Services.js";
 import Software from "./components/Software.js";
+import MobileApps from "./components/MobileApp.js";
 const App = () => {
   const [value, setValue] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -64,7 +65,13 @@ const App = () => {
             <Route
               exact
               path="/mobileapps"
-              component={() => <div>Mobile App Development</div>}
+              render={(props) => (
+                <MobileApps
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
             />
             <Route
               exact
