@@ -36,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: "1.5em",
     },
   },
+  itemContainer: {
+    maxWidth: "50em",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "40rem",
+    },
+  },
 }));
 
 const MobileApps = (props) => {
@@ -54,7 +60,14 @@ const MobileApps = (props) => {
     },
   };
   const integrationAnimationJSX = (
-    <Grid item md>
+    <Grid
+      item
+      style={{
+        marginBottom: smaller ? "2rem" : 0,
+        marginTop: smaller ? "2rem" : 0,
+      }}
+      md
+    >
       <Lottie
         options={integrationAnimationOptions}
         style={{ maxWidth: 250, maxHeight: 350 }}
@@ -148,11 +161,18 @@ const MobileApps = (props) => {
       <Grid
         item
         container
-        direction="row"
+        direction={smaller ? "column" : "row"}
+        alignItems={smaller ? "center" : "inherit"}
         className={classes.rowContainer}
       >
-          {/* md lg or sm on grid containers mean items will share space at corresponding screen size or up */}
-        <Grid item container direction="column" md>
+        {/* md lg or sm on grid containers mean items will share space at corresponding screen size or up */}
+        <Grid
+          item
+          container
+          direction="column"
+          className={classes.itemContainer}
+          md
+        >
           <Grid item align={smaller ? "center" : "left"}>
             <Typography variant="h4" gutterBottom>
               Intergration
@@ -171,7 +191,13 @@ const MobileApps = (props) => {
           </Grid>
         </Grid>
         {integrationAnimationJSX}
-        <Grid item container direction="column" md>
+        <Grid
+          item
+          container
+          direction="column"
+          className={classes.itemContainer}
+          md
+        >
           <Grid item align={smaller ? "center" : "right"}>
             <Typography variant="h4" gutterBottom>
               Simultaneous Platform Support
@@ -179,10 +205,12 @@ const MobileApps = (props) => {
           </Grid>
           <Grid item align={smaller ? "center" : "right"}>
             <Typography variant="body1">
-                Our cutting-edge development process allows us to create apps for iPhone, Android, and tablets — all at the same time.
+              Our cutting-edge development process allows us to create apps for
+              iPhone, Android, and tablets — all at the same time.
             </Typography>
             <Typography variant="body1">
-                This significantly reduces costs and creates a more unified brand experience across all devices.
+              This significantly reduces costs and creates a more unified brand
+              experience across all devices.
             </Typography>
           </Grid>
         </Grid>
