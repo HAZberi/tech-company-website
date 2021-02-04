@@ -9,31 +9,33 @@ import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
+import CallToAction from "./ui/CallToAction";
+import integrationAnimation from "../animations/integrationAnimation/data.json";
 
 const useStyles = makeStyles((theme) => ({
-    heading: {
-        maxWidth: "60em",
-        [theme.breakpoints.down("md")]: {
-          maxWidth: "45em",
-        },
-      },
-      arrowContainer: {
-        marginTop: "0.5em",
-      },
-      arrowIcons: {
-        "&:hover": {
-          backgroundColor: "transparent",
-        },
-      },
-      rowContainer: {
-        paddingLeft: "5em",
-        paddingRight: "5em",
-        marginBottom: "10em",
-        [theme.breakpoints.down("sm")]: {
-          paddingLeft: "1.5em",
-          paddingRight: "1.5em",
-        },
-      },    
+  heading: {
+    maxWidth: "60em",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "45em",
+    },
+  },
+  arrowContainer: {
+    marginTop: "0.5em",
+  },
+  arrowIcons: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  rowContainer: {
+    paddingLeft: "5em",
+    paddingRight: "5em",
+    marginBottom: "10em",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "1.5em",
+      paddingRight: "1.5em",
+    },
+  },
 }));
 
 const MobileApps = (props) => {
@@ -42,6 +44,23 @@ const MobileApps = (props) => {
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   //const smallest = useMediaQuery(theme.breakpoints.down("xs"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
+
+  const integrationAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: integrationAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const integrationAnimationJSX = (
+    <Grid item md>
+      <Lottie
+        options={integrationAnimationOptions}
+        style={{ maxWidth: 250, maxHeight: 350 }}
+      />
+    </Grid>
+  );
 
   return (
     <Grid container direction="column">
@@ -89,13 +108,17 @@ const MobileApps = (props) => {
           </Grid>
           <Grid item>
             <Typography variant="body1" paragraph>
-                Mobile apps allow you to take your tools on the go.
+              Mobile apps allow you to take your tools on the go.
             </Typography>
             <Typography variant="body1" paragraph>
-                Whether you want an app for your customers, employees, or yourself, we can build cross-platform native solutions for any part of your business process. This opens you up to a whole new world of possibilities by taking advantage of phone features like the camera, GPS, push notifications, and more.
+              Whether you want an app for your customers, employees, or
+              yourself, we can build cross-platform native solutions for any
+              part of your business process. This opens you up to a whole new
+              world of possibilities by taking advantage of phone features like
+              the camera, GPS, push notifications, and more.
             </Typography>
             <Typography variant="body1" paragraph>
-                Convenience. Connection.
+              Convenience. Connection.
             </Typography>
           </Grid>
         </Grid>
@@ -114,10 +137,66 @@ const MobileApps = (props) => {
                 props.setSelected(2);
               }}
             >
-              <img src={forwardArrow} alt="Forward to Website Development Page" />
+              <img
+                src={forwardArrow}
+                alt="Forward to Website Development Page"
+              />
             </IconButton>
           </Grid>
         </Hidden>
+      </Grid>
+      <Grid
+        item
+        container
+        direction="row"
+        className={classes.rowContainer}
+      >
+          {/* md lg or sm on grid containers mean items will share space at corresponding screen size or up */}
+        <Grid item container direction="column" md>
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Intergration
+            </Typography>
+          </Grid>
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="body1">
+              Our technology enables an innate interconnection between web and
+              mobile applications, putting everything you need right in one
+              convenient place.
+            </Typography>
+            <Typography variant="body1">
+              This allows you to extend your reach, reinvent interactions, and
+              develop a stronger relationship with your users than ever before.
+            </Typography>
+          </Grid>
+        </Grid>
+        {integrationAnimationJSX}
+        <Grid item container direction="column" md>
+          <Grid item align={smaller ? "center" : "right"}>
+            <Typography variant="h4" gutterBottom>
+              Simultaneous Platform Support
+            </Typography>
+          </Grid>
+          <Grid item align={smaller ? "center" : "right"}>
+            <Typography variant="body1">
+                Our cutting-edge development process allows us to create apps for iPhone, Android, and tablets — all at the same time.
+            </Typography>
+            <Typography variant="body1">
+                This significantly reduces costs and creates a more unified brand experience across all devices.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/* Call to Action Block */}
+        {/* HINT: a background image can be set directly on the Grid Container
+            as className Prop and then we dont need to set the inner container with
+            absolute positioning
+          */}
+        <CallToAction
+          setValue={props.setValue}
+          setSelected={props.setSelected}
+        />
       </Grid>
     </Grid>
   );
