@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       maxWidth: "40rem",
       marginTop: "2.5rem",
+      marginLeft: 0,
     },
   },
 }));
@@ -140,7 +141,7 @@ const Websites = (props) => {
               </Typography>
             </Grid>
             <Grid item align={smaller ? "center" : "left"}>
-              <Typography variant="body1">
+              <Typography variant="body1" paragraph>
                 Knowledge is power, and data is 21st Century gold. Analyzing
                 this data can reveal hidden patterns and trends in your
                 business, empowering you to make smarter decisions with

@@ -255,7 +255,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "2em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em" }}
         >
           <Grid item>
             <img src={stopwatch} alt="stopWatch icon" />
@@ -270,7 +270,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "2em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "5em" }}
         >
           <Grid item>
             <img src={lightbulb} alt="lightbulb icon" />
@@ -285,7 +285,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "2em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "5em" }}
         >
           <Grid item>
             <img src={cash} alt="cash icon" />
