@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import CallToAction from "./ui/CallToAction";
+import analyticsGraph from "../assets/analytics.svg";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -35,9 +36,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   itemContainer: {
-    maxWidth: "50em",
+    maxWidth: "30em",
+    marginLeft: "2.5em",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "40rem",
+      marginTop: "2.5rem",
     },
   },
 }));
@@ -94,10 +97,14 @@ const Websites = (props) => {
           </Grid>
           <Grid item>
             <Typography variant="body1" paragraph>
-            Having a website is a necessity in today’s business world. They give you one central, public location to let people know who you are, what you do, and why you’re the best at it.
+              Having a website is a necessity in today’s business world. They
+              give you one central, public location to let people know who you
+              are, what you do, and why you’re the best at it.
             </Typography>
             <Typography variant="body1" paragraph>
-            From simply having your hours posted to having a full fledged online store, making yourself as accessible as possible to users online drives growth and enables you to reach new customers. 
+              From simply having your hours posted to having a full fledged
+              online store, making yourself as accessible as possible to users
+              online drives growth and enables you to reach new customers.
             </Typography>
           </Grid>
         </Grid>
@@ -116,17 +123,32 @@ const Websites = (props) => {
                 props.setSelected(null);
               }}
             >
-              <img
-                src={forwardArrow}
-                alt="Forward to Services Page"
-              />
+              <img src={forwardArrow} alt="Forward to Services Page" />
             </IconButton>
           </Grid>
         </Hidden>
       </Grid>
-      <Grid item container direction="row">
-        <Grid item></Grid>
-        <Grid item></Grid>
+      <Grid item container direction="row" alignItems="center" justify={smaller ? "center" : "flex-start"} className={classes.rowContainer}>
+        <Grid item>
+          <img src={analyticsGraph} style={{maxWidth: medium ? 255 : "100%"}} alt="graph with magnifying glass" />
+        </Grid>
+        <Grid item className={classes.itemContainer}>
+          <Grid container direction="column">
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="h4" gutterBottom>
+                Analytics
+              </Typography>
+            </Grid>
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="body1">
+                Knowledge is power, and data is 21st Century gold. Analyzing
+                this data can reveal hidden patterns and trends in your
+                business, empowering you to make smarter decisions with
+                measurable effects.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item>
         {/* Call to Action Block */}
