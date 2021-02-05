@@ -8,7 +8,8 @@ import Footer from "./components/ui/Footer.js";
 import LandingPage from "./components/LandingPage.js";
 import Services from "./components/Services.js";
 import Software from "./components/Software.js";
-import MobileApps from "./components/MobileApp.js";
+import MobileApp from "./components/MobileApp.js";
+import Websites from "./components/Websites.js";
 const App = () => {
   const [value, setValue] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -26,7 +27,19 @@ const App = () => {
             {
               
                 /* if we need to passdown props to a component within a route tag
-                We should use render prop function to do so. See below using diff */
+                We should use render prop function to do so. See below using diff 
+                See Default Examples when setting up router the first time
+                <Route
+                  exact
+                  path="/websites"
+                  component={() => <div>Web Development</div>}
+                />
+                <Route
+                  exact
+                  path="/revolution"
+                  component={() => <div>The Revolution</div>}
+                />
+                */
               
             }
             <Route
@@ -66,7 +79,7 @@ const App = () => {
               exact
               path="/mobileapps"
               render={(props) => (
-                <MobileApps
+                <MobileApp
                   {...props}
                   setValue={setValue}
                   setSelected={setSelected}
@@ -76,7 +89,13 @@ const App = () => {
             <Route
               exact
               path="/websites"
-              component={() => <div>Web Development</div>}
+              render={(props) => (
+                <Websites
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
             />
             <Route
               exact

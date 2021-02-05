@@ -264,10 +264,9 @@ const MobileApps = (props) => {
           </Grid>
           <Grid item style={{ marginTop: "2em" }}>
             <img
-              style={{ maxWidth: smallest ? 250 : 280 }}
+              style={{ maxWidth: smallest ? 250 : 300 }}
               src={extendingAccess}
-              alt="army swiss knife  icon"
-            />
+              alt="extending form options"/>
           </Grid>
         </Grid>
         <Grid
@@ -285,7 +284,7 @@ const MobileApps = (props) => {
             <img
               style={{ maxWidth: 180 }}
               src={engagement}
-              alt="army swiss knife  icon"
+              alt="notification on folder icon"
             />
           </Grid>
         </Grid>
