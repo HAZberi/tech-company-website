@@ -10,6 +10,9 @@ import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import CallToAction from "./ui/CallToAction";
 import analyticsGraph from "../assets/analytics.svg";
+import ecommerceWorld from "../assets/ecommerce.svg";
+import seo from "../assets/seo.svg";
+import outreach from "../assets/outreach.svg";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -129,9 +132,20 @@ const Websites = (props) => {
           </Grid>
         </Hidden>
       </Grid>
-      <Grid item container direction="row" alignItems="center" justify={smaller ? "center" : "flex-start"} className={classes.rowContainer}>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        justify={smaller ? "center" : "flex-start"}
+        className={classes.rowContainer}
+      >
         <Grid item>
-          <img src={analyticsGraph} style={{maxWidth: medium ? 255 : "100%"}} alt="graph with magnifying glass" />
+          <img
+            src={analyticsGraph}
+            style={{ maxWidth: medium ? 255 : "100%" }}
+            alt="graph with magnifying glass"
+          />
         </Grid>
         <Grid item className={classes.itemContainer}>
           <Grid container direction="column">
@@ -151,6 +165,113 @@ const Websites = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        justify={smaller ? "center" : "flex-end"}
+        className={classes.rowContainer}
+      >
+        <Grid item>
+          <img
+            src={ecommerceWorld}
+            style={{ maxWidth: medium ? 255 : "100%" }}
+            alt="graph with magnifying glass"
+          />
+        </Grid>
+        <Grid item className={classes.itemContainer}>
+          <Grid container direction="column">
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="h4" gutterBottom>
+                E-Commerce
+              </Typography>
+            </Grid>
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="body1" paragraph>
+                It’s no secret that people like to shop online.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                In 2017 over $2.3 trillion was spent in e-commerce, and it’s
+                time for your slice of that pie.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        justify={smaller ? "center" : "flex-start"}
+        className={classes.rowContainer}
+      >
+        <Grid item>
+          <img
+            src={outreach}
+            style={{ maxWidth: medium ? 255 : "100%" }}
+            alt="graph with magnifying glass"
+          />
+        </Grid>
+        <Grid item className={classes.itemContainer}>
+          <Grid container direction="column">
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="h4" gutterBottom>
+                Outreach
+              </Typography>
+            </Grid>
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="body1" paragraph>
+                Draw people in with a dazzling website. Showing off your
+                products online is a great way to help customers decide what’s
+                right for them before visiting in person.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        justify={smaller ? "center" : "flex-end"}
+        className={classes.rowContainer}
+      >
+        <Grid item>
+          <img
+            src={seo}
+            style={{ maxWidth: medium ? 255 : "100%" }}
+            alt="graph with magnifying glass"
+          />
+        </Grid>
+        <Grid item className={classes.itemContainer}>
+          <Grid container direction="column">
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="h4" gutterBottom>
+                Search Engine
+                <br />
+                Optimization
+              </Typography>
+            </Grid>
+            <Grid item align={smaller ? "center" : "left"}>
+              <Typography variant="body1" paragraph>
+                How often have you ever been to the second page of Google
+                results?
+              </Typography>
+              <Typography variant="body1" paragraph>
+                If you’re like us, probably never.
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Customers don’t go there either, so we make sure your website is
+                designed to end up on top.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+
       <Grid item>
         {/* Call to Action Block */}
         {/* HINT: a background image can be set directly on the Grid Container
