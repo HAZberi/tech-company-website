@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Hidden from "@material-ui/core/Hidden";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
@@ -49,8 +50,79 @@ const Websites = (props) => {
 
   return (
     <Grid container direction="column">
-      <Grid item container direction="row" className={classes.rowContainer}>
-        Webiste Development page content goes in here.
+      <Grid
+        item
+        container
+        direction="row"
+        className={classes.rowContainer}
+        justify={medium ? "space-around" : "center"}
+        style={{
+          marginTop: medium ? "1rem" : "2rem",
+        }}
+      >
+        <Hidden smDown>
+          <Grid
+            item
+            className={classes.arrowContainer}
+            style={{
+              marginRight: medium ? "1rem" : "2.5em",
+              marginLeft: medium ? "-1.5rem" : "-2.5em",
+            }}
+          >
+            <IconButton
+              className={classes.arrowIcons}
+              component={Link}
+              to="/mobileapps"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(1);
+              }}
+            >
+              <img src={backArrow} alt="Back to Mobile App Development Page" />
+            </IconButton>
+          </Grid>
+        </Hidden>
+        <Grid item container direction="column" className={classes.heading}>
+          <Grid item>
+            <Typography
+              variant="h2"
+              align={smaller ? "center" : "left"}
+              gutterBottom
+            >
+              Webiste Development
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="body1" paragraph>
+            Having a website is a necessity in today’s business world. They give you one central, public location to let people know who you are, what you do, and why you’re the best at it.
+            </Typography>
+            <Typography variant="body1" paragraph>
+            From simply having your hours posted to having a full fledged online store, making yourself as accessible as possible to users online drives growth and enables you to reach new customers. 
+            </Typography>
+          </Grid>
+        </Grid>
+        <Hidden smDown>
+          <Grid
+            item
+            className={classes.arrowContainer}
+            style={{ marginRight: medium ? "-1.5rem" : 0 }}
+          >
+            <IconButton
+              className={classes.arrowIcons}
+              component={Link}
+              to="/services"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelected(null);
+              }}
+            >
+              <img
+                src={forwardArrow}
+                alt="Forward to Services Page"
+              />
+            </IconButton>
+          </Grid>
+        </Hidden>
       </Grid>
       <Grid item container direction="row">
         <Grid item></Grid>
