@@ -10,6 +10,8 @@ import Services from "./components/Services.js";
 import Software from "./components/Software.js";
 import MobileApp from "./components/MobileApp.js";
 import Websites from "./components/Websites.js";
+import Revolution from "./components/Revolution.js";
+
 const App = () => {
   const [value, setValue] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -100,7 +102,7 @@ const App = () => {
             <Route
               exact
               path="/revolution"
-              component={() => <div>The Revolution</div>}
+              component={Revolution}
             />
             <Route exact path="/about" component={() => <div>About us</div>} />
             <Route
