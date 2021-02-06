@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CallToAction from "./ui/CallToAction";
 import technologyAnimation from "../animations/technologyAnimation/data.json";
-
+import consultation from "../assets/consultationIcon.svg";
 import vision from "../assets/vision.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +43,28 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: "1.5em",
     },
   },
+  processRowContainer: {
+    paddingLeft: "5em",
+    paddingRight: "5em",
+    paddingBottom: "10em",
+    paddingTop: "2em",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "1.5em",
+      paddingRight: "1.5em",
+    },
+  },
+  imgContainer: {
+      maxWidth: "50em",
+    [theme.breakpoints.down("xl")]: {
+        textAlign: "right"
+    },
+    [theme.breakpoints.down("md")]: {
+        textAlign: "center"
+    },
+    [theme.breakpoints.down("xs")]: {
+        maxWidth: "80%"
+    },
+  },
   itemContainer: {
     maxWidth: "50em",
     marginLeft: "5em",
@@ -68,6 +90,7 @@ const Revolution = (props) => {
   const theme = useTheme();
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const larger = useMediaQuery(theme.breakpoints.down("lg"));
+  const largest = useMediaQuery(theme.breakpoints.down("xl"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -131,7 +154,7 @@ const Revolution = (props) => {
               Vision
             </Typography>
           </Grid>
-          <Grid item style={{textAlign: smallest ? "center" : "justify"}}>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
             <Typography variant="body1" paragraph>
               The rise of computers, and subsequently the Internet, has
               completely altered every aspect of human life. This has increased
@@ -171,13 +194,16 @@ const Revolution = (props) => {
         justify="center"
         className={classes.rowContainer}
       >
-          {medium ? technologyAnimationJSX : null}
+        {medium ? technologyAnimationJSX : null}
         <Grid
           item
           container
           direction="column"
           alignItems={smaller ? "center" : "flex-start"}
-          style={{marginLeft: 0, marginRight: medium ? 0 : larger ? "2.5em" : "5em"}}
+          style={{
+            marginLeft: 0,
+            marginRight: medium ? 0 : larger ? "2.5em" : "5em",
+          }}
           className={classes.itemContainer}
           lg
         >
@@ -186,7 +212,7 @@ const Revolution = (props) => {
               Technology
             </Typography>
           </Grid>
-          <Grid item  style={{textAlign: smallest ? "center" : "justify"}}>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
             <Typography variant="body1" paragraph>
               In 2013, Facebook invented a new way of building websites. This
               new system, React.js, completely revolutionizes the process and
@@ -230,6 +256,65 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
         {medium ? null : technologyAnimationJSX}
+      </Grid>
+      <Grid item className={classes.heading} align="center">
+        <Typography variant="h3">
+          Process
+        </Typography>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "50em"}}
+            src={consultation}
+            alt="handshake"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Consultation
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+              Our process begins the moment you realize you need a piece of
+              technology for your business. Whether you already have an idea for
+              where to start and what to do, or if you just know you want to
+              step things up, our initial consultation will help you examine
+              your business holistically to find the best solutions.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+              Detailed notes will be taken on your requirements and constraints,
+              while taking care to identify other potential areas for
+              consideration.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+              Cutting-edge advancements in machine learning like object
+              detection and natural language processing allow computers to do
+              things previously unimaginable, and our expertise and intuition
+              will help usher you into this new future of possibilities.
+            </Typography>
+          </Grid>
+        </Grid>
       </Grid>
 
       <Grid item>
