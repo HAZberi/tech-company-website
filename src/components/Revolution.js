@@ -17,11 +17,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
+
       textAlign: "center",
     },
     [theme.breakpoints.down("md")]: {
       maxWidth: "45em",
-      marginBottom: "2em",
+      marginBottom: "1.5em",
     },
   },
   arrowContainer: {
@@ -69,7 +70,7 @@ const Revolution = () => {
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" alignItems={smaller ? "center" : "flex-start"}>
       <Grid item className={classes.heading}>
         <Typography variant="h2" gutterBottom>
           The Revolution
