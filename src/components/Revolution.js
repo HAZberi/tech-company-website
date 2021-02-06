@@ -4,12 +4,12 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import CallToAction from "./ui/CallToAction";
 
 import vision from "../assets/vision.svg";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
-    maxWidth: "60em",
     paddingLeft: "5em",
     paddingRight: "5em",
     marginBottom: "3em",
@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
-
+      marginTop: "1em",
+      marginBottom: "1em",
       textAlign: "center",
     },
     [theme.breakpoints.down("md")]: {
-      maxWidth: "45em",
       marginBottom: "1.5em",
     },
   },
@@ -43,16 +43,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   itemContainer: {
-      maxWidth: "50em",
-      marginLeft: "5em",
+    maxWidth: "50em",
+    marginLeft: "5em",
     [theme.breakpoints.down("lg")]: {
-        maxWidth: "50%",
-        marginLeft: "2.5em",
+      maxWidth: "50%",
+      marginLeft: "2.5em",
     },
     [theme.breakpoints.down("md")]: {
-        maxWidth: "80%",
-        marginLeft: 0,
-        marginTop: "2.5em",
+      maxWidth: "80%",
+      marginLeft: 0,
+      marginTop: "2.5em",
     },
     [theme.breakpoints.down("sm")]: {
       maxWidth: "40rem",
@@ -62,25 +62,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Revolution = () => {
+const Revolution = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const medium = useMediaQuery(theme.breakpoints.down("md"));
+  //const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
-    <Grid container direction="column" alignItems={smaller ? "center" : "flex-start"}>
+    <Grid
+      container
+      direction="column"
+    >
       <Grid item className={classes.heading}>
         <Typography variant="h2" gutterBottom>
           The Revolution
         </Typography>
       </Grid>
-      <Grid container direction="row" alignItems="center" justify="center" className={classes.rowContainer}>
-        <Grid item align="center" style={{maxWidth: smallest ? "80%" : "30em"}} md>
-          <img style={{maxWidth: smallest ? "80%" : "30em"}} src={vision} alt="Alberta Vision background" />
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.rowContainer}
+      >
+        <Grid
+          item
+          align="center"
+          style={{ maxWidth: smallest ? "80%" : "30em" }}
+          md
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "30em" }}
+            src={vision}
+            alt="Alberta Vision background"
+          />
         </Grid>
-        <Grid item container direction="column" alignItems={smaller ? "center" : "flex-start"} className={classes.itemContainer} lg>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
           <Grid item align={smaller ? "center" : "left"}>
             <Typography variant="h4" gutterBottom>
               Vision
@@ -118,6 +143,17 @@ const Revolution = () => {
             </Typography>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item>
+        {/* Call to Action Block */}
+        {/* HINT: a background image can be set directly on the Grid Container
+                as className Prop and then we dont need to set the inner container with
+                absolute positioning
+            */}
+        <CallToAction
+          setValue={props.setValue}
+          setSelected={props.setSelected}
+        />
       </Grid>
     </Grid>
   );

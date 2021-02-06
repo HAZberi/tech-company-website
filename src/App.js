@@ -102,7 +102,13 @@ const App = () => {
             <Route
               exact
               path="/revolution"
-              component={Revolution}
+              render={(props) => (
+                <Revolution
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
             />
             <Route exact path="/about" component={() => <div>About us</div>} />
             <Route
