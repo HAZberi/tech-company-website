@@ -246,6 +246,7 @@ const Software = (props) => {
         container
         direction={smallest ? "column" : "row"}
         alignItems={smallest ? "center" : undefined}
+        style={{marginTop: "-5em"}}
         justify="center"
         className={classes.rowContainer}
       >
@@ -255,7 +256,7 @@ const Software = (props) => {
           md
           direction="column"
           alignItems="center"
-          style={{ maxWidth: smaller ? "13em" : "40em" }}
+          style={{ maxWidth: smaller ? "13em" : "40em", marginTop: "5em" }}
         >
           <Grid item>
             <img src={stopwatch} alt="stopWatch icon" />
