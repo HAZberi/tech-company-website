@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CallToAction from "./ui/CallToAction";
+import technologyAnimation from "../animations/technologyAnimation/data.json";
 
 import vision from "../assets/vision.svg";
 
@@ -69,11 +70,16 @@ const Revolution = (props) => {
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const technologyAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: technologyAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
-    <Grid
-      container
-      direction="column"
-    >
+    <Grid container direction="column">
       <Grid item className={classes.heading}>
         <Typography variant="h2" gutterBottom>
           The Revolution
@@ -144,6 +150,82 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.rowContainer}
+      >
+        <Grid
+          item
+          align="center"
+          style={{ maxWidth: smallest ? "80%" : "30em" }}
+          md
+        >
+          <Lottie
+            style={{ maxWidth: smallest ? "80%" : "40em" }}
+            options={technologyAnimationOptions}
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Technology
+            </Typography>
+          </Grid>
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="body1" paragraph>
+              In 2013, Facebook invented a new way of building websites. This
+              new system, React.js, completely revolutionizes the process and
+              practice of website development.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Instead of chaining together long individual pages, like
+              traditional websites, React websites are built with little chunks
+              of code called components. These components are faster, easier to
+              maintain, and are easily reused and customized, each serving a
+              singular purpose.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Two years later they shocked the world by releasing a similar
+              system, React Native, for producing iOS and Android apps. Instead
+              of having to master two completely separate development platforms,
+              you can leverage the knowledge you already possessed from building
+              websites and reapply it directly! This was a huge leap forward.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              This technology is now being used by companies like AirBnB,
+              Microsoft, Netflix, Pinterest, Skype, Tesla, UberEats, and when
+              Facebook purchased Instagram large portions of it were even
+              rebuilt using React.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Developers have since built on top of these systems by automating
+              project setup and deployment, allowing creators to focus as much
+              as possible on their work itself.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              These technical advancements translate into savings by
+              significantly reducing the workload and streamlining the workflow
+              for developing new pieces of software, while also lowering the
+              barrier to entry for mobile app development.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              This puts personalization in your pocket — faster, better, and
+              more affordable than ever before.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+
       <Grid item>
         {/* Call to Action Block */}
         {/* HINT: a background image can be set directly on the Grid Container
