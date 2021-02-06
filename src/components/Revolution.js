@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 const Revolution = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  //const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -78,6 +78,19 @@ const Revolution = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const technologyAnimationJSX = (
+    <Grid
+      item
+      align="center"
+      style={{ maxWidth: smallest ? "80%" : "30em" }}
+      lg
+    >
+      <Lottie
+        style={{ maxWidth: smallest ? "80%" : "30em" }}
+        options={technologyAnimationOptions}
+      />
+    </Grid>
+  );
   return (
     <Grid container direction="column">
       <Grid item className={classes.heading}>
@@ -96,7 +109,7 @@ const Revolution = (props) => {
           item
           align="center"
           style={{ maxWidth: smallest ? "80%" : "30em" }}
-          md
+          lg
         >
           <img
             style={{ maxWidth: smallest ? "80%" : "30em" }}
@@ -157,17 +170,7 @@ const Revolution = (props) => {
         justify="center"
         className={classes.rowContainer}
       >
-        <Grid
-          item
-          align="center"
-          style={{ maxWidth: smallest ? "80%" : "30em" }}
-          md
-        >
-          <Lottie
-            style={{ maxWidth: smallest ? "80%" : "40em" }}
-            options={technologyAnimationOptions}
-          />
-        </Grid>
+          {medium ? technologyAnimationJSX : null}
         <Grid
           item
           container
@@ -224,6 +227,7 @@ const Revolution = (props) => {
             </Typography>
           </Grid>
         </Grid>
+        {medium ? null : technologyAnimationJSX}
       </Grid>
 
       <Grid item>
