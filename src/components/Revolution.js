@@ -67,6 +67,7 @@ const Revolution = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const larger = useMediaQuery(theme.breakpoints.down("lg"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -130,7 +131,7 @@ const Revolution = (props) => {
               Vision
             </Typography>
           </Grid>
-          <Grid item align={smaller ? "center" : "left"}>
+          <Grid item style={{textAlign: smallest ? "center" : "justify"}}>
             <Typography variant="body1" paragraph>
               The rise of computers, and subsequently the Internet, has
               completely altered every aspect of human life. This has increased
@@ -176,6 +177,7 @@ const Revolution = (props) => {
           container
           direction="column"
           alignItems={smaller ? "center" : "flex-start"}
+          style={{marginLeft: 0, marginRight: medium ? 0 : larger ? "2.5em" : "5em"}}
           className={classes.itemContainer}
           lg
         >
@@ -184,7 +186,7 @@ const Revolution = (props) => {
               Technology
             </Typography>
           </Grid>
-          <Grid item align={smaller ? "center" : "left"}>
+          <Grid item  style={{textAlign: smallest ? "center" : "justify"}}>
             <Typography variant="body1" paragraph>
               In 2013, Facebook invented a new way of building websites. This
               new system, React.js, completely revolutionizes the process and
