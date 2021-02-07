@@ -11,6 +11,7 @@ import Software from "./components/Software.js";
 import MobileApp from "./components/MobileApp.js";
 import Websites from "./components/Websites.js";
 import Revolution from "./components/Revolution.js";
+import About from "./components/About.js";
 
 const App = () => {
   const [value, setValue] = useState(0);
@@ -26,9 +27,7 @@ const App = () => {
             setSelected={setSelected}
           />
           <Switch>
-            {
-              
-                /* if we need to passdown props to a component within a route tag
+            {/* if we need to passdown props to a component within a route tag
                 We should use render prop function to do so. See below using diff 
                 See Default Examples when setting up router the first time
                 <Route
@@ -41,9 +40,7 @@ const App = () => {
                   path="/revolution"
                   component={() => <div>The Revolution</div>}
                 />
-                */
-              
-            }
+                */}
             <Route
               exact
               path="/"
@@ -110,7 +107,17 @@ const App = () => {
                 />
               )}
             />
-            <Route exact path="/about" component={() => <div>About us</div>} />
+            <Route
+              exact
+              path="/about"
+              render={(props) => (
+                <About
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
+            />
             <Route
               exact
               path="/contact"
