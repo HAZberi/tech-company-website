@@ -412,6 +412,48 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={design}
+            alt="paint brush"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Design
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+                Using the mockups and notes taken during the consultation as guides, we will start ironing out what the final product will look like. This also involves using any brand material like fonts, colors, and logos to extend the experience you’re already familiar with.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                No aspect is superfluous, and care will be taken with every decision.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
 
 
       <Grid item>
