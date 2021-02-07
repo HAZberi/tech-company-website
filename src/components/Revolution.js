@@ -338,7 +338,7 @@ const Revolution = (props) => {
           <img
             style={{ maxWidth: smallest ? "80%" : "80%"}}
             src={mockup}
-            alt="handshake"
+            alt="monitor with website mockup"
           />
         </Grid>
         <Grid
@@ -363,6 +363,51 @@ const Revolution = (props) => {
             </Typography>
             <Typography variant="body1" style={{color: "#fff"}} paragraph>
                 This helps us understand and refine the solution itself before getting distracted by specifics and looks.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={review}
+            alt="magnifying glass"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Review
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+                Before moving any farther we come back to you with our progress. This gives you the freedom to discuss any changes you may want or any ideas you may have come up with before any heavy lifting has been done.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                We give you an interactive demonstration of the mockups, thoroughly explaining the thought process that went into each screen and every anticipated feature.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                Once you’re completely satisfied with the vision for our solution we get down to the nitty gritty, fine-details of design.
             </Typography>
           </Grid>
         </Grid>
