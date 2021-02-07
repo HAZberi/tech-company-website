@@ -61,34 +61,33 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   imgContainer: {
-      maxWidth: "50em",
+    maxWidth: "50em",
     [theme.breakpoints.down("xl")]: {
-        textAlign: "right"
+      textAlign: "right",
     },
     [theme.breakpoints.down("md")]: {
-        textAlign: "center"
+      textAlign: "center",
     },
     [theme.breakpoints.down("xs")]: {
-        maxWidth: "80%"
+      maxWidth: "80%",
     },
   },
   launchImgContainer: {
     maxWidth: "50em",
-  [theme.breakpoints.down("xl")]: {
+    [theme.breakpoints.down("xl")]: {
       textAlign: "right",
-      
-  },
-  [theme.breakpoints.down("md")]: {
+    },
+    [theme.breakpoints.down("md")]: {
       textAlign: "center",
       paddingLeft: "15em",
       paddingRight: "15em",
-  },
-  [theme.breakpoints.down("xs")]: {
+    },
+    [theme.breakpoints.down("xs")]: {
       maxWidth: "80%",
       paddingLeft: 0,
       paddingRight: 0,
+    },
   },
-},
   itemContainer: {
     maxWidth: "50em",
     marginLeft: "5em",
@@ -281,9 +280,7 @@ const Revolution = (props) => {
         {medium ? null : technologyAnimationJSX}
       </Grid>
       <Grid item className={classes.heading} align="center">
-        <Typography variant="h3">
-          Process
-        </Typography>
+        <Typography variant="h3">Process</Typography>
       </Grid>
       <Grid
         container
@@ -291,15 +288,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#B3B3B3" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "50em"}}
+            style={{ maxWidth: smallest ? "80%" : "50em" }}
             src={consultation}
             alt="handshake"
           />
@@ -317,20 +310,20 @@ const Revolution = (props) => {
               Consultation
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
               Our process begins the moment you realize you need a piece of
               technology for your business. Whether you already have an idea for
               where to start and what to do, or if you just know you want to
               step things up, our initial consultation will help you examine
               your business holistically to find the best solutions.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
               Detailed notes will be taken on your requirements and constraints,
               while taking care to identify other potential areas for
               consideration.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
               Cutting-edge advancements in machine learning like object
               detection and natural language processing allow computers to do
               things previously unimaginable, and our expertise and intuition
@@ -345,15 +338,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#ff7373" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={mockup}
             alt="monitor with website mockup"
           />
@@ -371,15 +360,20 @@ const Revolution = (props) => {
               Mockup
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-                After we settle on the best path forward and decide on a solution to pursue, details like the cost and timeline will be finalized.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
+              After we settle on the best path forward and decide on a solution
+              to pursue, details like the cost and timeline will be finalized.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Then it’s time for us to start on your minimum viable product. That’s just a fancy term for a mockup, which doesn’t include colors, images, or any other polished design elements, but captures the essential layout structure and functionality.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Then it’s time for us to start on your minimum viable product.
+              That’s just a fancy term for a mockup, which doesn’t include
+              colors, images, or any other polished design elements, but
+              captures the essential layout structure and functionality.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                This helps us understand and refine the solution itself before getting distracted by specifics and looks.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              This helps us understand and refine the solution itself before
+              getting distracted by specifics and looks.
             </Typography>
           </Grid>
         </Grid>
@@ -390,15 +384,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#39B54A" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={review}
             alt="magnifying glass"
           />
@@ -416,15 +406,21 @@ const Revolution = (props) => {
               Review
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-                Before moving any farther we come back to you with our progress. This gives you the freedom to discuss any changes you may want or any ideas you may have come up with before any heavy lifting has been done.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
+              Before moving any farther we come back to you with our progress.
+              This gives you the freedom to discuss any changes you may want or
+              any ideas you may have come up with before any heavy lifting has
+              been done.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                We give you an interactive demonstration of the mockups, thoroughly explaining the thought process that went into each screen and every anticipated feature.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              We give you an interactive demonstration of the mockups,
+              thoroughly explaining the thought process that went into each
+              screen and every anticipated feature.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Once you’re completely satisfied with the vision for our solution we get down to the nitty gritty, fine-details of design.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Once you’re completely satisfied with the vision for our solution
+              we get down to the nitty gritty, fine-details of design.
             </Typography>
           </Grid>
         </Grid>
@@ -435,17 +431,13 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#A67C52" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={design}
-            alt="paint brush"
+            alt="paint brush leaving a stroke of paint"
           />
         </Grid>
         <Grid
@@ -461,12 +453,17 @@ const Revolution = (props) => {
               Design
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-                Using the mockups and notes taken during the consultation as guides, we will start ironing out what the final product will look like. This also involves using any brand material like fonts, colors, and logos to extend the experience you’re already familiar with.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
+              Using the mockups and notes taken during the consultation as
+              guides, we will start ironing out what the final product will look
+              like. This also involves using any brand material like fonts,
+              colors, and logos to extend the experience you’re already familiar
+              with.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                No aspect is superfluous, and care will be taken with every decision.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              No aspect is superfluous, and care will be taken with every
+              decision.
             </Typography>
           </Grid>
         </Grid>
@@ -477,15 +474,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#39B54A" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={review}
             alt="magnifying glass"
           />
@@ -503,12 +496,16 @@ const Revolution = (props) => {
               Review
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-                A second round of review is essential to our goal of creating exactly what you want, exactly how you want it.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
+              A second round of review is essential to our goal of creating
+              exactly what you want, exactly how you want it.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                This time we’ll be going over the finalized designs in another fully interactive demonstration. Again this gives you an opportunity to tweak things and make sure we get everything right the first time.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              This time we’ll be going over the finalized designs in another
+              fully interactive demonstration. Again this gives you an
+              opportunity to tweak things and make sure we get everything right
+              the first time.
             </Typography>
           </Grid>
         </Grid>
@@ -519,15 +516,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#FBB03B" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={build}
             alt="a crane machine wtih a building under construction"
           />
@@ -545,24 +538,34 @@ const Revolution = (props) => {
               Build
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-                Here’s where we get down to business.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f5f5f5" }} paragraph>
+              Here’s where we get down to business.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Engineering begins after your approval on the final designs. We start by scaffolding out the project on a high level, prioritizing some areas over others.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Engineering begins after your approval on the final designs. We
+              start by scaffolding out the project on a high level, prioritizing
+              some areas over others.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Each area is then developed in order of importance until ready to be connected to the next piece.
-            </Typography>            
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Typically the backend, behind the scenes operations are completed first. Once all the services are in place we can then create the front end, user side of things.
-            </Typography>            
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Finishing the application doesn’t mean we’re done though, because we use extensive testing to guarantee compatibility with all intended devices.
-            </Typography>            
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                Only after our rigorous examinations will we accept a product as finished, then pushing it through the production pipeline. This produces an optimized, compressed, consumer version of the code and assets ready for deployment.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Each area is then developed in order of importance until ready to
+              be connected to the next piece.
+            </Typography>
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Typically the backend, behind the scenes operations are completed
+              first. Once all the services are in place we can then create the
+              front end, user side of things.
+            </Typography>
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Finishing the application doesn’t mean we’re done though, because
+              we use extensive testing to guarantee compatibility with all
+              intended devices.
+            </Typography>
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Only after our rigorous examinations will we accept a product as
+              finished, then pushing it through the production pipeline. This
+              produces an optimized, compressed, consumer version of the code
+              and assets ready for deployment.
             </Typography>
           </Grid>
         </Grid>
@@ -573,15 +576,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#C1272D" }}
       >
-        <Grid
-          item
-          className={classes.launchImgContainer}
-          lg
-        >
+        <Grid item className={classes.launchImgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={launch}
             alt="rocket on a launch pad"
           />
@@ -599,16 +598,22 @@ const Revolution = (props) => {
               Launch
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-                The moment we’ve all been waiting for.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
+              The moment we’ve all been waiting for.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                When construction comes to a close you’re the first one to know. We’ll give our final demonstration to show off your shiny new software in the wild so you know exactly how it will look to your users.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              When construction comes to a close you’re the first one to know.
+              We’ll give our final demonstration to show off your shiny new
+              software in the wild so you know exactly how it will look to your
+              users.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-                When you say the word, we press the button and launch your project out to the public. We’re there to ensure everything goes to plan so you can start reaping the rewards of your technological investment immediately.
-            </Typography>            
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              When you say the word, we press the button and launch your project
+              out to the public. We’re there to ensure everything goes to plan
+              so you can start reaping the rewards of your technological
+              investment immediately.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -618,15 +623,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#8E45CE" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={maintain}
             alt="a wrench and some screws"
           />
@@ -644,16 +645,21 @@ const Revolution = (props) => {
               Maintain
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
               Our work doesn’t end there.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-              After a successful launch we keep in close contact to listen to feedback and hear how the project is being received.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              After a successful launch we keep in close contact to listen to
+              feedback and hear how the project is being received.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-              From there on out we make sure your application is kept up to date and taking advantage of the best features and practices available. When new developments arise or new techniques are discovered in future projects, we will implement those advancements in your project as part of our routine maintenance.
-            </Typography>            
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              From there on out we make sure your application is kept up to date
+              and taking advantage of the best features and practices available.
+              When new developments arise or new techniques are discovered in
+              future projects, we will implement those advancements in your
+              project as part of our routine maintenance.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -663,15 +669,11 @@ const Revolution = (props) => {
         alignItems="center"
         justify="center"
         className={classes.processRowContainer}
-        style={{backgroundColor: "#B3B3B3"}}
+        style={{ backgroundColor: "#29ABE2" }}
       >
-        <Grid
-          item
-          className={classes.imgContainer}
-          lg
-        >
+        <Grid item className={classes.imgContainer} lg>
           <img
-            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            style={{ maxWidth: smallest ? "80%" : "80%" }}
             src={iterate}
             alt="falling dominos"
           />
@@ -689,26 +691,26 @@ const Revolution = (props) => {
               Iterate
             </Typography>
           </Grid>
-          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
-            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
-              The cycle repeats whenever you come up with a new idea for extending your current project, or come up with a brand new system entirely.
+          <Grid item style={{ textAlign: smallest ? "center" : "justify" }}>
+            <Typography variant="body1" style={{ color: "#f8f8f3" }} paragraph>
+              The cycle repeats whenever you come up with a new idea for
+              extending your current project, or come up with a brand new system
+              entirely.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-              By planning for future features and changes we can build and evolve your application over time. As new use cases and customer needs develop we can respond with continuous integration of new content.
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              By planning for future features and changes we can build and
+              evolve your application over time. As new use cases and customer
+              needs develop we can respond with continuous integration of new
+              content.
             </Typography>
-            <Typography variant="body1" style={{color: "#fff"}} paragraph>
-              Our iterative process will keep you current and competitive, allowing you to quickly implement changes instead of waiting months for a single update.
-            </Typography>            
+            <Typography variant="body1" style={{ color: "#fff" }} paragraph>
+              Our iterative process will keep you current and competitive,
+              allowing you to quickly implement changes instead of waiting
+              months for a single update.
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
-
-
-
-
-
-
-
       <Grid item>
         {/* Call to Action Block */}
         {/* HINT: a background image can be set directly on the Grid Container
