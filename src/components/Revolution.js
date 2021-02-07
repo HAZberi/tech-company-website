@@ -454,6 +454,52 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={review}
+            alt="magnifying glass"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Review
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+                A second round of review is essential to our goal of creating exactly what you want, exactly how you want it.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                This time we’ll be going over the finalized designs in another fully interactive demonstration. Again this gives you an opportunity to tweak things and make sure we get everything right the first time.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      
+
+
 
 
       <Grid item>
