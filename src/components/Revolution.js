@@ -8,6 +8,13 @@ import CallToAction from "./ui/CallToAction";
 import technologyAnimation from "../animations/technologyAnimation/data.json";
 import consultation from "../assets/consultationIcon.svg";
 import vision from "../assets/vision.svg";
+import mockup from "../assets/mockupIcon.svg";
+import review from "../assets/reviewIcon.svg";
+import design from "../assets/designIcon.svg";
+import build from "../assets/buildIcon.svg";
+import launch from "../assets/launchIcon.svg";
+import maintain from "../assets/maintainIcon.svg";
+import iterate from "../assets/iterateIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -47,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "5em",
     paddingRight: "5em",
     paddingBottom: "10em",
-    paddingTop: "2em",
+    paddingTop: "3em",
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
@@ -70,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "5em",
     [theme.breakpoints.down("lg")]: {
       maxWidth: "50%",
-      marginLeft: "2.5em",
+      marginLeft: "4em",
     },
     [theme.breakpoints.down("md")]: {
       maxWidth: "80%",
@@ -90,7 +97,6 @@ const Revolution = (props) => {
   const theme = useTheme();
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const larger = useMediaQuery(theme.breakpoints.down("lg"));
-  const largest = useMediaQuery(theme.breakpoints.down("xl"));
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -316,6 +322,52 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={mockup}
+            alt="handshake"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Mockup
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+                After we settle on the best path forward and decide on a solution to pursue, details like the cost and timeline will be finalized.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                Then it’s time for us to start on your minimum viable product. That’s just a fancy term for a mockup, which doesn’t include colors, images, or any other polished design elements, but captures the essential layout structure and functionality.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                This helps us understand and refine the solution itself before getting distracted by specifics and looks.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+
 
       <Grid item>
         {/* Call to Action Block */}
