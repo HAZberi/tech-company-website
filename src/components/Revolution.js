@@ -612,6 +612,96 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={maintain}
+            alt="a wrench and some screws"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Maintain
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+              Our work doesn’t end there.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+              After a successful launch we keep in close contact to listen to feedback and hear how the project is being received.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+              From there on out we make sure your application is kept up to date and taking advantage of the best features and practices available. When new developments arise or new techniques are discovered in future projects, we will implement those advancements in your project as part of our routine maintenance.
+            </Typography>            
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.imgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={iterate}
+            alt="falling dominos"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Iterate
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+              The cycle repeats whenever you come up with a new idea for extending your current project, or come up with a brand new system entirely.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+              By planning for future features and changes we can build and evolve your application over time. As new use cases and customer needs develop we can respond with continuous integration of new content.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+              Our iterative process will keep you current and competitive, allowing you to quickly implement changes instead of waiting months for a single update.
+            </Typography>            
+          </Grid>
+        </Grid>
+      </Grid>
 
 
 
