@@ -72,6 +72,23 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "80%"
     },
   },
+  launchImgContainer: {
+    maxWidth: "50em",
+  [theme.breakpoints.down("xl")]: {
+      textAlign: "right",
+      
+  },
+  [theme.breakpoints.down("md")]: {
+      textAlign: "center",
+      paddingLeft: "15em",
+      paddingRight: "15em",
+  },
+  [theme.breakpoints.down("xs")]: {
+      maxWidth: "80%",
+      paddingLeft: 0,
+      paddingRight: 0,
+  },
+},
   itemContainer: {
     maxWidth: "50em",
     marginLeft: "5em",
@@ -550,6 +567,52 @@ const Revolution = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        className={classes.processRowContainer}
+        style={{backgroundColor: "#B3B3B3"}}
+      >
+        <Grid
+          item
+          className={classes.launchImgContainer}
+          lg
+        >
+          <img
+            style={{ maxWidth: smallest ? "80%" : "80%"}}
+            src={launch}
+            alt="rocket on a launch pad"
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems={smaller ? "center" : "flex-start"}
+          className={classes.itemContainer}
+          lg
+        >
+          <Grid item align={smaller ? "center" : "left"}>
+            <Typography variant="h4" gutterBottom>
+              Launch
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: smallest ? "center" : "justify"}}>
+            <Typography variant="body1" style={{color: "#f8f8f3"}} paragraph>
+                The moment we’ve all been waiting for.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                When construction comes to a close you’re the first one to know. We’ll give our final demonstration to show off your shiny new software in the wild so you know exactly how it will look to your users.
+            </Typography>
+            <Typography variant="body1" style={{color: "#fff"}} paragraph>
+                When you say the word, we press the button and launch your project out to the public. We’re there to ensure everything goes to plan so you can start reaping the rewards of your technological investment immediately.
+            </Typography>            
+          </Grid>
+        </Grid>
+      </Grid>
+
 
 
 
