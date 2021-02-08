@@ -3,6 +3,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import CallToAction from "../components/ui/CallToAction.js";
 import history from "../assets/history.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -147,6 +148,17 @@ const About = (props) => {
           </Grid>
         </Grid>
         {medium ? null : historyJSX}
+      </Grid>
+      <Grid item>
+        {/* Call to Action Block */}
+        {/* HINT: a background image can be set directly on the Grid Container
+                as className Prop and then we dont need to set the inner container with
+                absolute positioning
+            */}
+        <CallToAction
+          setValue={props.setValue}
+          setSelected={props.setSelected}
+        />
       </Grid>
     </Grid>
   );
