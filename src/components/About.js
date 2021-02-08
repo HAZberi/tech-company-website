@@ -3,11 +3,12 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import history from "../assets/history.svg";
 
 const useStyles = makeStyles((theme) => ({
   statement: {
     fontStyle: "italic",
-    fontWeight: 300,
+    fontWeight: 400,
     fontSize: "1.5rem",
     maxWidth: "50em",
     lineHeight: 1.5,
@@ -28,6 +29,33 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: "1.5em",
     },
   },
+  rowContainer: {
+    paddingLeft: "5em",
+    paddingRight: "5em",
+    marginBottom: "10em",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "1.5em",
+      paddingRight: "1.5em",
+    },
+  },
+  itemContainer: {
+    maxWidth: "50em",
+    marginLeft: "5em",
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "50%",
+      marginLeft: "4em",
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "80%",
+      marginLeft: 0,
+      marginTop: "2.5em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "40rem",
+      marginTop: "2.5rem",
+      marginLeft: 0,
+    },
+  },
 }));
 
 const About = (props) => {
@@ -38,6 +66,16 @@ const About = (props) => {
   const larger = useMediaQuery(theme.breakpoints.down("lg"));
   const medium = useMediaQuery(theme.breakpoints.down("md"));
 
+  const historyJSX = (
+    <Grid
+      item
+      align="center"
+      style={{ maxWidth: smallest ? "80%" : "30em" }}
+      lg
+    >
+        <img src={history} alt="an open book with a feather pen" style={{ maxWidth: smallest ? "80%" : "30em" }}/>
+    </Grid>
+  );
   return (
     <Grid container direction="column">
       <Grid item className={classes.heading}>
@@ -45,7 +83,7 @@ const About = (props) => {
           About Us
         </Typography>
       </Grid>
-      <Grid item container justify="center">
+      <Grid item container justify="center" className={classes.rowContainer}>
         <Typography variant="h4" align="center" className={classes.statement}>
           Whether it be person, business to consumer, or an individual to their
           interests, technology is meant to bring us closer to what we care
@@ -61,7 +99,7 @@ const About = (props) => {
         justify="center"
         className={classes.rowContainer}
       >
-        {/* {medium ? technologyAnimationJSX : null} */}
+        {medium ? historyJSX : null}
         <Grid
           item
           container
@@ -108,7 +146,7 @@ const About = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        {/* {medium ? null : technologyAnimationJSX} */}
+        {medium ? null : historyJSX}
       </Grid>
     </Grid>
   );
