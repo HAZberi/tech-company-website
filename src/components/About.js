@@ -80,14 +80,14 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
   },
-  avatar : {
+  avatar: {
     height: 250,
     width: 250,
     [theme.breakpoints.down("xs")]: {
       height: "15rem",
       width: "15rem",
-    }
-  }
+    },
+  },
 }));
 
 const About = (props) => {
@@ -105,7 +105,11 @@ const About = (props) => {
       style={{ maxWidth: smallest ? "80%" : "30em" }}
       lg
     >
-        <img src={history} alt="an open book with a feather pen" style={{ maxWidth: smallest ? "80%" : "30em" }}/>
+      <img
+        src={history}
+        alt="an open book with a feather pen"
+        style={{ maxWidth: smallest ? "80%" : "30em" }}
+      />
     </Grid>
   );
   return (
@@ -120,8 +124,8 @@ const About = (props) => {
           Whether it be person, business to consumer, or an individual to their
           interests, technology is meant to bring us closer to what we care
           about in the best way possible. beri.dev will use that principle to
-          provide fast, modern inexpensive and aesthetic software to the Prairies
-          and beyond.
+          provide fast, modern inexpensive and aesthetic software to the
+          Prairies and beyond.
         </Typography>
       </Grid>
       <Grid
@@ -183,67 +187,130 @@ const About = (props) => {
       <Grid item className={classes.heading} align="center">
         <Typography variant="h3">Team</Typography>
       </Grid>
-      <Grid container direction="row" justify="space-around" style={{marginTop: 0}} className={classes.rowContainer}>
-        <Grid item container direction="column" className={classes.teamCardContainer} lg>
+      <Grid
+        container
+        direction="row"
+        justify="space-around"
+        style={{ marginTop: 0 }}
+        className={classes.rowContainer}
+      >
+        <Grid
+          item
+          container
+          direction="column"
+          className={classes.teamCardContainer}
+          lg
+        >
           <Grid item align="center">
-            <Avatar src={founder} className={classes.avatar} alt="founder's headshot" />
+            <Avatar
+              src={founder}
+              className={classes.avatar}
+              alt="founder's headshot"
+            />
           </Grid>
-          <Grid item style={{marginTop: "2rem", textAlign: "center"}}>
-            <Typography variant="h4">
-              Khubaib Zuberi
-            </Typography>
+          <Grid item style={{ marginTop: "2rem", textAlign: "center" }}>
+            <Typography variant="h4">Khubaib Zuberi</Typography>
             <Typography variant="caption" gutterBottom>
               Founder
             </Typography>
           </Grid>
-          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem", textAlign: smallest ? "center " : "justify"}}>
+          <Grid
+            item
+            style={{
+              maxWidth: "100%",
+              marginTop: "1.5rem",
+              textAlign: smallest ? "center " : "justify",
+            }}
+          >
             <Typography variant="body1" paragraph>
-              I taught myself basic coding from a library book in third grade, and ever since then my passion has solely been set on learning — learning about computers, learning mathematics and philosophy, studying design, always just learning.
+              I taught myself basic coding from a library book in third grade,
+              and ever since then my passion has solely been set on learning —
+              learning about computers, learning mathematics and philosophy,
+              studying design, always just learning.
             </Typography>
             <Typography variant="body1" paragraph>
-              Now I’m ready to apply everything I’ve learned, and to help others with the intuition I have developed.
+              Now I’m ready to apply everything I’ve learned, and to help others
+              with the intuition I have developed.
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container direction="column" className={classes.teamCardContainer} lg>
+        <Grid
+          item
+          container
+          direction="column"
+          className={classes.teamCardContainer}
+          lg
+        >
           <Grid item align="center">
-            <Avatar src={founder} className={classes.avatar} alt="founder's headshot" />
+            <Avatar
+              src={founder}
+              className={classes.avatar}
+              alt="founder's headshot"
+            />
           </Grid>
-          <Grid item style={{marginTop: "2rem", textAlign: "center"}}>
-            <Typography variant="h4">
-              Hassaan Zuberi
-            </Typography>
+          <Grid item style={{ marginTop: "2rem", textAlign: "center" }}>
+            <Typography variant="h4">Hassaan Zuberi</Typography>
             <Typography variant="caption" gutterBottom>
               Founder
             </Typography>
           </Grid>
-          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem", textAlign: smallest ? "center " : "justify"}}>
+          <Grid
+            item
+            style={{
+              maxWidth: "100%",
+              marginTop: "1.5rem",
+              textAlign: smallest ? "center " : "justify",
+            }}
+          >
             <Typography variant="body1" paragraph>
-              I taught myself basic coding from a library book in third grade, and ever since then my passion has solely been set on learning — learning about computers, learning mathematics and philosophy, studying design, always just learning.
+              I taught myself basic coding from a library book in third grade,
+              and ever since then my passion has solely been set on learning —
+              learning about computers, learning mathematics and philosophy,
+              studying design, always just learning.
             </Typography>
             <Typography variant="body1" paragraph>
-              Now I’m ready to apply everything I’ve learned, and to help others with the intuition I have developed.
+              Now I’m ready to apply everything I’ve learned, and to help others
+              with the intuition I have developed.
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container direction="column" className={classes.teamCardContainer} lg>
+        <Grid
+          item
+          container
+          direction="column"
+          className={classes.teamCardContainer}
+          lg
+        >
           <Grid item align="center">
-            <Avatar src={founder} className={classes.avatar} alt="founder's headshot" />
+            <Avatar
+              src={founder}
+              className={classes.avatar}
+              alt="founder's headshot"
+            />
           </Grid>
-          <Grid item style={{marginTop: "2rem", textAlign: "center"}}>
-            <Typography variant="h4">
-              Muzaina Zuberi
-            </Typography>
+          <Grid item style={{ marginTop: "2rem", textAlign: "center" }}>
+            <Typography variant="h4">Muzaina Zuberi</Typography>
             <Typography variant="caption" gutterBottom>
               Founder
             </Typography>
           </Grid>
-          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem", textAlign: smallest ? "center " : "justify"}}>
+          <Grid
+            item
+            style={{
+              maxWidth: "100%",
+              marginTop: "1.5rem",
+              textAlign: smallest ? "center " : "justify",
+            }}
+          >
             <Typography variant="body1" paragraph>
-              I taught myself basic coding from a library book in third grade, and ever since then my passion has solely been set on learning — learning about computers, learning mathematics and philosophy, studying design, always just learning.
+              I taught myself basic coding from a library book in third grade,
+              and ever since then my passion has solely been set on learning —
+              learning about computers, learning mathematics and philosophy,
+              studying design, always just learning.
             </Typography>
             <Typography variant="body1" paragraph>
-              Now I’m ready to apply everything I’ve learned, and to help others with the intuition I have developed.
+              Now I’m ready to apply everything I’ve learned, and to help others
+              with the intuition I have developed.
             </Typography>
           </Grid>
         </Grid>
