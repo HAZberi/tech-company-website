@@ -3,6 +3,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Avatar from "@material-ui/core/Avatar";
 import CallToAction from "../components/ui/CallToAction.js";
 import history from "../assets/history.svg";
 import founder from "../assets/founder.jpg";
@@ -79,6 +80,14 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
   },
+  avatar : {
+    height: 250,
+    width: 250,
+    [theme.breakpoints.down("xs")]: {
+      height: "15rem",
+      width: "15rem",
+    }
+  }
 }));
 
 const About = (props) => {
@@ -174,20 +183,20 @@ const About = (props) => {
       <Grid item className={classes.heading} align="center">
         <Typography variant="h3">Team</Typography>
       </Grid>
-      <Grid container direction="row" justify="space-around" className={classes.rowContainer}>
+      <Grid container direction="row" justify="space-around" style={{marginTop: 0}} className={classes.rowContainer}>
         <Grid item container direction="column" className={classes.teamCardContainer} lg>
           <Grid item align="center">
-            <img src={founder} style={{maxWidth: "100%"}} alt="founder's headshot" />
+            <Avatar src={founder} className={classes.avatar} alt="founder's headshot" />
           </Grid>
-          <Grid item style={{marginTop: "1rem"}}>
+          <Grid item style={{marginTop: "2rem", textAlign: "center"}}>
             <Typography variant="h4">
-              Hassaan Zuberi
+              Khubaib Zuberi
             </Typography>
             <Typography variant="caption" gutterBottom>
               Founder
             </Typography>
           </Grid>
-          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem"}}>
+          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem", textAlign: smallest ? "center " : "justify"}}>
             <Typography variant="body1" paragraph>
               I taught myself basic coding from a library book in third grade, and ever since then my passion has solely been set on learning — learning about computers, learning mathematics and philosophy, studying design, always just learning.
             </Typography>
@@ -198,9 +207,9 @@ const About = (props) => {
         </Grid>
         <Grid item container direction="column" className={classes.teamCardContainer} lg>
           <Grid item align="center">
-            <img src={founder} style={{maxWidth: "100%"}} alt="founder's headshot" />
+            <Avatar src={founder} className={classes.avatar} alt="founder's headshot" />
           </Grid>
-          <Grid item style={{marginTop: "1rem"}}>
+          <Grid item style={{marginTop: "2rem", textAlign: "center"}}>
             <Typography variant="h4">
               Hassaan Zuberi
             </Typography>
@@ -208,7 +217,7 @@ const About = (props) => {
               Founder
             </Typography>
           </Grid>
-          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem"}}>
+          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem", textAlign: smallest ? "center " : "justify"}}>
             <Typography variant="body1" paragraph>
               I taught myself basic coding from a library book in third grade, and ever since then my passion has solely been set on learning — learning about computers, learning mathematics and philosophy, studying design, always just learning.
             </Typography>
@@ -219,17 +228,17 @@ const About = (props) => {
         </Grid>
         <Grid item container direction="column" className={classes.teamCardContainer} lg>
           <Grid item align="center">
-            <img src={founder} style={{maxWidth: "100%"}} alt="founder's headshot" />
+            <Avatar src={founder} className={classes.avatar} alt="founder's headshot" />
           </Grid>
-          <Grid item style={{marginTop: "1rem"}}>
+          <Grid item style={{marginTop: "2rem", textAlign: "center"}}>
             <Typography variant="h4">
-              Hassaan Zuberi
+              Muzaina Zuberi
             </Typography>
             <Typography variant="caption" gutterBottom>
               Founder
             </Typography>
           </Grid>
-          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem"}}>
+          <Grid item style={{maxWidth: "100%", marginTop: "1.5rem", textAlign: smallest ? "center " : "justify"}}>
             <Typography variant="body1" paragraph>
               I taught myself basic coding from a library book in third grade, and ever since then my passion has solely been set on learning — learning about computers, learning mathematics and philosophy, studying design, always just learning.
             </Typography>
