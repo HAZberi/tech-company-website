@@ -7,6 +7,7 @@ import Avatar from "@material-ui/core/Avatar";
 import CallToAction from "../components/ui/CallToAction.js";
 import history from "../assets/history.svg";
 import founder from "../assets/founder.jpg";
+import founder2 from "../assets/founder2.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   statement: {
@@ -203,7 +204,7 @@ const About = (props) => {
         >
           <Grid item align="center">
             <Avatar
-              src={founder}
+              src={founder2}
               className={classes.avatar}
               alt="founder's headshot"
             />
