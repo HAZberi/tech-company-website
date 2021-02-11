@@ -59,6 +59,17 @@ const CallToAction = (props) => {
   const theme = useTheme();
   const smaller = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const gridSize = (props) => {
+    if (props.grid) {
+      if(props.grid.size === "lg") return props.grid.noc;
+      if(props.grid.size === "md") return props.grid.noc;
+      if(props.grid.size === "sm") return props.grid.noc;
+      return false;
+    } else {
+      return false;
+    }
+  }
+  
   return (
     <Grid
       container
@@ -73,6 +84,9 @@ const CallToAction = (props) => {
           marginTop: smaller ? "5em" : "7.5em",
           textAlign: smaller ? "center" : "inherit",
         }}
+        lg={gridSize(props)}
+        sm={gridSize(props)}
+        md={gridSize(props)}
       >
         <Grid
           container

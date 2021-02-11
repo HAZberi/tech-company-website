@@ -147,6 +147,7 @@ const Contact = (props) => {
         <CallToAction
           setValue={props.setValue}
           setSelected={props.setSelected}
+          grid={{size: "lg", noc: 8}}
         />
       </Grid>
     </Grid>
