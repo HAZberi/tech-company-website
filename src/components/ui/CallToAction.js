@@ -73,9 +73,9 @@ const CallToAction = (props) => {
           marginTop: smaller ? "5em" : "7.5em",
           textAlign: smaller ? "center" : "inherit",
         }}
-        lg={props.grid.size === "lg" ? props.grid.noc : false}
-        md={props.grid.size === "md" ? props.grid.noc : false}
-        sm={props.grid.size === "sm" ? props.grid.noc : false}
+        lg={props.grid ? props.grid.size === "lg" ? props.grid.noc : false : false}
+        md={props.grid ? props.grid.size === "md" ? props.grid.noc : false : false}
+        sm={props.grid ? props.grid.size === "sm" ? props.grid.noc : false : false}
       >
         <Grid
           container

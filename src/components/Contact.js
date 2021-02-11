@@ -49,8 +49,36 @@ const Contact = (props) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [emailHelperText, setEmailHelperText] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneHelperText, setPhoneHelperText] = useState("");
   const [message, setMessage] = useState("");
+
+  const onFieldInputChange = (event) => {
+    let valid;
+    switch(event.target.id){
+      case "email": 
+        setEmail(event.target.value);
+        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value);
+        if(!valid){
+          setEmailHelperText("Invalid email.");
+        }else {
+          setEmailHelperText("");
+        }
+        break;
+      case "phone": 
+        setPhone(event.target.value);
+        valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(event.target.value);
+        if(!valid){
+          setPhoneHelperText("Invalid Phone Number")
+        }else{
+          setPhoneHelperText("");
+        }
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <Grid container direction="row">
@@ -103,8 +131,10 @@ const Contact = (props) => {
             <TextField
               label="Email"
               id="email"
+              error={emailHelperText.length !== 0}
+              helperText={emailHelperText}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={onFieldInputChange}
               fullWidth
             />
           </Grid>
@@ -112,8 +142,10 @@ const Contact = (props) => {
             <TextField
               label="Phone"
               id="phone"
+              error={phoneHelperText.length !== 0}
+              helperText={phoneHelperText}
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={onFieldInputChange}
               fullWidth
             />
           </Grid>

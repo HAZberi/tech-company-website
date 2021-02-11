@@ -89,6 +89,11 @@ const theme = createMuiTheme({
       }
     },
     MuiInput: {
+      root: {
+        color:  `${mygrey}`,
+        fontWeight: 400,
+        fontSize: "1.25rem",
+      },
       underline: {
         "&:before": {
           borderBottom: `2px solid ${orange}`
