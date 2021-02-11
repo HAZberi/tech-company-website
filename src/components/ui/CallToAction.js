@@ -62,7 +62,7 @@ const CallToAction = (props) => {
   return (
     <Grid
       container
-      style={{ height: smaller ? "85em" : "60em" }}
+      style={{ height: smaller ? "85em" : "60em", width: "100%" }}
       alignItems="flex-start"
     >
       <Grid

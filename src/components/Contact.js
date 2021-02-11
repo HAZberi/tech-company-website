@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CallToAction from "../components/ui/CallToAction.js";
 import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
@@ -14,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     paddingLeft: "2em",
     paddingRight: "2em",
-    marginBottom: "1em",
-    marginTop: "1em",
+    marginBottom: "2em",
+    marginTop: "2em",
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
@@ -31,17 +32,20 @@ const useStyles = makeStyles((theme) => ({
     height: "45px",
     opacity: 0.85,
     borderRadius: "5px",
+    marginTop: "1em"
   },
   message: {
       border: `2px solid ${theme.palette.common.orange}`,
-      marginTop: "5em",
+      marginTop: "4em",
       borderRadius: "5px",
   }
 }));
 
 const Contact = (props) => {
   const classes = useStyles();
-  //const theme = useTheme();
+  const theme = useTheme();
+  //const smaller = useMediaQuery(theme.breakpoints.down('sm'));
+  const smallest = useMediaQuery(theme.breakpoints.down('xs'));
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -50,12 +54,12 @@ const Contact = (props) => {
 
   return (
     <Grid container direction="row">
-      <Grid item container direction="column" md={4}>
+      <Grid item container direction="column" style={{paddingBottom: "10em"}} alignItems="center" lg={4}>
         <Grid item className={classes.heading}>
           <Typography variant="h2" style={{ lineHeight: 1 }}>
             Contact Us
           </Typography>
-          <Typography variant="body1">We are Waiting.</Typography>
+          <Typography variant="subtitle1">We are Waiting.</Typography>
         </Grid>
         <Grid item container alignItems="center" justify="center">
           <Grid item>
@@ -85,55 +89,61 @@ const Contact = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container>
-          <Grid item>
+        <Grid item container justify="center" style={{maxWidth: smallest ? "80%" : "25em", marginTop: "2em"}}>
+          <Grid item style={{width: "100%"}}>
             <TextField
               label="Name"
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              fullWidth
             />
           </Grid>
-          <Grid item>
+          <Grid item style={{width: "100%"}}>
             <TextField
               label="Email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              fullWidth
             />
           </Grid>
-          <Grid item>
+          <Grid item style={{width: "100%"}}>
             <TextField
               label="Phone"
               id="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              fullWidth
             />
           </Grid>
         </Grid>
-        <Grid item>
-          <TextField
-            InputProps={{disableUnderline: true}}
-            id="message"
-            rows={10}
-            value={message}
-            className={classes.message}
-            onChange={(e) => setMessage(e.target.value)}
-            multiline
-          />
-        </Grid>
-        <Grid item>
-          <Button className={classes.sendMessageButton} variant="contained">
-            Send Message
-            <img
-              style={{ marginLeft: 5 }}
-              src={paperAirplane}
-              alt="paper airplane icon"
+        <Grid item container justify="center" style={{maxWidth: smallest ? "80%" : "25em"}}>
+            <Grid item style={{width: "100%"}}>
+            <TextField
+                InputProps={{disableUnderline: true}}
+                id="message"
+                rows={10}
+                value={message}
+                className={classes.message}
+                onChange={(e) => setMessage(e.target.value)}
+                multiline
+                fullWidth
             />
-          </Button>
+            </Grid>
+            <Grid item>
+            <Button className={classes.sendMessageButton} variant="contained">
+                Send Message
+                <img
+                style={{ marginLeft: 7.5 }}
+                src={paperAirplane}
+                alt="paper airplane icon"
+                />
+            </Button>
+            </Grid>
         </Grid>
       </Grid>
-      <Grid item container direction="column" md={8}>
+      <Grid item container direction="column" lg={8}>
         <CallToAction
           setValue={props.setValue}
           setSelected={props.setSelected}
