@@ -12,6 +12,7 @@ import MobileApp from "./components/MobileApp.js";
 import Websites from "./components/Websites.js";
 import Revolution from "./components/Revolution.js";
 import About from "./components/About.js";
+import Contact from "./components/Contact.js";
 
 const App = () => {
   const [value, setValue] = useState(0);
@@ -121,7 +122,13 @@ const App = () => {
             <Route
               exact
               path="/contact"
-              component={() => <div>Contact us</div>}
+              render={(props) => (
+                <Contact
+                  {...props}
+                  setValue={setValue}
+                  setSelected={setSelected}
+                />
+              )}
             />
             <Route
               exact
