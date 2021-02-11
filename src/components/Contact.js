@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Contact = (props) => {
   const classes = useStyles();
-  const theme = useTheme();
+  //const theme = useTheme();
 
   return (
     <Grid container direction="row">
@@ -51,6 +51,17 @@ const Contact = (props) => {
             </Grid>
             <Grid item>
                 <Typography variant="body1" style={{fontSize: "1rem"}}>hassaan.zuberi@ucalgary.ca</Typography>
+            </Grid>
+        </Grid>
+        <Grid item container>
+            <Grid item>
+                <TextField label="Name" id="name" />
+            </Grid>
+            <Grid item>
+                <TextField label="Email" id="email" />
+            </Grid>
+            <Grid item>
+                <TextField label="Phone" id="phone" />
             </Grid>
         </Grid>
       </Grid>
