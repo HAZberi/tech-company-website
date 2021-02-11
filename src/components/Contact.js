@@ -32,22 +32,23 @@ const useStyles = makeStyles((theme) => ({
     height: "45px",
     opacity: 0.85,
     borderRadius: "5px",
-    marginTop: "1em"
+    marginTop: "1em",
   },
   message: {
-      border: `2px solid ${theme.palette.common.orange}`,
-      marginTop: "4em",
-      borderRadius: "5px",
-  }
+    border: `2px solid ${theme.palette.common.orange}`,
+    marginTop: "4em",
+    borderRadius: "5px",
+  },
 }));
 
 const Contact = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   //const smaller = useMediaQuery(theme.breakpoints.down('sm'));
-  const smallest = useMediaQuery(theme.breakpoints.down('xs'));
+  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
   const [name, setName] = useState("");
+  const [nameHelperText, setNameHelperText] = useState("");
   const [email, setEmail] = useState("");
   const [emailHelperText, setEmailHelperText] = useState("");
   const [phone, setPhone] = useState("");
@@ -56,33 +57,68 @@ const Contact = (props) => {
 
   const onFieldInputChange = (event) => {
     let valid;
-    switch(event.target.id){
-      case "email": 
-        setEmail(event.target.value);
-        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value);
-        if(!valid){
-          setEmailHelperText("Invalid email.");
-        }else {
-          setEmailHelperText("");
+    switch (event.target.id) {
+      case "name":
+        setName(event.target.value);
+        if (event.target.value !== "") {
+          valid = /^[a-z ,.'-]+$/i.test(event.target.value);
+          if (!valid) {
+            setNameHelperText(
+              `Cannot include numbers, brackets and special characters`
+            );
+          } else {
+            setNameHelperText("");
+          }
+        } else {
+          setNameHelperText("");
         }
         break;
-      case "phone": 
+      case "email":
+        setEmail(event.target.value);
+        if (event.target.value !== "") {
+          valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+            event.target.value
+          );
+          if (!valid) {
+            setEmailHelperText("Invalid email.");
+          } else {
+            setEmailHelperText("");
+          }
+        } else {
+          setEmailHelperText("");
+        }
+
+        break;
+      case "phone":
         setPhone(event.target.value);
-        valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(event.target.value);
-        if(!valid){
-          setPhoneHelperText("Invalid Phone Number")
-        }else{
+        if (event.target.value !== "") {
+          valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(
+            event.target.value
+          );
+          if (!valid) {
+            setPhoneHelperText("Invalid Phone Number");
+          } else {
+            setPhoneHelperText("");
+          }
+        } else {
           setPhoneHelperText("");
         }
         break;
       default:
         break;
     }
-  }
+  };
 
   return (
     <Grid container direction="row">
-      <Grid item container direction="column" style={{paddingBottom: "10em"}} alignItems="center" lg={4}>
+      <Grid
+        item
+        container
+        direction="column"
+        style={{ paddingBottom: "10em" }}
+        alignItems="center"
+        lg={4}
+      >
         <Grid item className={classes.heading}>
           <Typography variant="h2" style={{ lineHeight: 1 }}>
             Contact Us
@@ -99,7 +135,7 @@ const Contact = (props) => {
           </Grid>
           <Grid item>
             <Typography variant="body1" style={{ fontSize: "1rem" }}>
-              (555) 555-5555
+              <a href="tel:5555555555" style={{textDecoration: "none", color: "inherit"}}>(555) 555-5555</a>
             </Typography>
           </Grid>
         </Grid>
@@ -113,21 +149,28 @@ const Contact = (props) => {
           </Grid>
           <Grid item>
             <Typography variant="body1" style={{ fontSize: "1rem" }}>
-              hassaan.zuberi@ucalgary.ca
+              <a href="mailto:hassaan.zuberi@ucalgary.ca" style={{textDecoration: "none", color: "inherit"}}>hassaan.zuberi@ucalgary.ca</a>
             </Typography>
           </Grid>
         </Grid>
-        <Grid item container justify="center" style={{maxWidth: smallest ? "80%" : "25em", marginTop: "2em"}}>
-          <Grid item style={{width: "100%", marginTop: "0.5em"}}>
+        <Grid
+          item
+          container
+          justify="center"
+          style={{ maxWidth: smallest ? "80%" : "25em", marginTop: "2em" }}
+        >
+          <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
             <TextField
               label="Name"
               id="name"
+              error={nameHelperText.length !== 0}
+              helperText={nameHelperText}
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={onFieldInputChange}
               fullWidth
             />
           </Grid>
-          <Grid item style={{width: "100%", marginTop: "0.5em"}}>
+          <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
             <TextField
               label="Email"
               id="email"
@@ -138,7 +181,7 @@ const Contact = (props) => {
               fullWidth
             />
           </Grid>
-          <Grid item style={{width: "100%", marginTop: "0.5em"}}>
+          <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
             <TextField
               label="Phone"
               id="phone"
@@ -150,36 +193,53 @@ const Contact = (props) => {
             />
           </Grid>
         </Grid>
-        <Grid item container justify="center" style={{maxWidth: smallest ? "80%" : "25em"}}>
-            <Grid item style={{width: "100%"}}>
+        <Grid
+          item
+          container
+          justify="center"
+          style={{ maxWidth: smallest ? "80%" : "25em" }}
+        >
+          <Grid item style={{ width: "100%" }}>
             <TextField
-                InputProps={{disableUnderline: true}}
-                id="message"
-                rows={10}
-                value={message}
-                className={classes.message}
-                onChange={(e) => setMessage(e.target.value)}
-                multiline
-                fullWidth
+              InputProps={{ disableUnderline: true }}
+              id="message"
+              rows={10}
+              value={message}
+              className={classes.message}
+              onChange={(e) => setMessage(e.target.value)}
+              multiline
+              fullWidth
             />
-            </Grid>
-            <Grid item>
-            <Button className={classes.sendMessageButton} variant="contained">
-                Send Message
-                <img
+          </Grid>
+          <Grid item>
+            <Button
+              disabled={
+                name.length === 0 ||
+                nameHelperText.length !== 0 ||
+                email.length === 0 ||
+                emailHelperText.length !== 0 ||
+                phone.length === 0 ||
+                phoneHelperText.length !== 0 ||
+                message.length === 0
+              }
+              className={classes.sendMessageButton}
+              variant="contained"
+            >
+              Send Message
+              <img
                 style={{ marginLeft: 7.5 }}
                 src={paperAirplane}
                 alt="paper airplane icon"
-                />
+              />
             </Button>
-            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item container direction="column" lg={8}>
         <CallToAction
           setValue={props.setValue}
           setSelected={props.setSelected}
-          grid={{size: "lg", noc: 8}}
+          grid={{ size: "lg", noc: 8 }}
         />
       </Grid>
     </Grid>
