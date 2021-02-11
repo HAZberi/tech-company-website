@@ -30,6 +30,10 @@ const Contact = (props) => {
   const classes = useStyles();
   //const theme = useTheme();
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
   return (
     <Grid container direction="row">
       <Grid item container direction="column" md={4}>
@@ -55,13 +59,13 @@ const Contact = (props) => {
         </Grid>
         <Grid item container>
             <Grid item>
-                <TextField label="Name" id="name" />
+                <TextField label="Name" id="name" value={name} onChange={(e)=>setName(e.target.value)}/>
             </Grid>
             <Grid item>
-                <TextField label="Email" id="email" />
+                <TextField label="Email" id="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
             </Grid>
             <Grid item>
-                <TextField label="Phone" id="phone" />
+                <TextField label="Phone" id="phone" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
             </Grid>
         </Grid>
       </Grid>
