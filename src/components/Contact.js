@@ -59,7 +59,7 @@ const Contact = (props) => {
           <Typography variant="h2" style={{ lineHeight: 1 }}>
             Contact Us
           </Typography>
-          <Typography variant="subtitle1">We are Waiting.</Typography>
+          <Typography variant="subtitle1">We are waiting.</Typography>
         </Grid>
         <Grid item container alignItems="center" justify="center">
           <Grid item>
@@ -90,7 +90,7 @@ const Contact = (props) => {
           </Grid>
         </Grid>
         <Grid item container justify="center" style={{maxWidth: smallest ? "80%" : "25em", marginTop: "2em"}}>
-          <Grid item style={{width: "100%"}}>
+          <Grid item style={{width: "100%", marginTop: "0.5em"}}>
             <TextField
               label="Name"
               id="name"
@@ -99,7 +99,7 @@ const Contact = (props) => {
               fullWidth
             />
           </Grid>
-          <Grid item style={{width: "100%"}}>
+          <Grid item style={{width: "100%", marginTop: "0.5em"}}>
             <TextField
               label="Email"
               id="email"
@@ -108,7 +108,7 @@ const Contact = (props) => {
               fullWidth
             />
           </Grid>
-          <Grid item style={{width: "100%"}}>
+          <Grid item style={{width: "100%", marginTop: "0.5em"}}>
             <TextField
               label="Phone"
               id="phone"
