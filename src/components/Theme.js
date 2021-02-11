@@ -82,6 +82,23 @@ const theme = createMuiTheme({
       },
     },
   },
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        fontSize: "1rem"
+      }
+    },
+    MuiInput: {
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${orange}`
+        },
+        "&:hover:not($disabled):not($focused):not($error):before": {
+          borderBottom: `2px solid ${orange}`
+        },
+      }
+    }
+  }
 });
 
 export default theme;
