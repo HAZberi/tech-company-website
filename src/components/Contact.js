@@ -15,12 +15,15 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: "2em",
         marginBottom: "1em",
         marginTop: "1em",
+        textAlign: "center",
         [theme.breakpoints.down("sm")]: {
           paddingLeft: "1.5em",
           paddingRight: "1.5em",
-          textAlign: "center",
         },
       },
+    itemContainer: {
+        textAlign: "center",
+    }
 }));
 
 const Contact = (props) => {
@@ -32,22 +35,22 @@ const Contact = (props) => {
       <Grid item container direction="column" md={4}>
         <Grid item className={classes.heading}>
             <Typography variant="h2" style={{lineHeight: 1}}>Contact Us</Typography>
-            <Typography variant="caption">We are Waiting!</Typography>
+            <Typography variant="body1">We are Waiting.</Typography>
         </Grid>
-        <Grid item container alignItems="center">
+        <Grid item container alignItems="center" justify="center">
             <Grid item>
-                <img src={phoneIcon} alt="phone icon" style={{marginRight: "0.5em", marginTop: "0.35em"}}/>
+                <img src={phoneIcon} alt="phone icon" style={{marginRight: "0.5em", verticalAlign: "baseline"}}/>
             </Grid>
             <Grid item>
-                <Typography variant="body1">(555) 555-5555</Typography>
+                <Typography variant="body1" style={{fontSize: "1rem"}}>(555) 555-5555</Typography>
             </Grid>
         </Grid>
-        <Grid item container alignItems="center">
+        <Grid item container alignItems="center" justify="center">
             <Grid item>
-                <img src={emailIcon} alt="phone icon" style={{marginRight: "0.5em", marginTop: "0.35em"}}/>
+                <img src={emailIcon} alt="phone icon" style={{marginRight: "0.5em", verticalAlign: "middle"}}/>
             </Grid>
             <Grid item>
-                <Typography variant="body1">hassaan.zuberi@ucalgary.ca</Typography>
+                <Typography variant="body1" style={{fontSize: "1rem"}}>hassaan.zuberi@ucalgary.ca</Typography>
             </Grid>
         </Grid>
       </Grid>
