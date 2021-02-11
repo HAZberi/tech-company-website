@@ -30,8 +30,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.orange,
     height: "45px",
     opacity: 0.85,
-    borderRadius: "2.5px",
+    borderRadius: "5px",
   },
+  message: {
+      border: `2px solid ${theme.palette.common.orange}`,
+      marginTop: "5em",
+      borderRadius: "5px",
+  }
 }));
 
 const Contact = (props) => {
@@ -108,9 +113,11 @@ const Contact = (props) => {
         </Grid>
         <Grid item>
           <TextField
+            InputProps={{disableUnderline: true}}
             id="message"
             rows={10}
             value={message}
+            className={classes.message}
             onChange={(e) => setMessage(e.target.value)}
             multiline
           />
