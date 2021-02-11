@@ -9,19 +9,14 @@ import CallToAction from "../components/ui/CallToAction.js";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
-        paddingLeft: "5em",
-        paddingRight: "5em",
-        marginBottom: "3em",
-        marginTop: "2em",
-        [theme.breakpoints.down("sm")]: {
+        paddingLeft: "2em",
+        paddingRight: "2em",
+        marginBottom: "1em",
+        marginTop: "1em",
+        [theme.breakpoints.down("md")]: {
           paddingLeft: "1.5em",
           paddingRight: "1.5em",
-          marginTop: "1em",
-          marginBottom: "1em",
           textAlign: "center",
-        },
-        [theme.breakpoints.down("md")]: {
-          marginBottom: "1.5em",
         },
       },
 }));
@@ -32,13 +27,13 @@ const Contact = (props) => {
 
   return (
     <Grid container direction="row">
-      <Grid item container direction="column" lg={3}>
-        <Grid item>
-            <Typography varaint="h2" className={classes.heading}>Contact Us</Typography>
-            <Typography variant="caption">We are waiting!</Typography>
+      <Grid item container direction="column" lg={4}>
+        <Grid item className={classes.heading}>
+            <Typography variant="h2">Contact Us</Typography>
+            <Typography variant="caption">We are Waiting!</Typography>
         </Grid>
       </Grid>
-      <Grid item container direction="column" lg={9}>
+      <Grid item container direction="column" lg={8}>
           <CallToAction setValue={props.setValue} setSelected={props.setSelected} />
       </Grid>
     </Grid>
