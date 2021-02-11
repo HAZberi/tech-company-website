@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import CallToAction from "../components/ui/CallToAction.js";
+import phoneIcon from "../assets/phone.svg";
+import emailIcon from "../assets/email.svg";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: "2em",
         marginBottom: "1em",
         marginTop: "1em",
-        [theme.breakpoints.down("md")]: {
+        [theme.breakpoints.down("sm")]: {
           paddingLeft: "1.5em",
           paddingRight: "1.5em",
           textAlign: "center",
@@ -27,13 +29,29 @@ const Contact = (props) => {
 
   return (
     <Grid container direction="row">
-      <Grid item container direction="column" lg={4}>
+      <Grid item container direction="column" md={4}>
         <Grid item className={classes.heading}>
-            <Typography variant="h2">Contact Us</Typography>
+            <Typography variant="h2" style={{lineHeight: 1}}>Contact Us</Typography>
             <Typography variant="caption">We are Waiting!</Typography>
         </Grid>
+        <Grid item container alignItems="center">
+            <Grid item>
+                <img src={phoneIcon} alt="phone icon" style={{marginRight: "0.5em", marginTop: "0.35em"}}/>
+            </Grid>
+            <Grid item>
+                <Typography variant="body1">(555) 555-5555</Typography>
+            </Grid>
+        </Grid>
+        <Grid item container alignItems="center">
+            <Grid item>
+                <img src={emailIcon} alt="phone icon" style={{marginRight: "0.5em", marginTop: "0.35em"}}/>
+            </Grid>
+            <Grid item>
+                <Typography variant="body1">hassaan.zuberi@ucalgary.ca</Typography>
+            </Grid>
+        </Grid>
       </Grid>
-      <Grid item container direction="column" lg={8}>
+      <Grid item container direction="column" md={8}>
           <CallToAction setValue={props.setValue} setSelected={props.setSelected} />
       </Grid>
     </Grid>
