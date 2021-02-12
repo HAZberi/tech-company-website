@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import CallToAction from "../components/ui/CallToAction.js";
 import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
@@ -18,6 +21,16 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2em",
     marginTop: "2em",
     textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "1.5em",
+      paddingRight: "1.5em",
+    },
+  },
+  confirmationModalHeading: {
+    paddingLeft: "2em",
+    paddingRight: "2em",
+    marginBottom: "2em",
+    marginTop: "2em",
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
@@ -54,6 +67,8 @@ const Contact = (props) => {
   const [phone, setPhone] = useState("");
   const [phoneHelperText, setPhoneHelperText] = useState("");
   const [message, setMessage] = useState("");
+
+  const [open, setOpen] = useState(false);
 
   const onFieldInputChange = (event) => {
     let valid;
@@ -224,6 +239,7 @@ const Contact = (props) => {
               }
               className={classes.sendMessageButton}
               variant="contained"
+              onClick={()=>setOpen(true)}
             >
               Send Message
               <img
@@ -235,6 +251,11 @@ const Contact = (props) => {
           </Grid>
         </Grid>
       </Grid>
+      <Dialog open={open} onClose={()=>setOpen(false)} aria-labelledby="confirmation-modal-title">
+        <DialogTitle id="confirmation-modal-title" className={classes.confirmationModalHeading}>
+          <Typography variant="h4">Please confirm your message.</Typography>
+        </DialogTitle>
+      </Dialog>
       <Grid item container direction="column" lg={8}>
         <CallToAction
           setValue={props.setValue}
