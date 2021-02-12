@@ -29,8 +29,9 @@ const useStyles = makeStyles((theme) => ({
   confirmationModalHeading: {
     paddingLeft: "2em",
     paddingRight: "2em",
-    marginBottom: "2em",
     marginTop: "2em",
+    paddingTop: 0,
+    paddingBottom: 0,
     [theme.breakpoints.down("sm")]: {
       paddingLeft: "1.5em",
       paddingRight: "1.5em",
@@ -52,6 +53,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "4em",
     borderRadius: "5px",
   },
+  confirmationButton: {
+    verticalAlign: "bottom",
+    "&:hover" : {
+      //backgroundColor: theme.palette.common.orange,
+      //opacity: 0.75
+    },
+  }
 }));
 
 const Contact = (props) => {
@@ -150,7 +158,12 @@ const Contact = (props) => {
           </Grid>
           <Grid item>
             <Typography variant="body1" style={{ fontSize: "1rem" }}>
-              <a href="tel:5555555555" style={{textDecoration: "none", color: "inherit"}}>(555) 555-5555</a>
+              <a
+                href="tel:5555555555"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                (555) 555-5555
+              </a>
             </Typography>
           </Grid>
         </Grid>
@@ -164,7 +177,12 @@ const Contact = (props) => {
           </Grid>
           <Grid item>
             <Typography variant="body1" style={{ fontSize: "1rem" }}>
-              <a href="mailto:hassaan.zuberi@ucalgary.ca" style={{textDecoration: "none", color: "inherit"}}>hassaan.zuberi@ucalgary.ca</a>
+              <a
+                href="mailto:hassaan.zuberi@ucalgary.ca"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                hassaan.zuberi@ucalgary.ca
+              </a>
             </Typography>
           </Grid>
         </Grid>
@@ -239,7 +257,7 @@ const Contact = (props) => {
               }
               className={classes.sendMessageButton}
               variant="contained"
-              onClick={()=>setOpen(true)}
+              onClick={() => setOpen(true)}
             >
               Send Message
               <img
@@ -251,10 +269,101 @@ const Contact = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Dialog open={open} onClose={()=>setOpen(false)} aria-labelledby="confirmation-modal-title">
-        <DialogTitle id="confirmation-modal-title" className={classes.confirmationModalHeading}>
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="confirmation-modal-title"
+      >
+        <DialogTitle
+          id="confirmation-modal-title"
+          className={classes.confirmationModalHeading}
+        >
           <Typography variant="h4">Please confirm your message.</Typography>
         </DialogTitle>
+        <DialogContent>
+          <Grid container direction="column" style={{ padding: smallest ? 0 : "2rem" }}>
+            <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
+              <TextField
+                label="Name"
+                id="name"
+                error={nameHelperText.length !== 0}
+                helperText={nameHelperText}
+                value={name}
+                onChange={onFieldInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
+              <TextField
+                label="Email"
+                id="email"
+                error={emailHelperText.length !== 0}
+                helperText={emailHelperText}
+                value={email}
+                onChange={onFieldInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
+              <TextField
+                label="Phone"
+                id="phone"
+                error={phoneHelperText.length !== 0}
+                helperText={phoneHelperText}
+                value={phone}
+                onChange={onFieldInputChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item style={{ width: "100%" }}>
+              <TextField
+                InputProps={{ disableUnderline: true }}
+                id="message"
+                rows={8}
+                value={message}
+                className={classes.message}
+                style={{ marginTop: "2em" }}
+                onChange={(e) => setMessage(e.target.value)}
+                multiline
+                fullWidth
+              />
+            </Grid>
+            <Grid
+              item
+              container
+              justify="flex-end"
+              style={{ marginTop: "1em" }}
+            >
+              <Grid item style={{marginRight: "0.5rem"}}>
+                <Button
+                  variant="text"
+                  color="primary"
+                  size="small"
+                  onClick={() => setOpen(false)}
+                >
+                  CANCEL
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  onClick={() => setOpen(false)}
+                  className={classes.confirmationButton}
+                  disableElevation
+                >
+                  Send
+                  <img
+                    style={{ marginLeft: 5 }}
+                    src={paperAirplane}
+                    alt="paper airplane icon"
+                  />
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </DialogContent>
       </Dialog>
       <Grid item container direction="column" lg={8}>
         <CallToAction
