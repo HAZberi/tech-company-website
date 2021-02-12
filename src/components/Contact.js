@@ -282,7 +282,8 @@ const Contact = (props) => {
         open={open}
         onClose={() => setOpen(false)}
         aria-labelledby="confirmation-modal-title"
-        fullWidth={smallest ? true : false}
+        fullScreen={smallest ? true : false}
+        style={{zIndex: 1302}}
       >
         <DialogTitle
           id="confirmation-modal-title"
