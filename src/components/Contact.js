@@ -32,9 +32,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2em",
     paddingTop: 0,
     paddingBottom: 0,
+    textAlign: "center",
     [theme.breakpoints.down("sm")]: {
-      paddingLeft: "1.5em",
-      paddingRight: "1.5em",
+      width: "80%",
+      marginLeft: "2em",
+      marginRight: "2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      marginLeft: 0,
+      marginRight: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
     },
   },
   itemContainer: {
@@ -273,15 +282,16 @@ const Contact = (props) => {
         open={open}
         onClose={() => setOpen(false)}
         aria-labelledby="confirmation-modal-title"
+        fullWidth={smallest ? true : false}
       >
         <DialogTitle
           id="confirmation-modal-title"
           className={classes.confirmationModalHeading}
         >
-          <Typography variant="h4">Please confirm your message.</Typography>
+          <Typography variant="h4">Confirm Message</Typography>
         </DialogTitle>
         <DialogContent>
-          <Grid container direction="column" style={{ padding: smallest ? 0 : "2rem" }}>
+          <Grid container direction="column" style={{ padding: smallest ? 0 : "2rem", width: smallest ? "auto" : "30em" }}>
             <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
               <TextField
                 label="Name"
