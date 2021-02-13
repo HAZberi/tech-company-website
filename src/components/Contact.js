@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 //import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -64,11 +65,11 @@ const useStyles = makeStyles((theme) => ({
   },
   confirmationButton: {
     verticalAlign: "bottom",
-    "&:hover" : {
+    "&:hover": {
       //backgroundColor: theme.palette.common.orange,
       //opacity: 0.75
     },
-  }
+  },
 }));
 
 const Contact = (props) => {
@@ -139,6 +140,13 @@ const Contact = (props) => {
       default:
         break;
     }
+  };
+
+  const onConfirm = () => {
+    axios
+      .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail")
+      .then((res) => {console.log(res)})
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -283,7 +291,7 @@ const Contact = (props) => {
         onClose={() => setOpen(false)}
         aria-labelledby="confirmation-modal-title"
         fullScreen={smallest ? true : false}
-        style={{zIndex: 1302}}
+        style={{ zIndex: 1302 }}
       >
         <DialogTitle
           id="confirmation-modal-title"
@@ -292,7 +300,14 @@ const Contact = (props) => {
           <Typography variant="h4">Confirm Message</Typography>
         </DialogTitle>
         <DialogContent>
-          <Grid container direction="column" style={{ padding: smallest ? 0 : "2rem", width: smallest ? "auto" : "30em" }}>
+          <Grid
+            container
+            direction="column"
+            style={{
+              padding: smallest ? 0 : "2rem",
+              width: smallest ? "auto" : "30em",
+            }}
+          >
             <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
               <TextField
                 label="Name"
@@ -345,7 +360,7 @@ const Contact = (props) => {
               justify="flex-end"
               style={{ marginTop: "1em" }}
             >
-              <Grid item style={{marginRight: "0.5rem"}}>
+              <Grid item style={{ marginRight: "0.5rem" }}>
                 <Button
                   variant="text"
                   color="primary"
@@ -360,7 +375,7 @@ const Contact = (props) => {
                   variant="contained"
                   color="primary"
                   size="small"
-                  onClick={() => setOpen(false)}
+                  onClick={onConfirm}
                   className={classes.confirmationButton}
                   disableElevation
                 >
