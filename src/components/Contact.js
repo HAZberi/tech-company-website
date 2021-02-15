@@ -11,6 +11,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "@material-ui/core/Snackbar";
 import CallToAction from "../components/ui/CallToAction.js";
 import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
@@ -87,7 +88,11 @@ const Contact = (props) => {
   const [phoneHelperText, setPhoneHelperText] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    backgroundColor: "",
+  });
   const [open, setOpen] = useState(false);
 
   const onFieldInputChange = (event) => {
@@ -165,8 +170,20 @@ const Contact = (props) => {
         setEmail("");
         setPhone("");
         setMessage("");
+        setAlert({
+          open: true,
+          message: "Message sent successfully!",
+          backgroundColor: "#4BB543",
+        });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: "Something went wrong! Please try again.",
+          backgroundColor: "#FF3232",
+        });
+      });
   };
 
   return (
@@ -395,13 +412,25 @@ const Contact = (props) => {
                   className={classes.confirmationButton}
                   disableElevation
                 >
-                  {loading ? <CircularProgress size={20} /> : sendButtonJSX("Send")}
+                  {loading ? (
+                    <CircularProgress size={20} />
+                  ) : (
+                    sendButtonJSX("Send")
+                  )}
                 </Button>
               </Grid>
             </Grid>
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={7000}
+      />
       <Grid item container direction="column" lg={8}>
         <CallToAction
           setValue={props.setValue}
