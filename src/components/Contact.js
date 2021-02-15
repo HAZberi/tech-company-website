@@ -144,16 +144,7 @@ const Contact = (props) => {
 
   const onConfirm = () => {
     axios
-      .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail", {
-        headers: {
-          //
-          "Access-Control-Allow-Origin": "http://localhost:3000",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
-          'Access-Control-Allow-Credentials': 'true',
-        },
-        withCredentials: true,
-      })
+      .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail")
       .then((res) => {
         console.log(res);
       })
@@ -307,6 +298,7 @@ const Contact = (props) => {
         <DialogTitle
           id="confirmation-modal-title"
           className={classes.confirmationModalHeading}
+          disableTypography
         >
           <Typography variant="h4">Confirm Message</Typography>
         </DialogTitle>
