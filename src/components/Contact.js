@@ -10,6 +10,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import CallToAction from "../components/ui/CallToAction.js";
 import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
@@ -85,6 +86,7 @@ const Contact = (props) => {
   const [phone, setPhone] = useState("");
   const [phoneHelperText, setPhoneHelperText] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [open, setOpen] = useState(false);
 
@@ -142,11 +144,27 @@ const Contact = (props) => {
     }
   };
 
+  const sendButtonJSX = (text) => (
+    <>
+      {text}
+      <img
+        style={{ marginLeft: 7.5 }}
+        src={paperAirplane}
+        alt="paper airplane icon"
+      />
+    </>
+  );
   const onConfirm = () => {
+    setLoading(true);
     axios
       .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail")
       .then((res) => {
-        console.log(res);
+        setLoading(false);
+        setOpen(false);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
       })
       .catch((err) => console.error(err));
   };
@@ -278,12 +296,7 @@ const Contact = (props) => {
               variant="contained"
               onClick={() => setOpen(true)}
             >
-              Send Message
-              <img
-                style={{ marginLeft: 7.5 }}
-                src={paperAirplane}
-                alt="paper airplane icon"
-              />
+              {sendButtonJSX("Send Message")}
             </Button>
           </Grid>
         </Grid>
@@ -382,12 +395,7 @@ const Contact = (props) => {
                   className={classes.confirmationButton}
                   disableElevation
                 >
-                  Send
-                  <img
-                    style={{ marginLeft: 5 }}
-                    src={paperAirplane}
-                    alt="paper airplane icon"
-                  />
+                  {loading ? <CircularProgress size={20} /> : sendButtonJSX("Send")}
                 </Button>
               </Grid>
             </Grid>
