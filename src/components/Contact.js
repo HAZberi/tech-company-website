@@ -162,7 +162,14 @@ const Contact = (props) => {
   const onConfirm = () => {
     setLoading(true);
     axios
-      .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail")
+      .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail", {
+        params: {
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+        },
+      })
       .then((res) => {
         setLoading(false);
         setOpen(false);
