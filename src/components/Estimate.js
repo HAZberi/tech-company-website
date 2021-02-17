@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
-import {makeStyles, useTheme} from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -31,110 +31,189 @@ import data from "../assets/data.svg";
 
 import estimateAnimation from "../animations/estimateAnimation/data.json";
 
-const useStyles = makeStyles(theme => ({
-    heading: {
-        paddingLeft: "5em",
-        paddingRight: "5em",
-        marginBottom: "3em",
-        marginTop: "2em",
-        [theme.breakpoints.down("sm")]: {
-          paddingLeft: "1.5em",
-          paddingRight: "1.5em",
-          marginTop: "1em",
-          marginBottom: "1em",
-          textAlign: "center",
-        },
-        [theme.breakpoints.down("md")]: {
-          marginBottom: "1.5em",
-        },
-      },
-
-    icon: {
-        height: "10em",
-        width: "10em",
+const useStyles = makeStyles((theme) => ({
+  heading: {
+    paddingLeft: "5em",
+    paddingRight: "5em",
+    marginBottom: "3em",
+    marginTop: "2em",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "1.5em",
+      paddingRight: "1.5em",
+      marginTop: "1em",
+      marginBottom: "1em",
+      textAlign: "center",
     },
-    question: {
-        marginTop: "2em",
-        marginBottom: "2em",
-        [theme.breakpoints.down("md")]: {
-            marginBottom: "1.5em",
-        },
-        [theme.breakpoints.down("sm")]: {
-            marginTop: "1em",
-            marginBottom: "1em",
-        },
-    }
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "1.5em",
+    },
+  },
+
+  icon: {
+    height: "10em",
+    width: "10em",
+  },
+  question: {
+    marginTop: "5em",
+    marginBottom: "2em",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "1.5em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "1em",
+      marginBottom: "1em",
+    },
+  },
+  estimate: {
+    ...theme.typography.estimate,
+    borderRadius: "30px",
+    marginLeft: "20px",
+    marginRight: "20px",
+    height: "45px",
+    width: "250px",
+    marginTop: "0.5rem",
+    fontSize: "1.35rem",
+  },
 }));
 
 const Estimate = (props) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const smaller = useMediaQuery(theme.breakpoints.down("sm"));
-    const smallest = useMediaQuery(theme.breakpoints.down("xs"));
+  const classes = useStyles();
+  const theme = useTheme();
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: estimateAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: estimateAnimation,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice",
-        }
-    };
+  const defaultQuestions = [
+    {
+      id: 1,
+      title: "Which service are you interested in?",
+      subtitle: null,
+      active: true,
+      options: [
+        {
+          id: 1,
+          title: "Software Development",
+          subtitle: null,
+          icon: software,
+          iconAlt: "three floating screens",
+          selected: false,
+          cost: 0,
+        },
+        {
+          id: 2,
+          title: "App Development",
+          subtitle: null,
+          icon: mobile,
+          iconAlt: "phones and tablet ouline",
+          selected: false,
+          cost: 0,
+        },
+        {
+          id: 3,
+          title: "Website Development",
+          subtitle: null,
+          icon: website,
+          iconAlt: "a computer screen outline",
+          selected: false,
+          cost: 0,
+        },
+      ],
+    },
+  ];
 
-    return (
-        <Grid container direction="row">
-            <Grid item container direction="column" md>
-                <Grid item className={classes.heading}>
-                    <Typography variant="h2">
-                        Estimate
-                    </Typography>
-                </Grid>
-                <Grid item style={{marginBottom: smaller ? 0 : "5em", height: smallest ? "10em" : smaller ? "17.5em" : "auto", marginRight: smaller ? "0" : "7.5em", maxWidth: smaller ? "100%" : "40em",}}>
-                    <Lottie options={defaultOptions} height="100%" width="100%" />
-                </Grid>
-            </Grid>
-            <Grid item container direction="column" md>
-                <Grid item>
-                    <Typography variant="h4" align="center" className={classes.question} gutterBottom>
-                        Which service are you interested in?
-                    </Typography>
-                </Grid>
-                <Grid item container>
-                    <Grid item container alignItems="center" direction="column" sm>
-                        <Grid item>
-                            <img src={software} alt="three floating screens" className={classes.icon}/>
-                        </Grid>
-                        <Grid item style={{maxWidth: "10em", marginTop: "0.75em"}}>
-                            <Typography variant="h6" align="center">
-                                Software Development
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item container alignItems="center" direction="column" sm>
-                        <Grid item>
-                            <img src={mobile} alt="phones and tablet ouline" className={classes.icon}/>
-                        </Grid>
-                        <Grid item style={{maxWidth: "10em", marginTop: "0.75em"}}>
-                            <Typography variant="h6" align="center">
-                                App Development
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item container alignItems="center" direction="column" sm>
-                        <Grid item>
-                            <img src={website} alt="a monitor screen" className={classes.icon}/>
-                        </Grid>
-                        <Grid item style={{maxWidth: "10em", marginTop: "0.75em"}}>
-                            <Typography variant="h6" align="center">
-                                Webiste Development
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
+  return (
+    <Grid container direction="row">
+      <Grid item container direction="column" md>
+        <Grid item className={classes.heading}>
+          <Typography variant="h2">Estimate</Typography>
         </Grid>
-    )
+        <Grid
+          item
+          style={{
+            marginTop: smaller ? 0 : medium ? "9em" : "7em",
+            marginBottom: smaller ? 0 : "5em",
+            height: smallest ? "10em" : smaller ? "17.5em" : "auto",
+            marginRight: smaller ? "0" : "7.5em",
+            maxWidth: smaller ? "100%" : "40em",
+          }}
+        >
+          <Lottie options={defaultOptions} height="100%" width="100%" />
+        </Grid>
+      </Grid>
+      <Grid item container direction="column" md>
+        {defaultQuestions
+          .filter((question) => question.active)
+          .map((question, index) => (
+            <>
+              <Grid item className={classes.question}>
+                <Typography variant="h4" align="center">
+                  {question.title}
+                </Typography>
+                <Typography variant="subtitle1" align="center" gutterBottom>
+                  {question.subtitle}
+                </Typography>
+              </Grid>
+              <Grid item container>
+                {question.options.map((option) => (
+                  <Grid
+                    item
+                    container
+                    alignItems="center"
+                    style={{ marginTop: smallest ? "4em" : "2em" }}
+                    direction="column"
+                    sm
+                  >
+                    <Grid item>
+                      <img
+                        src={option.icon}
+                        alt={option.iconAlt}
+                        className={classes.icon}
+                      />
+                    </Grid>
+                    <Grid item style={{ maxWidth: "10em", marginTop: "0.5em" }}>
+                      <Typography variant="h6" align="center">
+                        {option.title}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                ))}
+              </Grid>
+            </>
+          ))}
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          style={{ marginTop: "3em", marginBottom: "2.5em" }}
+        >
+          <Grid item>
+            <img src={backArrow} alt="Previous question" />
+          </Grid>
+          <Grid item>
+            <img src={forwardArrow} alt="Next question" />
+          </Grid>
+        </Grid>
+        <Grid item align="center" style={{ marginTop: "3em" }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.estimate}
+          >
+            Get Estimate
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 };
 
 export default Estimate;
