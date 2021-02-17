@@ -80,23 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Estimate = (props) => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
-  const medium = useMediaQuery(theme.breakpoints.down("md"));
-  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: estimateAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  const defaultQuestions = [
+const defaultQuestions = [
     {
       id: 1,
       title: "Which service are you interested in?",
@@ -355,6 +339,23 @@ const Estimate = (props) => {
       active: true,
     },
   ];
+
+
+const Estimate = (props) => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const smallest = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: estimateAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <Grid container direction="row">
