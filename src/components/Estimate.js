@@ -28,7 +28,7 @@ import gps from "../assets/gps.svg";
 import customized from "../assets/customized.svg";
 import data from "../assets/data.svg";
 
-import estimateAnimationData from "../animations/estimateAnimation/data.json";
+import estimateAnimation from "../animations/estimateAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
     heading: {
@@ -56,7 +56,7 @@ const Estimate = (props) => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: estimateAnimationData,
+        animationData: estimateAnimation,
         rendererSettings: {
           preserveAspectRatio: "xMidYMid slice",
         }
@@ -66,16 +66,52 @@ const Estimate = (props) => {
         <Grid container direction="row">
             <Grid item container direction="column">
                 <Grid item className={classes.heading}>
-                    <Typography variant="h2" gutterBottom>
+                    <Typography variant="h2">
                         Estimate
                     </Typography>
                 </Grid>
-                <Grid item>
-                    <Lottie options={defaultOptions}/>
+                <Grid item style={{marginBottom: "7em"}}>
+                    <Lottie options={defaultOptions} height="160%" width="100%" />
                 </Grid>
             </Grid>
             <Grid item container direction="column">
-
+                <Grid item>
+                    <Typography variant="h4" align="center" gutterBottom>
+                        Which service are you interested in?
+                    </Typography>
+                </Grid>
+                <Grid item container>
+                    <Grid item container direction="column">
+                        <Grid item style={{maxWidth: "10em"}}>
+                            <Typography variant="h6" align="center">
+                                Software Development
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <img src={software} alt="three floating screens" />
+                        </Grid>
+                    </Grid>
+                    <Grid item container direction="column">
+                        <Grid item style={{maxWidth: "10em"}}>
+                            <Typography variant="h6" align="center">
+                                App Development
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <img src={mobile} alt="phones and tablet ouline" />
+                        </Grid>
+                    </Grid>
+                    <Grid item container direction="column">
+                        <Grid item style={{maxWidth: "10em"}}>
+                            <Typography variant="h6" align="center">
+                                Webiste Development
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <img src={website} alt="a monitor screen" />
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     )
