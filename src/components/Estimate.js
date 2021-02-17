@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import check from "../assets/check.svg";
 import send from "../assets/send.svg";
@@ -47,11 +48,30 @@ const useStyles = makeStyles(theme => ({
           marginBottom: "1.5em",
         },
       },
+
+    icon: {
+        height: "10em",
+        width: "10em",
+    },
+    question: {
+        marginTop: "2em",
+        marginBottom: "2em",
+        [theme.breakpoints.down("md")]: {
+            marginBottom: "1.5em",
+        },
+        [theme.breakpoints.down("sm")]: {
+            marginTop: "1em",
+            marginBottom: "1em",
+        },
+    }
 }));
 
 const Estimate = (props) => {
     const classes = useStyles();
     const theme = useTheme();
+    const smaller = useMediaQuery(theme.breakpoints.down("sm"));
+    const smallest = useMediaQuery(theme.breakpoints.down("xs"));
+
 
     const defaultOptions = {
         loop: true,
@@ -64,51 +84,51 @@ const Estimate = (props) => {
 
     return (
         <Grid container direction="row">
-            <Grid item container direction="column">
+            <Grid item container direction="column" md>
                 <Grid item className={classes.heading}>
                     <Typography variant="h2">
                         Estimate
                     </Typography>
                 </Grid>
-                <Grid item style={{marginBottom: "7em"}}>
-                    <Lottie options={defaultOptions} height="160%" width="100%" />
+                <Grid item style={{marginBottom: smaller ? 0 : "5em", height: smallest ? "10em" : smaller ? "17.5em" : "auto", marginRight: smaller ? "0" : "7.5em", maxWidth: smaller ? "100%" : "40em",}}>
+                    <Lottie options={defaultOptions} height="100%" width="100%" />
                 </Grid>
             </Grid>
-            <Grid item container direction="column">
+            <Grid item container direction="column" md>
                 <Grid item>
-                    <Typography variant="h4" align="center" gutterBottom>
+                    <Typography variant="h4" align="center" className={classes.question} gutterBottom>
                         Which service are you interested in?
                     </Typography>
                 </Grid>
                 <Grid item container>
-                    <Grid item container direction="column">
-                        <Grid item style={{maxWidth: "10em"}}>
+                    <Grid item container alignItems="center" direction="column" sm>
+                        <Grid item>
+                            <img src={software} alt="three floating screens" className={classes.icon}/>
+                        </Grid>
+                        <Grid item style={{maxWidth: "10em", marginTop: "0.75em"}}>
                             <Typography variant="h6" align="center">
                                 Software Development
                             </Typography>
                         </Grid>
-                        <Grid item>
-                            <img src={software} alt="three floating screens" />
-                        </Grid>
                     </Grid>
-                    <Grid item container direction="column">
-                        <Grid item style={{maxWidth: "10em"}}>
+                    <Grid item container alignItems="center" direction="column" sm>
+                        <Grid item>
+                            <img src={mobile} alt="phones and tablet ouline" className={classes.icon}/>
+                        </Grid>
+                        <Grid item style={{maxWidth: "10em", marginTop: "0.75em"}}>
                             <Typography variant="h6" align="center">
                                 App Development
                             </Typography>
                         </Grid>
-                        <Grid item>
-                            <img src={mobile} alt="phones and tablet ouline" />
-                        </Grid>
                     </Grid>
-                    <Grid item container direction="column">
-                        <Grid item style={{maxWidth: "10em"}}>
+                    <Grid item container alignItems="center" direction="column" sm>
+                        <Grid item>
+                            <img src={website} alt="a monitor screen" className={classes.icon}/>
+                        </Grid>
+                        <Grid item style={{maxWidth: "10em", marginTop: "0.75em"}}>
                             <Typography variant="h6" align="center">
                                 Webiste Development
                             </Typography>
-                        </Grid>
-                        <Grid item>
-                            <img src={website} alt="a monitor screen" />
                         </Grid>
                     </Grid>
                 </Grid>
