@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Lottie from "react-lottie";
 import { cloneDeep } from "lodash";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -81,265 +81,260 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const defaultQuestions = [
-    {
-      id: 1,
-      title: "Which service are you interested in?",
-      subtitle: null,
-      active: true,
-      options: [
-        {
-          id: 1,
-          title: "Software Development",
-          subtitle: null,
-          icon: software,
-          iconAlt: "three floating screens",
-          selected: false,
-          cost: 0,
-        },
-        {
-          id: 2,
-          title: "App Development",
-          subtitle: null,
-          icon: mobile,
-          iconAlt: "phones and tablet ouline",
-          selected: false,
-          cost: 0,
-        },
-        {
-          id: 3,
-          title: "Website Development",
-          subtitle: null,
-          icon: website,
-          iconAlt: "a computer screen outline",
-          selected: false,
-          cost: 0,
-        },
-      ],
-    },
-  ];
+  {
+    id: 1,
+    title: "Which service are you interested in?",
+    subtitle: null,
+    active: true,
+    options: [
+      {
+        id: 1,
+        title: "Software Development",
+        subtitle: null,
+        icon: software,
+        iconAlt: "three floating screens",
+        selected: false,
+        cost: 0,
+      },
+      {
+        id: 2,
+        title: "App Development",
+        subtitle: null,
+        icon: mobile,
+        iconAlt: "phones and tablet ouline",
+        selected: false,
+        cost: 0,
+      },
+      {
+        id: 3,
+        title: "Website Development",
+        subtitle: null,
+        icon: website,
+        iconAlt: "a computer screen outline",
+        selected: false,
+        cost: 0,
+      },
+    ],
+  },
+];
 
-  const newQuestions = cloneDeep(defaultQuestions);
-  newQuestions[0].options[0].selected = true;
-  console.log(defaultQuestions);
+const softwareQuestions = [
+  { ...defaultQuestions[0], active: false },
+  {
+    id: 2,
+    title: "Which platforms do you need supported?",
+    subtitle: "Select all that apply.",
+    options: [
+      {
+        id: 1,
+        title: "Web Application",
+        subtitle: null,
+        icon: website,
+        iconAlt: "computer outline",
+        selected: false,
+        cost: 100,
+      },
+      {
+        id: 2,
+        title: "iOS Application",
+        subtitle: null,
+        icon: iphone,
+        iconAlt: "outline of iphone",
+        selected: false,
+        cost: 100,
+      },
+      {
+        id: 3,
+        title: "Android Application",
+        subtitle: null,
+        icon: android,
+        iconAlt: "outlines of android phone",
+        selected: false,
+        cost: 100,
+      },
+    ],
+    active: true,
+  },
+  {
+    id: 3,
+    title: "Which features do you expect to use?",
+    subtitle: "Select all that apply.",
+    options: [
+      {
+        id: 1,
+        title: "Photo/Video",
+        subtitle: null,
+        icon: camera,
+        iconAlt: "camera outline",
+        selected: false,
+        cost: 25,
+      },
+      {
+        id: 2,
+        title: "GPS",
+        subtitle: null,
+        icon: gps,
+        iconAlt: "gps pin",
+        selected: false,
+        cost: 25,
+      },
+      {
+        id: 3,
+        title: "File Transfer",
+        subtitle: null,
+        icon: upload,
+        iconAlt: "outline of cloud with arrow pointing up",
+        selected: false,
+        cost: 25,
+      },
+    ],
+    active: false,
+  },
+  {
+    id: 4,
+    title: "Which features do you expect to use?",
+    subtitle: "Select all that apply.",
+    options: [
+      {
+        id: 1,
+        title: "Users/Authentication",
+        subtitle: null,
+        icon: users,
+        iconAlt: "outline of a person with a plus sign",
+        selected: false,
+        cost: 25,
+      },
+      {
+        id: 2,
+        title: "Biometrics",
+        subtitle: null,
+        icon: biometrics,
+        iconAlt: "fingerprint",
+        selected: false,
+        cost: 25,
+      },
+      {
+        id: 3,
+        title: "Push Notifications",
+        subtitle: null,
+        icon: bell,
+        iconAlt: "outline of a bell",
+        selected: false,
+        cost: 25,
+      },
+    ],
+    active: false,
+  },
+  {
+    id: 5,
+    title: "What type of custom features do you expect to need?",
+    subtitle: "Select one.",
+    options: [
+      {
+        id: 1,
+        title: "Low Complexity",
+        subtitle: "(Informational)",
+        icon: info,
+        iconAlt: "'i' inside a circle",
+        selected: false,
+        cost: 25,
+      },
+      {
+        id: 2,
+        title: "Medium Complexity",
+        subtitle: "(Interactive, Customizable, Realtime)",
+        icon: customized,
+        iconAlt: "two toggle switches",
+        selected: false,
+        cost: 50,
+      },
+      {
+        id: 3,
+        title: "High Complexity",
+        subtitle: "(Data Modeling and Computation)",
+        icon: data,
+        iconAlt: "outline of line graph",
+        selected: false,
+        cost: 100,
+      },
+    ],
+    active: false,
+  },
+  {
+    id: 6,
+    title: "How many users do you expect?",
+    subtitle: "Select one.",
+    options: [
+      {
+        id: 1,
+        title: "0-10",
+        subtitle: null,
+        icon: person,
+        iconAlt: "person outline",
+        selected: false,
+        cost: 1,
+      },
+      {
+        id: 2,
+        title: "10-100",
+        subtitle: null,
+        icon: persons,
+        iconAlt: "outline of two people",
+        selected: false,
+        cost: 1.25,
+      },
+      {
+        id: 3,
+        title: "100+",
+        subtitle: null,
+        icon: people,
+        iconAlt: "outline of three people",
+        selected: false,
+        cost: 1.5,
+      },
+    ],
+    active: false,
+  },
+];
 
-  const softwareQuestions = [
-    { ...defaultQuestions[0], active: false },
-    {
-      id: 2,
-      title: "Which platforms do you need supported?",
-      subtitle: "Select all that apply.",
-      options: [
-        {
-          id: 1,
-          title: "Web Application",
-          subtitle: null,
-          icon: website,
-          iconAlt: "computer outline",
-          selected: false,
-          cost: 100,
-        },
-        {
-          id: 2,
-          title: "iOS Application",
-          subtitle: null,
-          icon: iphone,
-          iconAlt: "outline of iphone",
-          selected: false,
-          cost: 100,
-        },
-        {
-          id: 3,
-          title: "Android Application",
-          subtitle: null,
-          icon: android,
-          iconAlt: "outlines of android phone",
-          selected: false,
-          cost: 100,
-        },
-      ],
-      active: true,
-    },
-    {
-      id: 3,
-      title: "Which features do you expect to use?",
-      subtitle: "Select all that apply.",
-      options: [
-        {
-          id: 1,
-          title: "Photo/Video",
-          subtitle: null,
-          icon: camera,
-          iconAlt: "camera outline",
-          selected: false,
-          cost: 25,
-        },
-        {
-          id: 2,
-          title: "GPS",
-          subtitle: null,
-          icon: gps,
-          iconAlt: "gps pin",
-          selected: false,
-          cost: 25,
-        },
-        {
-          id: 3,
-          title: "File Transfer",
-          subtitle: null,
-          icon: upload,
-          iconAlt: "outline of cloud with arrow pointing up",
-          selected: false,
-          cost: 25,
-        },
-      ],
-      active: false,
-    },
-    {
-      id: 4,
-      title: "Which features do you expect to use?",
-      subtitle: "Select all that apply.",
-      options: [
-        {
-          id: 1,
-          title: "Users/Authentication",
-          subtitle: null,
-          icon: users,
-          iconAlt: "outline of a person with a plus sign",
-          selected: false,
-          cost: 25,
-        },
-        {
-          id: 2,
-          title: "Biometrics",
-          subtitle: null,
-          icon: biometrics,
-          iconAlt: "fingerprint",
-          selected: false,
-          cost: 25,
-        },
-        {
-          id: 3,
-          title: "Push Notifications",
-          subtitle: null,
-          icon: bell,
-          iconAlt: "outline of a bell",
-          selected: false,
-          cost: 25,
-        },
-      ],
-      active: false,
-    },
-    {
-      id: 5,
-      title: "What type of custom features do you expect to need?",
-      subtitle: "Select one.",
-      options: [
-        {
-          id: 1,
-          title: "Low Complexity",
-          subtitle: "(Informational)",
-          icon: info,
-          iconAlt: "'i' inside a circle",
-          selected: false,
-          cost: 25,
-        },
-        {
-          id: 2,
-          title: "Medium Complexity",
-          subtitle: "(Interactive, Customizable, Realtime)",
-          icon: customized,
-          iconAlt: "two toggle switches",
-          selected: false,
-          cost: 50,
-        },
-        {
-          id: 3,
-          title: "High Complexity",
-          subtitle: "(Data Modeling and Computation)",
-          icon: data,
-          iconAlt: "outline of line graph",
-          selected: false,
-          cost: 100,
-        },
-      ],
-      active: false,
-    },
-    {
-      id: 6,
-      title: "How many users do you expect?",
-      subtitle: "Select one.",
-      options: [
-        {
-          id: 1,
-          title: "0-10",
-          subtitle: null,
-          icon: person,
-          iconAlt: "person outline",
-          selected: false,
-          cost: 1,
-        },
-        {
-          id: 2,
-          title: "10-100",
-          subtitle: null,
-          icon: persons,
-          iconAlt: "outline of two people",
-          selected: false,
-          cost: 1.25,
-        },
-        {
-          id: 3,
-          title: "100+",
-          subtitle: null,
-          icon: people,
-          iconAlt: "outline of three people",
-          selected: false,
-          cost: 1.5,
-        },
-      ],
-      active: false,
-    },
-  ];
-
-  const websiteQuestions = [
-    { ...defaultQuestions[0], active: false },
-    {
-      id: 2,
-      title: "Which type of website are you wanting?",
-      subtitle: "Select one.",
-      options: [
-        {
-          id: 1,
-          title: "Basic",
-          subtitle: "(Informational)",
-          icon: info,
-          iconAlt: "person outline",
-          selected: false,
-          cost: 100,
-        },
-        {
-          id: 2,
-          title: "Interactive",
-          subtitle: "(Users, API's, Messaging)",
-          icon: customized,
-          iconAlt: "outline of two people",
-          selected: false,
-          cost: 200,
-        },
-        {
-          id: 3,
-          title: "E-Commerce",
-          subtitle: "(Sales)",
-          icon: globe,
-          iconAlt: "outline of three people",
-          selected: false,
-          cost: 250,
-        },
-      ],
-      active: true,
-    },
-  ];
-
+const websiteQuestions = [
+  { ...defaultQuestions[0], active: false },
+  {
+    id: 2,
+    title: "Which type of website are you wanting?",
+    subtitle: "Select one.",
+    options: [
+      {
+        id: 1,
+        title: "Basic",
+        subtitle: "(Informational)",
+        icon: info,
+        iconAlt: "person outline",
+        selected: false,
+        cost: 100,
+      },
+      {
+        id: 2,
+        title: "Interactive",
+        subtitle: "(Users, API's, Messaging)",
+        icon: customized,
+        iconAlt: "outline of two people",
+        selected: false,
+        cost: 200,
+      },
+      {
+        id: 3,
+        title: "E-Commerce",
+        subtitle: "(Sales)",
+        icon: globe,
+        iconAlt: "outline of three people",
+        selected: false,
+        cost: 250,
+      },
+    ],
+    active: true,
+  },
+];
 
 const Estimate = (props) => {
   const classes = useStyles();
@@ -348,6 +343,8 @@ const Estimate = (props) => {
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const [questions, setQuestions] = useState(defaultQuestions);
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -355,6 +352,56 @@ const Estimate = (props) => {
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
+  };
+
+  const nextQuestion = () => {
+    //creating a deep copy of state Questions to keep the state immutable
+    const updatedQuestions = cloneDeep(questions);
+    //filtering out the currently active question
+    const activeQuestion = updatedQuestions.filter(
+      (question) => question.active
+    );
+    //Getting index of active question
+    const activeQuestionIndex = activeQuestion[0].id - 1;
+    //Getting next question index
+    const nextQuestionIndex = activeQuestionIndex + 1;
+    //setting active question to false
+    updatedQuestions[activeQuestionIndex] = {
+      ...activeQuestion[0],
+      active: false,
+    };
+    //setting next question to true
+    updatedQuestions[nextQuestionIndex] = {
+      ...updatedQuestions[nextQuestionIndex],
+      active: true,
+    };
+    //Finally Update the question structure in state
+    setQuestions(updatedQuestions);
+  };
+
+  const previousQuestion = () => {
+    //creating a deep copy of state Questions to keep the state immutable
+    const updatedQuestions = cloneDeep(questions);
+    //filtering out the currently active question
+    const activeQuestion = updatedQuestions.filter(
+      (question) => question.active
+    );
+    //Getting index of active question
+    const activeQuestionIndex = activeQuestion[0].id - 1;
+    //Getting next question index
+    const previousQuestionIndex = activeQuestionIndex - 1;
+    //setting active question to false
+    updatedQuestions[activeQuestionIndex] = {
+      ...activeQuestion[0],
+      active: false,
+    };
+    //setting next question to true
+    updatedQuestions[previousQuestionIndex] = {
+      ...updatedQuestions[previousQuestionIndex],
+      active: true,
+    };
+    //Finally Update the question structure in state
+    setQuestions(updatedQuestions);
   };
 
   return (
