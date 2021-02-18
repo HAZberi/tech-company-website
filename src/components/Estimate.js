@@ -439,11 +439,24 @@ const Estimate = (props) => {
     const activeQuestionIndex = activeQuestion[0].id - 1;
     //Getting the selected option from currently active question using the option id input parameter
     const selectedOption =
-      updatedQuestions[activeQuestionIndex].options[id - 1].selected;
-    //Toggle the option's selected property and update the questions
-    updatedQuestions[activeQuestionIndex].options[
-      id - 1
-    ].selected = !selectedOption;
+      updatedQuestions[activeQuestionIndex].options[id - 1];
+    //Getting the previous selected option from currently active question and filter for any other options seleted
+    const previouslySelectedOption = activeQuestion[0].options.filter(option => option.selected);
+    //switch over active question subtitle to find whether single or multiple questions needed to be selected.
+    switch(activeQuestion[0].subtitle){
+      //The case where only one option can be seleted at a time
+      case 'Select one.': 
+        //Check if there is any already or previously selected option exist
+        //if condition is true => toggle the previously selected option
+        if(previouslySelectedOption[0]) previouslySelectedOption[0].selected = !previouslySelectedOption[0].selected;
+        //if there is no previously selected option then Toggle the options currently selected property
+        selectedOption.selected = !selectedOption.selected;
+        break;
+      default: 
+        //In all other cases user can select multiple options, so toggle selection
+        selectedOption.selected = !selectedOption.selected;
+        break;
+    }
     //Finally update the question structure in state
     setQuestions(updatedQuestions);
   };
@@ -492,7 +505,9 @@ const Estimate = (props) => {
                         marginTop: smallest && i !== 0 ? "4em" : "2em",
                         textTransform: "none",
                         display: "grid",
-                        backgroundColor: option.selected ? theme.palette.common.orange : null,
+                        backgroundColor: option.selected
+                          ? theme.palette.common.orange
+                          : null,
                         borderRadius: 0,
                       }}
                       component={Button}
