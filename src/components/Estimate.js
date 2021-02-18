@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 
 //import check from "../assets/check.svg";
 //import send from "../assets/send.svg";
@@ -350,6 +352,8 @@ const Estimate = (props) => {
 
   const [questions, setQuestions] = useState(defaultQuestions);
 
+  const [open, setOpen] = useState(false);
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -605,13 +609,18 @@ const Estimate = (props) => {
             color="secondary"
             className={classes.estimate}
             onClick={() => {
-              console.log("Get Estimate");
+              setOpen(true);
             }}
           >
             Get Estimate
           </Button>
         </Grid>
       </Grid>
+      <Dialog open={open} onClose={()=>setOpen(false)}>
+        <DialogContent justify="center">
+          <Typography variant="h2" align="center">Estimate</Typography>
+        </DialogContent>
+      </Dialog>
     </Grid>
   );
 };
