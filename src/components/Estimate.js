@@ -78,6 +78,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.5rem",
     fontSize: "1.35rem",
   },
+  arrowIcons: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
 }));
 
 const defaultQuestions = [
@@ -197,7 +202,7 @@ const softwareQuestions = [
     options: [
       {
         id: 1,
-        title: "Users/Authentication",
+        title: "Users Authentication",
         subtitle: null,
         icon: users,
         iconAlt: "outline of a person with a plus sign",
@@ -343,7 +348,7 @@ const Estimate = (props) => {
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
-  const [questions, setQuestions] = useState(defaultQuestions);
+  const [questions, setQuestions] = useState(softwareQuestions);
 
   const defaultOptions = {
     loop: true,
@@ -424,7 +429,7 @@ const Estimate = (props) => {
         </Grid>
       </Grid>
       <Grid item container direction="column" md>
-        {defaultQuestions
+        {questions
           .filter((question) => question.active)
           .map((question, index) => (
             <React.Fragment key={index}>
@@ -475,10 +480,17 @@ const Estimate = (props) => {
           style={{ marginTop: "3em", marginBottom: "2.5em" }}
         >
           <Grid item>
-            <img src={backArrow} alt="Previous question" />
+            <IconButton
+              className={classes.arrowIcons}
+              onClick={previousQuestion}
+            >
+              <img src={backArrow} alt="Previous question" />
+            </IconButton>
           </Grid>
           <Grid item>
-            <img src={forwardArrow} alt="Next question" />
+            <IconButton className={classes.arrowIcons} onClick={nextQuestion}>
+              <img src={forwardArrow} alt="Next question" />
+            </IconButton>
           </Grid>
         </Grid>
         <Grid item align="center" style={{ marginTop: "3em" }}>
@@ -486,6 +498,7 @@ const Estimate = (props) => {
             variant="contained"
             color="secondary"
             className={classes.estimate}
+            onClick={() => {console.log("Get Estimate")}}
           >
             Get Estimate
           </Button>
