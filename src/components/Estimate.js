@@ -9,6 +9,8 @@ import IconButton from "@material-ui/core/IconButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
 
 //import check from "../assets/check.svg";
 //import send from "../assets/send.svg";
@@ -84,6 +86,31 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "transparent",
     },
+  },
+  estimateModalHeading: {
+    paddingLeft: "2em",
+    paddingRight: "2em",
+    marginTop: "2em",
+    paddingTop: 0,
+    paddingBottom: 0,
+    textAlign: "center",
+    [theme.breakpoints.down("sm")]: {
+      width: "80%",
+      marginLeft: "2em",
+      marginRight: "2em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      marginLeft: 0,
+      marginRight: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+  message: {
+    border: `2px solid ${theme.palette.common.orange}`,
+    marginTop: "4em",
+    borderRadius: "5px",
   },
 }));
 
@@ -353,6 +380,13 @@ const Estimate = (props) => {
   const [questions, setQuestions] = useState(defaultQuestions);
 
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [nameHelperText, setNameHelperText] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailHelperText, setEmailHelperText] = useState("");
+  const [phone, setPhone] = useState("");
+  const [phoneHelperText, setPhoneHelperText] = useState("");
+  const [message, setMessage] = useState("");
 
   const defaultOptions = {
     loop: true,
@@ -492,6 +526,60 @@ const Estimate = (props) => {
     }
   };
 
+  const onFieldInputChange = (event) => {
+    let valid;
+    switch (event.target.id) {
+      case "name":
+        setName(event.target.value);
+        if (event.target.value !== "") {
+          valid = /^[a-z ,.'-]+$/i.test(event.target.value);
+          if (!valid) {
+            setNameHelperText(
+              `Cannot include numbers, brackets and special characters`
+            );
+          } else {
+            setNameHelperText("");
+          }
+        } else {
+          setNameHelperText("");
+        }
+        break;
+      case "email":
+        setEmail(event.target.value);
+        if (event.target.value !== "") {
+          valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+            event.target.value
+          );
+          if (!valid) {
+            setEmailHelperText("Invalid email.");
+          } else {
+            setEmailHelperText("");
+          }
+        } else {
+          setEmailHelperText("");
+        }
+
+        break;
+      case "phone":
+        setPhone(event.target.value);
+        if (event.target.value !== "") {
+          valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(
+            event.target.value
+          );
+          if (!valid) {
+            setPhoneHelperText("Invalid Phone Number");
+          } else {
+            setPhoneHelperText("");
+          }
+        } else {
+          setPhoneHelperText("");
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <Grid container direction="row">
       <Grid item container direction="column" md>
@@ -616,9 +704,75 @@ const Estimate = (props) => {
           </Button>
         </Grid>
       </Grid>
-      <Dialog open={open} onClose={()=>setOpen(false)}>
-        <DialogContent justify="center">
-          <Typography variant="h2" align="center">Estimate</Typography>
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="estimate-modal-title"
+        fullScreen={smallest ? true : false}
+        style={{ zIndex: 1302 }}
+      >
+        <DialogTitle
+          id="estimate-modal-title"
+          className={classes.estimateModalHeading}
+          disableTypography
+        >
+          <Typography variant="h4">Estimate</Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Grid container>
+            <Grid item container direction="column">
+              <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
+                <TextField
+                  label="Name"
+                  id="name"
+                  error={nameHelperText.length !== 0}
+                  helperText={nameHelperText}
+                  value={name}
+                  onChange={onFieldInputChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
+                <TextField
+                  label="Email"
+                  id="email"
+                  error={emailHelperText.length !== 0}
+                  helperText={emailHelperText}
+                  value={email}
+                  onChange={onFieldInputChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
+                <TextField
+                  label="Phone"
+                  id="phone"
+                  error={phoneHelperText.length !== 0}
+                  helperText={phoneHelperText}
+                  value={phone}
+                  onChange={onFieldInputChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ width: "100%" }}>
+                <TextField
+                  InputProps={{ disableUnderline: true }}
+                  id="message"
+                  rows={6}
+                  value={message}
+                  className={classes.message}
+                  style={{ marginTop: "2em" }}
+                  onChange={(e) => setMessage(e.target.value)}
+                  multiline
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ maxWidth: "30em", marginTop: "1.5em"}}>
+                <Typography variant="body1" paragraph>We can create this digital solution for an estimated</Typography>
+                <Typography variant="body1" paragraph>Fill out your name, phone number and email to place your request, and we'll get back to you with details moving forward and a final price.</Typography>
+              </Grid>
+            </Grid>
+          </Grid>
         </DialogContent>
       </Dialog>
     </Grid>
