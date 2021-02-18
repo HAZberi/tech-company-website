@@ -384,6 +384,16 @@ const Estimate = (props) => {
     setQuestions(updatedQuestions);
   };
 
+  const nextQuestionDisabled = () => {
+    //Filter out the currently active question
+    const activeQuestion = questions.filter((question) => question.active);
+    //Check if active question id is the last id in the questions array and return true
+    if (activeQuestion[0].id === questions[questions.length - 1].id)
+      return true;
+    //Under all other circumstances we need to enable question navigation
+    return false;
+  };
+
   const previousQuestion = () => {
     //creating a deep copy of state Questions to keep the state immutable
     const updatedQuestions = cloneDeep(questions);
@@ -407,6 +417,15 @@ const Estimate = (props) => {
     };
     //Finally Update the question structure in state
     setQuestions(updatedQuestions);
+  };
+
+  const previousQuestionDisabled = () => {
+    //Filter out the currently active question
+    const activeQuestion = questions.filter((question) => question.active);
+    //Check if active question id is the first id in the questions array and return true
+    if (activeQuestion[0].id === questions[0].id) return true;
+    //Under all other circumstances we need to enable question navigation
+    return false;
   };
 
   return (
@@ -448,7 +467,7 @@ const Estimate = (props) => {
                       item
                       container
                       alignItems="center"
-                      style={{ marginTop: smallest ? "4em" : "2em" }}
+                      style={{ marginTop: smallest && i !== 0 ? "4em" : "2em" }}
                       direction="column"
                       sm
                     >
@@ -483,13 +502,24 @@ const Estimate = (props) => {
             <IconButton
               className={classes.arrowIcons}
               onClick={previousQuestion}
+              disabled={previousQuestionDisabled()}
             >
-              <img src={backArrow} alt="Previous question" />
+              <img
+                src={previousQuestionDisabled() ? backArrowDisabled : backArrow}
+                alt="Previous question"
+              />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton className={classes.arrowIcons} onClick={nextQuestion}>
-              <img src={forwardArrow} alt="Next question" />
+            <IconButton
+              className={classes.arrowIcons}
+              onClick={nextQuestion}
+              disabled={nextQuestionDisabled()}
+            >
+              <img
+                src={nextQuestionDisabled() ? forwardArrowDisabled : forwardArrow}
+                alt="Next question"
+              />
             </IconButton>
           </Grid>
         </Grid>
@@ -498,7 +528,9 @@ const Estimate = (props) => {
             variant="contained"
             color="secondary"
             className={classes.estimate}
-            onClick={() => {console.log("Get Estimate")}}
+            onClick={() => {
+              console.log("Get Estimate");
+            }}
           >
             Get Estimate
           </Button>
