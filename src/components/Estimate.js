@@ -467,7 +467,9 @@ const Estimate = (props) => {
                       item
                       container
                       alignItems="center"
-                      style={{ marginTop: smallest && i !== 0 ? "4em" : "2em" }}
+                      //here we converted regular button component to display data in a grid !important styling 
+                      style={{ marginTop: smallest && i !== 0 ? "4em" : "2em", textTransform: "none", display: "grid" }}
+                      component={Button}
                       direction="column"
                       sm
                     >
@@ -484,6 +486,9 @@ const Estimate = (props) => {
                       >
                         <Typography variant="h6" align="center">
                           {option.title}
+                        </Typography>
+                        <Typography variant="caption" align="center">
+                          {option.subtitle}
                         </Typography>
                       </Grid>
                     </Grid>
