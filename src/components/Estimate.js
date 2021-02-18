@@ -428,6 +428,26 @@ const Estimate = (props) => {
     return false;
   };
 
+  const handleOptionSelection = (id) => {
+    //creating a deep copy of state Questions to keep the state immutable
+    const updatedQuestions = cloneDeep(questions);
+    //filtering out the active question
+    const activeQuestion = updatedQuestions.filter(
+      (question) => question.active
+    );
+    //Getting the index of currently active question
+    const activeQuestionIndex = activeQuestion[0].id - 1;
+    //Getting the selected option from currently active question using the option id input parameter
+    const selectedOption =
+      updatedQuestions[activeQuestionIndex].options[id - 1].selected;
+    //Toggle the option's selected property and update the questions
+    updatedQuestions[activeQuestionIndex].options[
+      id - 1
+    ].selected = !selectedOption;
+    //Finally update the question structure in state
+    setQuestions(updatedQuestions);
+  };
+
   return (
     <Grid container direction="row">
       <Grid item container direction="column" md>
@@ -467,9 +487,16 @@ const Estimate = (props) => {
                       item
                       container
                       alignItems="center"
-                      //here we converted regular button component to display data in a grid !important styling 
-                      style={{ marginTop: smallest && i !== 0 ? "4em" : "2em", textTransform: "none", display: "grid" }}
+                      //here we converted regular button component to display data in a grid !important styling
+                      style={{
+                        marginTop: smallest && i !== 0 ? "4em" : "2em",
+                        textTransform: "none",
+                        display: "grid",
+                        backgroundColor: option.selected ? theme.palette.common.orange : null,
+                        borderRadius: 0,
+                      }}
                       component={Button}
+                      onClick={() => handleOptionSelection(option.id)}
                       direction="column"
                       sm
                     >
@@ -522,7 +549,9 @@ const Estimate = (props) => {
               disabled={nextQuestionDisabled()}
             >
               <img
-                src={nextQuestionDisabled() ? forwardArrowDisabled : forwardArrow}
+                src={
+                  nextQuestionDisabled() ? forwardArrowDisabled : forwardArrow
+                }
                 alt="Next question"
               />
             </IconButton>
