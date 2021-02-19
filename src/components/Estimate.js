@@ -583,14 +583,36 @@ const Estimate = (props) => {
   };
 
   const calculateCost = () => {
+    //declaring a cost counter
     let cost = 0;
-    const selections = questions.map(question => question.options.filter(option => option.selected)).filter(question => question.length !== 0);
+    //Filter out the questions that are answered with at least one option selected
+    const selections = questions
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((question) => question.length !== 0);
+    //aggregating cost from the selected option to the cost counter
+    selections.map((options) => options.map((option) => (cost += option.cost)));
+    //Note: The question "How many users do you expect?" doesnt have a cost
+    //It only has a multiplyer as a cost property. So we need to subtract the multiplyer
+    //from the cost calculated in the above step
 
-    console.log(selections);
-  }
+    //Website Questions have only 2 questions and doesnt have "How many users do you expect?"
+    if (questions.length > 2) {
+      const usersCostMultiplyer = questions
+        .filter(
+          (question) => question.title === "How many users do you expect?"
+        )[0]
+        .options.filter((option) => option.selected)[0]?.cost;
+      
+      if(usersCostMultiplyer){
+        cost -= usersCostMultiplyer;
+        cost *= usersCostMultiplyer 
+      }
+    }
+    setEstimate(cost);
+  };
 
   return (
-    <Grid container direction="row">
+    <Grid container direction="row" style={{ marginBottom: "10em" }}>
       <Grid item container direction="column" md>
         <Grid item className={classes.heading}>
           <Typography variant="h2">Estimate</Typography>
@@ -779,7 +801,7 @@ const Estimate = (props) => {
               </Grid>
               <Grid item style={{ maxWidth: "30em", marginTop: "1.5em" }}>
                 <Typography variant="body1" paragraph>
-                  We can create this digital solution for an estimated
+                  We can create this digital solution for an estimated <span>${}</span>
                 </Typography>
                 <Typography variant="body1" paragraph>
                   Fill out your name, phone number and email to place your
