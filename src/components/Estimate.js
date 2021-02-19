@@ -628,16 +628,18 @@ const Estimate = (props) => {
       //Filtering out the multiplyer from "How many users do you expect?"
       //if user don't choose any option from "How many users do you expect?" then
       //userCostMultiplyer should return undefined
-      const usersCostMultiplyer = questions
-        .filter(
-          (question) => question.title === "How many users do you expect?"
-        )[0]
-        .options.filter((option) => option.selected)[0]?.cost;
+      const expectedNumberOfUsers = questions
+      .filter(
+        (question) => question.title === "How many users do you expect?"
+      )[0]
+      .options.filter((option) => option.selected)[0]
+      const usersCostMultiplyer = expectedNumberOfUsers?.cost;
       //userCostMultiplyer is not undefined subtract multiplyer from cost
       //and multiply the remaining cost with multiplyer
       if (usersCostMultiplyer) {
         cost -= usersCostMultiplyer;
         cost *= usersCostMultiplyer;
+        setUsers(expectedNumberOfUsers.title);
       }
     }
     //Finally set the estimated cost state
@@ -1003,7 +1005,7 @@ const Estimate = (props) => {
                     </Grid>
                     <Grid item>
                       <Typography variant="body1">
-                        The custom features will be of {customFeatures.toLowerCase()}.
+                        The custom features will be of {customFeatures.toLowerCase()} {`, and the project will be used by about ${users} users.`}
                       </Typography>
                     </Grid>
                   </Grid>
