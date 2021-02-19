@@ -674,6 +674,22 @@ const Estimate = (props) => {
     setFeatures(selectedFeatures);
   };
 
+  const getCustomFeatures = () => {
+    if (questions.length > 2) {
+      const featuresComplexity = questions
+        .filter(
+          (question) =>
+            question.title ===
+            "What type of custom features do you expect to need?"
+        )
+        .map((question) =>
+          question.options.filter((option) => option.selected)
+        )[0][0].title;
+
+        setCustomFeatures(featuresComplexity);
+    }
+  };
+
   return (
     <Grid container direction="row" style={{ marginBottom: "10em" }}>
       <Grid item container direction="column" md>
@@ -795,6 +811,7 @@ const Estimate = (props) => {
               calculateCost();
               getPlatforms();
               getFeatures();
+              getCustomFeatures();
             }}
           >
             Get Estimate
@@ -906,7 +923,9 @@ const Estimate = (props) => {
                     </Grid>
                     <Grid item>
                       <Typography variant="body1">
-                        You want {service} {platforms.length > 0 ? `for ${
+                        You want {service}{" "}
+                        {platforms.length > 0
+                          ? `for ${
                               //if only web application is selected...
                               platforms.indexOf("Web Application") > -1 &&
                               platforms.length === 1
@@ -930,44 +949,52 @@ const Estimate = (props) => {
                                 ? //then finish the sentence here
                                   "a Web Application, an iOS Application, and an Android Application."
                                 : null
-                            }`: null}
+                            }`
+                          : null}
                       </Typography>
                     </Grid>
                   </Grid>
                   <Grid item container direction="row" alignItems="center">
                     <Grid item>
-                      <img src={check} alt="checkmark" style={{ paddingRight: "0.5em" }}/>
+                      <img
+                        src={check}
+                        alt="checkmark"
+                        style={{ paddingRight: "0.5em" }}
+                      />
                     </Grid>
                     <Grid item>
-                      <Typography variant="body1">                        {"with "}
+                      <Typography variant="body1">
+                        {" "}
+                        {"with "}
                         {/* if we have features... */}
                         {features.length > 0
                           ? //...and there's only 1...
                             features.length === 1
-                              ? //then end the sentence here
+                            ? //then end the sentence here
                               `${features[0]}.`
-                              : //otherwise, if there are two features...
+                            : //otherwise, if there are two features...
                             features.length === 2
-                              ? //...then end the sentence here
+                            ? //...then end the sentence here
                               `${features[0]} and ${features[1]}.`
-                              : //otherwise, if there are three or more features...
+                            : //otherwise, if there are three or more features...
                               features
-                            //filter out the very last feature...
-                            .filter(
-                              (feature, index) =>
-                              index !== features.length - 1
-                            )
-                            //and for those features return their name...
-                            .map((feature, index) => (
-                              <span key={index}>{`${feature}, `}</span>
-                            ))
+                                //filter out the very last feature...
+                                .filter(
+                                  (feature, index) =>
+                                    index !== features.length - 1
+                                )
+                                //and for those features return their name...
+                                .map((feature, index) => (
+                                  <span key={index}>{`${feature}, `}</span>
+                                ))
                           : null}
                         {features.length > 0 &&
-                          features.length !== 1 &&
-                          features.length !== 2
-                            ? //...and then finally add the last feature with 'and' in front of it
+                        features.length !== 1 &&
+                        features.length !== 2
+                          ? //...and then finally add the last feature with 'and' in front of it
                             ` and ${features[features.length - 1]}.`
-                            : null}</Typography>
+                          : null}
+                      </Typography>
                     </Grid>
                   </Grid>
                   <Grid item container direction="row" alignItems="center">
@@ -976,7 +1003,7 @@ const Estimate = (props) => {
                     </Grid>
                     <Grid item>
                       <Typography variant="body1">
-                        You want XYZ service
+                        The custom features will be of {customFeatures.toLowerCase()}.
                       </Typography>
                     </Grid>
                   </Grid>
