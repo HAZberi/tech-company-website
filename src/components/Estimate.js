@@ -12,8 +12,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 
-//import check from "../assets/check.svg";
-//import send from "../assets/send.svg";
+import check from "../assets/check.svg";
+import send from "../assets/send.svg";
 import software from "../assets/software.svg";
 import mobile from "../assets/mobile.svg";
 import website from "../assets/website.svg";
@@ -82,6 +82,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.5rem",
     fontSize: "1.35rem",
   },
+
+  placeRequest: {
+    ...theme.typography.estimate,
+    borderRadius: "30px",
+    marginLeft: "20px",
+    marginRight: "20px",
+    height: "45px",
+    width: "200px",
+    marginTop: "0.5rem",
+    fontSize: "1.15rem",
+  },
+  
+
   arrowIcons: {
     "&:hover": {
       backgroundColor: "transparent",
@@ -181,7 +194,7 @@ const softwareQuestions = [
         icon: iphone,
         iconAlt: "outline of iphone",
         selected: false,
-        cost: 5000,
+        cost: 3000,
       },
       {
         id: 3,
@@ -190,7 +203,7 @@ const softwareQuestions = [
         icon: android,
         iconAlt: "outlines of android phone",
         selected: false,
-        cost: 5000,
+        cost: 3000,
       },
     ],
     active: true,
@@ -360,7 +373,7 @@ const websiteQuestions = [
         icon: customized,
         iconAlt: "outline of two people",
         selected: false,
-        cost: 10000,
+        cost: 2500,
       },
       {
         id: 3,
@@ -369,7 +382,7 @@ const websiteQuestions = [
         icon: globe,
         iconAlt: "outline of three people",
         selected: false,
-        cost: 25000,
+        cost: 5000,
       },
     ],
     active: true,
@@ -395,6 +408,13 @@ const Estimate = (props) => {
   const [message, setMessage] = useState("");
 
   const [estimate, setEstimate] = useState(0);
+
+  const [service, setService] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+  const [features, setFeatures] = useState([]);
+  const [customFeatures, setCustomFeatures] = useState("");
+  const [category, setCategory] = useState("");
+  const [users, setUsers] = useState("");
 
   const defaultOptions = {
     loop: true,
@@ -520,12 +540,15 @@ const Estimate = (props) => {
       //if selected option title matches the swtich case => question state is updated to show relevant questions
       case "Software Development":
         setQuestions(softwareQuestions);
+        setService('Software Development');
         break;
       case "App Development":
         setQuestions(softwareQuestions);
+        setService('App Development');
         break;
       case "Website Development":
         setQuestions(websiteQuestions);
+        setService('Website Development');
         break;
       default:
         //if selected option title doesnt match any switch case then we will simply update the question
@@ -752,7 +775,8 @@ const Estimate = (props) => {
         onClose={() => setOpen(false)}
         aria-labelledby="estimate-modal-title"
         fullScreen={smallest ? true : false}
-        style={{ zIndex: 1302 }}
+        style={{ zIndex: 1302, }}
+        maxWidth={smaller ? 'sm': 'lg'}
       >
         <DialogTitle
           id="estimate-modal-title"
@@ -763,7 +787,7 @@ const Estimate = (props) => {
         </DialogTitle>
         <DialogContent>
           <Grid container>
-            <Grid item container direction="column">
+            <Grid item container direction="column" md={7} style={{maxWidth: "35em"}}>
               <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
                 <TextField
                   label="Name"
@@ -810,7 +834,7 @@ const Estimate = (props) => {
                   fullWidth
                 />
               </Grid>
-              <Grid item style={{ maxWidth: "30em", marginTop: "1.5em" }}>
+              <Grid item style={{ marginTop: "1.5em" }}>
                 <Typography variant="body1" paragraph>
                   We can create this digital solution for an estimated{" "}
                   <span className={classes.specialText}>
@@ -823,6 +847,42 @@ const Estimate = (props) => {
                   request, and we'll get back to you with details moving forward
                   and a final price.
                 </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container direction="column" alignItems="center" md={5} style={{paddingLeft: "2em"}}>
+              <Grid item>
+                <Grid container direction="column">
+                  <Grid item container direction="row" alignItems="center">
+                    <Grid item>
+                      <img src={check} alt="checkmark" style={{paddingRight: "0.5em"}}/>
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="body1">You want {service}</Typography>
+                    </Grid>
+                  </Grid>
+                  <Grid item container direction="row" alignItems="center">
+                    <Grid item>
+                      <img src={check} alt="checkmark" />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="body1">You want service</Typography>
+                    </Grid>
+                  </Grid>
+                  <Grid item container direction="row" alignItems="center">
+                    <Grid item>
+                      <img src={check} alt="checkmark" />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="body1">You want XYZ service</Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="secondary" className={classes.placeRequest}>
+                  Place Request
+                  <img src={send} alt="airplane" style={{marginLeft: "10px"}} />
+                </Button>
               </Grid>
             </Grid>
           </Grid>
