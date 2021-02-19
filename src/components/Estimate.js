@@ -112,6 +112,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "4em",
     borderRadius: "5px",
   },
+  specialText: {
+    fontFamily: "Raleway",
+    fontWeight: 700,
+    fontSize: "1.5rem",
+    color: theme.palette.common.orange,
+  },
 }));
 
 const defaultQuestions = [
@@ -166,7 +172,7 @@ const softwareQuestions = [
         icon: website,
         iconAlt: "computer outline",
         selected: false,
-        cost: 100,
+        cost: 2500,
       },
       {
         id: 2,
@@ -175,7 +181,7 @@ const softwareQuestions = [
         icon: iphone,
         iconAlt: "outline of iphone",
         selected: false,
-        cost: 100,
+        cost: 5000,
       },
       {
         id: 3,
@@ -184,7 +190,7 @@ const softwareQuestions = [
         icon: android,
         iconAlt: "outlines of android phone",
         selected: false,
-        cost: 100,
+        cost: 5000,
       },
     ],
     active: true,
@@ -201,7 +207,7 @@ const softwareQuestions = [
         icon: camera,
         iconAlt: "camera outline",
         selected: false,
-        cost: 25,
+        cost: 500,
       },
       {
         id: 2,
@@ -210,7 +216,7 @@ const softwareQuestions = [
         icon: gps,
         iconAlt: "gps pin",
         selected: false,
-        cost: 25,
+        cost: 2500,
       },
       {
         id: 3,
@@ -219,7 +225,7 @@ const softwareQuestions = [
         icon: upload,
         iconAlt: "outline of cloud with arrow pointing up",
         selected: false,
-        cost: 25,
+        cost: 1000,
       },
     ],
     active: false,
@@ -236,7 +242,7 @@ const softwareQuestions = [
         icon: users,
         iconAlt: "outline of a person with a plus sign",
         selected: false,
-        cost: 25,
+        cost: 500,
       },
       {
         id: 2,
@@ -245,7 +251,7 @@ const softwareQuestions = [
         icon: biometrics,
         iconAlt: "fingerprint",
         selected: false,
-        cost: 25,
+        cost: 750,
       },
       {
         id: 3,
@@ -254,7 +260,7 @@ const softwareQuestions = [
         icon: bell,
         iconAlt: "outline of a bell",
         selected: false,
-        cost: 25,
+        cost: 1500,
       },
     ],
     active: false,
@@ -271,7 +277,7 @@ const softwareQuestions = [
         icon: info,
         iconAlt: "'i' inside a circle",
         selected: false,
-        cost: 25,
+        cost: 500,
       },
       {
         id: 2,
@@ -280,7 +286,7 @@ const softwareQuestions = [
         icon: customized,
         iconAlt: "two toggle switches",
         selected: false,
-        cost: 50,
+        cost: 2000,
       },
       {
         id: 3,
@@ -289,7 +295,7 @@ const softwareQuestions = [
         icon: data,
         iconAlt: "outline of line graph",
         selected: false,
-        cost: 100,
+        cost: 5000,
       },
     ],
     active: false,
@@ -345,7 +351,7 @@ const websiteQuestions = [
         icon: info,
         iconAlt: "person outline",
         selected: false,
-        cost: 100,
+        cost: 1000,
       },
       {
         id: 2,
@@ -354,7 +360,7 @@ const websiteQuestions = [
         icon: customized,
         iconAlt: "outline of two people",
         selected: false,
-        cost: 200,
+        cost: 10000,
       },
       {
         id: 3,
@@ -363,7 +369,7 @@ const websiteQuestions = [
         icon: globe,
         iconAlt: "outline of three people",
         selected: false,
-        cost: 250,
+        cost: 25000,
       },
     ],
     active: true,
@@ -597,17 +603,22 @@ const Estimate = (props) => {
 
     //Website Questions have only 2 questions and doesnt have "How many users do you expect?"
     if (questions.length > 2) {
+      //Filtering out the multiplyer from "How many users do you expect?"
+      //if user don't choose any option from "How many users do you expect?" then
+      //userCostMultiplyer should return undefined
       const usersCostMultiplyer = questions
         .filter(
           (question) => question.title === "How many users do you expect?"
         )[0]
         .options.filter((option) => option.selected)[0]?.cost;
-      
-      if(usersCostMultiplyer){
+      //userCostMultiplyer is not undefined subtract multiplyer from cost
+      //and multiply the remaining cost with multiplyer
+      if (usersCostMultiplyer) {
         cost -= usersCostMultiplyer;
-        cost *= usersCostMultiplyer 
+        cost *= usersCostMultiplyer;
       }
     }
+    //Finally set the estimated cost state
     setEstimate(cost);
   };
 
@@ -801,7 +812,11 @@ const Estimate = (props) => {
               </Grid>
               <Grid item style={{ maxWidth: "30em", marginTop: "1.5em" }}>
                 <Typography variant="body1" paragraph>
-                  We can create this digital solution for an estimated <span>${}</span>
+                  We can create this digital solution for an estimated{" "}
+                  <span className={classes.specialText}>
+                    ${estimate.toFixed(2)}
+                  </span>
+                  .
                 </Typography>
                 <Typography variant="body1" paragraph>
                   Fill out your name, phone number and email to place your
