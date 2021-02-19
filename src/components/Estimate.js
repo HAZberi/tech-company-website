@@ -659,6 +659,21 @@ const Estimate = (props) => {
     setPlatforms(selectedPlatforms);
   };
 
+  const getFeatures = () => {
+    let selectedFeatures = [];
+
+    if (questions.length > 2) {
+      questions
+        .filter(
+          (question) =>
+            question.title === "Which features do you expect to use?"
+        )[0]
+        .options.filter((option) => option.selected)
+        .map((selectedOption) => selectedFeatures.push(selectedOption.title));
+    }
+    setFeatures(selectedFeatures);
+  };
+
   return (
     <Grid container direction="row" style={{ marginBottom: "10em" }}>
       <Grid item container direction="column" md>
@@ -779,6 +794,7 @@ const Estimate = (props) => {
               setOpen(true);
               calculateCost();
               getPlatforms();
+              getFeatures();
             }}
           >
             Get Estimate
@@ -920,10 +936,38 @@ const Estimate = (props) => {
                   </Grid>
                   <Grid item container direction="row" alignItems="center">
                     <Grid item>
-                      <img src={check} alt="checkmark" />
+                      <img src={check} alt="checkmark" style={{ paddingRight: "0.5em" }}/>
                     </Grid>
                     <Grid item>
-                      <Typography variant="body1">You want service</Typography>
+                      <Typography variant="body1">                        {"with "}
+                        {/* if we have features... */}
+                        {features.length > 0
+                          ? //...and there's only 1...
+                            features.length === 1
+                              ? //then end the sentence here
+                              `${features[0]}.`
+                              : //otherwise, if there are two features...
+                            features.length === 2
+                              ? //...then end the sentence here
+                              `${features[0]} and ${features[1]}.`
+                              : //otherwise, if there are three or more features...
+                              features
+                            //filter out the very last feature...
+                            .filter(
+                              (feature, index) =>
+                              index !== features.length - 1
+                            )
+                            //and for those features return their name...
+                            .map((feature, index) => (
+                              <span key={index}>{`${feature}, `}</span>
+                            ))
+                          : null}
+                        {features.length > 0 &&
+                          features.length !== 1 &&
+                          features.length !== 2
+                            ? //...and then finally add the last feature with 'and' in front of it
+                            ` and ${features[features.length - 1]}.`
+                            : null}</Typography>
                     </Grid>
                   </Grid>
                   <Grid item container direction="row" alignItems="center">
