@@ -388,6 +388,8 @@ const Estimate = (props) => {
   const [phoneHelperText, setPhoneHelperText] = useState("");
   const [message, setMessage] = useState("");
 
+  const [estimate, setEstimate] = useState(0);
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -580,6 +582,13 @@ const Estimate = (props) => {
     }
   };
 
+  const calculateCost = () => {
+    let cost = 0;
+    const selections = questions.map(question => question.options.filter(option => option.selected)).filter(question => question.length !== 0);
+
+    console.log(selections);
+  }
+
   return (
     <Grid container direction="row">
       <Grid item container direction="column" md>
@@ -698,6 +707,7 @@ const Estimate = (props) => {
             className={classes.estimate}
             onClick={() => {
               setOpen(true);
+              calculateCost();
             }}
           >
             Get Estimate
@@ -767,9 +777,15 @@ const Estimate = (props) => {
                   fullWidth
                 />
               </Grid>
-              <Grid item style={{ maxWidth: "30em", marginTop: "1.5em"}}>
-                <Typography variant="body1" paragraph>We can create this digital solution for an estimated</Typography>
-                <Typography variant="body1" paragraph>Fill out your name, phone number and email to place your request, and we'll get back to you with details moving forward and a final price.</Typography>
+              <Grid item style={{ maxWidth: "30em", marginTop: "1.5em" }}>
+                <Typography variant="body1" paragraph>
+                  We can create this digital solution for an estimated
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  Fill out your name, phone number and email to place your
+                  request, and we'll get back to you with details moving forward
+                  and a final price.
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
