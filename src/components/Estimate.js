@@ -93,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.5rem",
     fontSize: "1.15rem",
   },
-  
 
   arrowIcons: {
     "&:hover": {
@@ -409,7 +408,7 @@ const Estimate = (props) => {
 
   const [estimate, setEstimate] = useState(0);
 
-  const [service, setService] = useState([]);
+  const [service, setService] = useState("");
   const [platforms, setPlatforms] = useState([]);
   const [features, setFeatures] = useState([]);
   const [customFeatures, setCustomFeatures] = useState("");
@@ -540,15 +539,15 @@ const Estimate = (props) => {
       //if selected option title matches the swtich case => question state is updated to show relevant questions
       case "Software Development":
         setQuestions(softwareQuestions);
-        setService('Software Development');
+        setService(selectedOption.title);
         break;
       case "App Development":
         setQuestions(softwareQuestions);
-        setService('App Development');
+        setService(selectedOption.title);
         break;
       case "Website Development":
         setQuestions(websiteQuestions);
-        setService('Website Development');
+        setService(selectedOption.title);
         break;
       default:
         //if selected option title doesnt match any switch case then we will simply update the question
@@ -643,6 +642,21 @@ const Estimate = (props) => {
     }
     //Finally set the estimated cost state
     setEstimate(cost);
+  };
+
+  const getPlatforms = () => {
+    let selectedPlatforms = [];
+
+    if (questions.length > 2) {
+      questions
+        .filter(
+          (question) =>
+            question.title === "Which platforms do you need supported?"
+        )[0]
+        .options.filter((option) => option.selected)
+        .map((selectedOption) => selectedPlatforms.push(selectedOption.title));
+    }
+    setPlatforms(selectedPlatforms);
   };
 
   return (
@@ -764,6 +778,7 @@ const Estimate = (props) => {
             onClick={() => {
               setOpen(true);
               calculateCost();
+              getPlatforms();
             }}
           >
             Get Estimate
@@ -775,8 +790,8 @@ const Estimate = (props) => {
         onClose={() => setOpen(false)}
         aria-labelledby="estimate-modal-title"
         fullScreen={smallest ? true : false}
-        style={{ zIndex: 1302, }}
-        maxWidth={smaller ? 'sm': 'lg'}
+        style={{ zIndex: 1302 }}
+        maxWidth={smaller ? "sm" : "lg"}
       >
         <DialogTitle
           id="estimate-modal-title"
@@ -787,7 +802,13 @@ const Estimate = (props) => {
         </DialogTitle>
         <DialogContent>
           <Grid container>
-            <Grid item container direction="column" md={7} style={{maxWidth: "35em"}}>
+            <Grid
+              item
+              container
+              direction="column"
+              md={7}
+              style={{ maxWidth: "35em" }}
+            >
               <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
                 <TextField
                   label="Name"
@@ -849,15 +870,28 @@ const Estimate = (props) => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container direction="column" alignItems="center" md={5} style={{paddingLeft: "2em"}}>
+            <Grid
+              item
+              container
+              direction="column"
+              alignItems="center"
+              md={5}
+              style={{ paddingLeft: "2em" }}
+            >
               <Grid item>
                 <Grid container direction="column">
                   <Grid item container direction="row" alignItems="center">
                     <Grid item>
-                      <img src={check} alt="checkmark" style={{paddingRight: "0.5em"}}/>
+                      <img
+                        src={check}
+                        alt="checkmark"
+                        style={{ paddingRight: "0.5em" }}
+                      />
                     </Grid>
                     <Grid item>
-                      <Typography variant="body1">You want {service}</Typography>
+                      <Typography variant="body1">
+                        You want {service}
+                      </Typography>
                     </Grid>
                   </Grid>
                   <Grid item container direction="row" alignItems="center">
@@ -873,15 +907,25 @@ const Estimate = (props) => {
                       <img src={check} alt="checkmark" />
                     </Grid>
                     <Grid item>
-                      <Typography variant="body1">You want XYZ service</Typography>
+                      <Typography variant="body1">
+                        You want XYZ service
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
               <Grid item>
-                <Button variant="contained" color="secondary" className={classes.placeRequest}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classes.placeRequest}
+                >
                   Place Request
-                  <img src={send} alt="airplane" style={{marginLeft: "10px"}} />
+                  <img
+                    src={send}
+                    alt="airplane"
+                    style={{ marginLeft: "10px" }}
+                  />
                 </Button>
               </Grid>
             </Grid>
