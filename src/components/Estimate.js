@@ -424,6 +424,14 @@ const Estimate = (props) => {
     },
   };
 
+  const resetStates = () => {
+    setPlatforms([]);
+    setFeatures([]);
+    setCustomFeatures("");
+    setCategory("")
+    setUsers("");
+  }
+
   const nextQuestion = () => {
     //creating a deep copy of state Questions to keep the state immutable
     const updatedQuestions = cloneDeep(questions);
@@ -540,14 +548,17 @@ const Estimate = (props) => {
       case "Software Development":
         setQuestions(softwareQuestions);
         setService(selectedOption.title);
+        resetStates();
         break;
       case "App Development":
         setQuestions(softwareQuestions);
         setService(selectedOption.title);
+        resetStates();
         break;
       case "Website Development":
         setQuestions(websiteQuestions);
         setService(selectedOption.title);
+        resetStates();
         break;
       default:
         //if selected option title doesnt match any switch case then we will simply update the question
@@ -634,7 +645,7 @@ const Estimate = (props) => {
       )[0]
       .options.filter((option) => option.selected)[0]
       const usersCostMultiplyer = expectedNumberOfUsers?.cost;
-      //userCostMultiplyer is not undefined subtract multiplyer from cost
+      //if userCostMultiplyer is not undefined subtract multiplyer from cost
       //and multiply the remaining cost with multiplyer
       if (usersCostMultiplyer) {
         cost -= usersCostMultiplyer;
