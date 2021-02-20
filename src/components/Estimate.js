@@ -17,6 +17,7 @@ import send from "../assets/send.svg";
 import software from "../assets/software.svg";
 import mobile from "../assets/mobile.svg";
 import website from "../assets/website.svg";
+import websiteBlack from "../assets/websiteBlack.svg";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import backArrowDisabled from "../assets/backArrowDisabled.svg";
@@ -181,7 +182,7 @@ const softwareQuestions = [
         id: 1,
         title: "Web Application",
         subtitle: null,
-        icon: website,
+        icon: websiteBlack,
         iconAlt: "computer outline",
         selected: false,
         cost: 2500,
@@ -705,18 +706,18 @@ const Estimate = (props) => {
 
   const getCategory = () => {
     if (questions.length === 2){
-      const websiteType = questions.filter(question => question.title === "Which type of website are you wanting?")[0].options.filter(option => option.selected)[0].title;
+      const websiteType = questions.filter(question => question.title === "Which type of website are you wanting?")[0].options.filter(option => option.selected)[0]?.title;
       setCategory(websiteType);
     }
   }
 
   const softwareSelectionsJSX = (
-    <Grid container direction="column">
-      <Grid item container direction="row" alignItems="center">
-        <Grid item>
-          <img src={check} alt="checkmark" style={{ paddingRight: "0.5em" }} />
+    <Grid container direction="column" style={{marginBottom: "2.5em"}}>
+      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+        <Grid item xs={2}>
+          <img src={check} alt="checkmark" />
         </Grid>
-        <Grid item>
+        <Grid item xs={10}>
           <Typography variant="body1">
             You want {service}{" "}
             {platforms.length > 0
@@ -749,11 +750,11 @@ const Estimate = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container direction="row" alignItems="center">
-        <Grid item>
-          <img src={check} alt="checkmark" style={{ paddingRight: "0.5em" }} />
+      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+        <Grid item xs={2}>
+          <img src={check} alt="checkmark" />
         </Grid>
-        <Grid item>
+        <Grid item xs={10}>
           <Typography variant="body1">
             {" "}
             {"with "}
@@ -785,11 +786,11 @@ const Estimate = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container direction="row" alignItems="center">
-        <Grid item>
+      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+        <Grid item xs={2}>
           <img src={check} alt="checkmark" />
         </Grid>
-        <Grid item>
+        <Grid item xs={10}>
           <Typography variant="body1">
             The custom features will be of {customFeatures.toLowerCase()}{" "}
             {`, and the project will be used by about ${users} users.`}
@@ -800,12 +801,12 @@ const Estimate = (props) => {
   );
 
   const websiteSelectionJSX = (
-    <Grid container direction="column">
-      <Grid item container direction="row" alignItems="center">
-        <Grid item>
-          <img src={check} alt="checkmark" style={{ paddingRight: "0.5em" }} />
+    <Grid container direction="column" style={{marginBottom: "2.5em"}}>
+      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+        <Grid item xs={2}>
+          <img src={check} alt="checkmark" />
         </Grid>
-        <Grid item>
+        <Grid item xs={10}>
           <Typography variant="body1">
             You want {category === 'Basic' ? "a Basic Website." : `an ${category} Website.`}
           </Typography>
@@ -947,8 +948,8 @@ const Estimate = (props) => {
         open={open}
         onClose={() => setOpen(false)}
         aria-labelledby="estimate-modal-title"
-        fullScreen={smallest ? true : false}
-        style={{ zIndex: 1302 }}
+        fullScreen={smaller ? true : false}
+        style={{ zIndex: 1303 }}
         maxWidth={smaller ? "sm" : "lg"}
       >
         <DialogTitle
@@ -959,13 +960,13 @@ const Estimate = (props) => {
           <Typography variant="h4">Estimate</Typography>
         </DialogTitle>
         <DialogContent>
-          <Grid container>
+          <Grid container justify="space-around">
             <Grid
               item
               container
               direction="column"
               md={7}
-              style={{ maxWidth: "35em" }}
+              style={{ maxWidth: "25em" }}
             >
               <Grid item style={{ width: "100%", marginTop: "0.5em" }}>
                 <TextField
@@ -1034,7 +1035,7 @@ const Estimate = (props) => {
               direction="column"
               alignItems="center"
               md={5}
-              style={{ paddingLeft: "2em" }}
+              style={{ paddingLeft: smaller ? 0 : "2em", maxWidth: "35em", marginTop: smaller ? "3em" : 0 }}
             >
               <Grid item>
                 {questions.length > 2 ? softwareSelectionsJSX : websiteSelectionJSX}
