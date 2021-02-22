@@ -11,6 +11,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import Hidden from "@material-ui/core/Hidden";
 
 import check from "../assets/check.svg";
 import send from "../assets/send.svg";
@@ -65,6 +66,8 @@ const useStyles = makeStyles((theme) => ({
   question: {
     marginTop: "5em",
     marginBottom: "2em",
+    marginLeft: "1em",
+    marginRight: "1em",
     [theme.breakpoints.down("md")]: {
       marginBottom: "1.5em",
     },
@@ -94,8 +97,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "0.5rem",
     fontSize: "1.15rem",
   },
-
-  arrowIcons: {
+  transparentOnHover: {
     "&:hover": {
       backgroundColor: "transparent",
     },
@@ -901,7 +903,7 @@ const Estimate = (props) => {
         >
           <Grid item>
             <IconButton
-              className={classes.arrowIcons}
+              className={classes.transparentOnHover}
               onClick={previousQuestion}
               disabled={previousQuestionDisabled()}
             >
@@ -913,7 +915,7 @@ const Estimate = (props) => {
           </Grid>
           <Grid item>
             <IconButton
-              className={classes.arrowIcons}
+              className={classes.transparentOnHover}
               onClick={nextQuestion}
               disabled={nextQuestionDisabled()}
             >
@@ -1004,6 +1006,7 @@ const Estimate = (props) => {
               <Grid item style={{ width: "100%" }}>
                 <TextField
                   InputProps={{ disableUnderline: true }}
+                  placeholder="Enter your message here..."
                   id="message"
                   rows={6}
                   value={message}
@@ -1015,14 +1018,14 @@ const Estimate = (props) => {
                 />
               </Grid>
               <Grid item style={{ marginTop: "1.5em" }}>
-                <Typography variant="body1" paragraph>
+                <Typography variant="body1" align="justify" paragraph>
                   We can create this digital solution for an estimated{" "}
                   <span className={classes.specialText}>
                     ${estimate.toFixed(2)}
                   </span>
                   .
                 </Typography>
-                <Typography variant="body1" paragraph>
+                <Typography variant="body1" align="justify" paragraph>
                   Fill out your name, phone number and email to place your
                   request, and we'll get back to you with details moving forward
                   and a final price.
@@ -1054,6 +1057,13 @@ const Estimate = (props) => {
                   />
                 </Button>
               </Grid>
+              <Hidden mdUp>
+                <Grid item style={{marginBottom: "3em"}}>
+                  <Button variant="text" color="secondary" onClick={()=>setOpen(false)} className={classes.transparentOnHover} disableRipple>
+                    Cancel
+                  </Button>
+                </Grid>
+              </Hidden>
             </Grid>
           </Grid>
         </DialogContent>
