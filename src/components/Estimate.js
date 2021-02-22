@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Lottie from "react-lottie";
 import { cloneDeep } from "lodash";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -713,6 +714,30 @@ const Estimate = (props) => {
     }
   }
 
+  const placeRequest = () => {
+    axios
+    .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail", {
+      params: {
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+        total: estimate,
+        service: service,
+        platforms: platforms,
+        features: features,
+        customFeatures: customFeatures,
+        users: users,
+      },
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
   const softwareSelectionsJSX = (
     <Grid container direction="column" style={{marginBottom: "2.5em"}}>
       <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
@@ -1048,6 +1073,7 @@ const Estimate = (props) => {
                   variant="contained"
                   color="secondary"
                   className={classes.placeRequest}
+                  onClick={placeRequest}
                 >
                   Place Request
                   <img

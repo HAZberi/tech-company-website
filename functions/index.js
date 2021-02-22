@@ -45,9 +45,9 @@ exports.sendMail = functions.https.onRequest((request, response) => {
           <p style="font-size: 16px">Email: ${email}</p>
           <p style="font-size: 16px">Phone: ${phone}</p> 
           <p style="font-size: 16px">Message: ${message}</p>
-          <p style="font-size: 16px">Message: ${total}</p>
-          <p style="font-size: 16px">Message: ${service}</p>
-          <p style="font-size: 16px">Message: ${category}</p>`,
+          <p style="font-size: 16px">Rough Estimate: ${total}</p>
+          <p style="font-size: 16px">Type of Service: ${service}</p>
+          <p style="font-size: 16px">Type of Website: ${category}</p>`,
         };
       } else {
         mailOptions = {
@@ -58,12 +58,12 @@ exports.sendMail = functions.https.onRequest((request, response) => {
           <p style="font-size: 16px">Email: ${email}</p>
           <p style="font-size: 16px">Phone: ${phone}</p> 
           <p style="font-size: 16px">Message: ${message}</p>
-          <p style="font-size: 16px">Message: ${total}</p>
-          <p style="font-size: 16px">Message: ${service}</p>
-          <p style="font-size: 16px">Message: ${platforms}</p>
-          <p style="font-size: 16px">Message: ${features}</p>
-          <p style="font-size: 16px">Message: ${customFeatures}</p>
-          <p style="font-size: 16px">Message: ${users}</p>`,
+          <p style="font-size: 16px">Rough Estimate: ${total}</p>
+          <p style="font-size: 16px">Type of Service: ${service}</p>
+          <p style="font-size: 16px">Platform: ${platforms}</p>
+          <p style="font-size: 16px">Key Features: ${features}</p>
+          <p style="font-size: 16px">Customization Complexity: ${customFeatures}</p>
+          <p style="font-size: 16px">Number of Users: ${users}</p>`,
         };
       }
       transporter.sendMail(mailOptions, (error) => {
@@ -328,7 +328,7 @@ exports.sendMail = functions.https.onRequest((request, response) => {
                                                   align="center"
                                                   style="font-family: 'Raleway', Tahoma; font-size:35px; font-weight:700; line-height:35px; color:#000; text-align:center;"
                                                 >
-                                                  Hello
+                                                  We're Ready.
                                                 </td>
                                               </tr>
                                               <tr>
