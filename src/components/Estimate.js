@@ -693,9 +693,14 @@ const Estimate = (props) => {
         .filter(
           (question) =>
             question.title === "Which features do you expect to use?"
-        )[0]
-        .options.filter((option) => option.selected)
-        .map((selectedOption) => selectedFeatures.push(selectedOption.title));
+        )
+        .map((question) =>
+          question.options
+            .filter((option) => option.selected)
+            .map((selectedOption) =>
+              selectedFeatures.push(selectedOption.title)
+            )
+        );
     }
     setFeatures(selectedFeatures);
   };
