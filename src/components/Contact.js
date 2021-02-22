@@ -421,7 +421,7 @@ const Contact = (props) => {
                   disableElevation
                 >
                   {loading ? (
-                    <CircularProgress size={20} />
+                    <CircularProgress size={20} color="secondary"/>
                   ) : (
                     sendButtonJSX("Send")
                   )}

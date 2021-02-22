@@ -13,6 +13,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import Hidden from "@material-ui/core/Hidden";
+import Snackbar from "@material-ui/core/Snackbar";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import check from "../assets/check.svg";
 import send from "../assets/send.svg";
@@ -419,6 +421,13 @@ const Estimate = (props) => {
   const [category, setCategory] = useState("");
   const [users, setUsers] = useState("");
 
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    backgroundColor: "",
+  });
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -708,39 +717,70 @@ const Estimate = (props) => {
   };
 
   const getCategory = () => {
-    if (questions.length === 2){
-      const websiteType = questions.filter(question => question.title === "Which type of website are you wanting?")[0].options.filter(option => option.selected)[0]?.title;
+    if (questions.length === 2) {
+      const websiteType = questions
+        .filter(
+          (question) =>
+            question.title === "Which type of website are you wanting?"
+        )[0]
+        .options.filter((option) => option.selected)[0]?.title;
       setCategory(websiteType);
     }
-  }
+  };
 
   const placeRequest = () => {
+    setLoading(true);
     axios
-    .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail", {
-      params: {
-        name: name,
-        email: email,
-        phone: phone,
-        message: message,
-        total: estimate,
-        service: service,
-        platforms: platforms,
-        features: features,
-        customFeatures: customFeatures,
-        users: users,
-      },
-    })
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-  }
+      .get("https://us-central1-beri-tech.cloudfunctions.net/sendMail", {
+        params: {
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+          total: estimate,
+          service: service,
+          platforms: platforms,
+          features: features,
+          customFeatures: customFeatures,
+          users: users,
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+        setOpen(false);
+        setAlert({
+          open: true,
+          message: "Request placed successfully!",
+          backgroundColor: "#4BB543",
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: "Something went wrong! Please try again.",
+          backgroundColor: "#FF3232",
+        });
+      });
+  };
+
+  const placeRequestButtonJSX = (
+    <React.Fragment>
+      Place Request
+      <img src={send} alt="airplane" style={{ marginLeft: "10px" }} />
+    </React.Fragment>
+  );
 
   const softwareSelectionsJSX = (
-    <Grid container direction="column" style={{marginBottom: "2.5em"}}>
-      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+    <Grid container direction="column" style={{ marginBottom: "2.5em" }}>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        style={{ marginBottom: "1.25em" }}
+      >
         <Grid item xs={2}>
           <img src={check} alt="checkmark" />
         </Grid>
@@ -777,7 +817,13 @@ const Estimate = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        style={{ marginBottom: "1.25em" }}
+      >
         <Grid item xs={2}>
           <img src={check} alt="checkmark" />
         </Grid>
@@ -813,7 +859,13 @@ const Estimate = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        style={{ marginBottom: "1.25em" }}
+      >
         <Grid item xs={2}>
           <img src={check} alt="checkmark" />
         </Grid>
@@ -828,14 +880,23 @@ const Estimate = (props) => {
   );
 
   const websiteSelectionJSX = (
-    <Grid container direction="column" style={{marginBottom: "2.5em"}}>
-      <Grid item container direction="row" alignItems="center" style={{marginBottom: "1.25em"}}>
+    <Grid container direction="column" style={{ marginBottom: "2.5em" }}>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        style={{ marginBottom: "1.25em" }}
+      >
         <Grid item xs={2}>
           <img src={check} alt="checkmark" />
         </Grid>
         <Grid item xs={10}>
           <Typography variant="body1">
-            You want {category === 'Basic' ? "a Basic Website." : `an ${category} Website.`}
+            You want{" "}
+            {category === "Basic"
+              ? "a Basic Website."
+              : `an ${category} Website.`}
           </Typography>
         </Grid>
       </Grid>
@@ -1063,10 +1124,16 @@ const Estimate = (props) => {
               direction="column"
               alignItems="center"
               md={5}
-              style={{ paddingLeft: smaller ? 0 : "2em", maxWidth: "35em", marginTop: smaller ? "3em" : 0 }}
+              style={{
+                paddingLeft: smaller ? 0 : "2em",
+                maxWidth: "35em",
+                marginTop: smaller ? "3em" : 0,
+              }}
             >
               <Grid item>
-                {questions.length > 2 ? softwareSelectionsJSX : websiteSelectionJSX}
+                {questions.length > 2
+                  ? softwareSelectionsJSX
+                  : websiteSelectionJSX}
               </Grid>
               <Grid item>
                 <Button
@@ -1075,17 +1142,22 @@ const Estimate = (props) => {
                   className={classes.placeRequest}
                   onClick={placeRequest}
                 >
-                  Place Request
-                  <img
-                    src={send}
-                    alt="airplane"
-                    style={{ marginLeft: "10px" }}
-                  />
+                  {loading ? (
+                    <CircularProgress size={25} />
+                  ) : (
+                    placeRequestButtonJSX
+                  )}
                 </Button>
               </Grid>
               <Hidden mdUp>
-                <Grid item style={{marginBottom: "3em"}}>
-                  <Button variant="text" color="secondary" onClick={()=>setOpen(false)} className={classes.transparentOnHover} disableRipple>
+                <Grid item style={{ marginBottom: "3em" }}>
+                  <Button
+                    variant="text"
+                    color="secondary"
+                    onClick={() => setOpen(false)}
+                    className={classes.transparentOnHover}
+                    disableRipple
+                  >
                     Cancel
                   </Button>
                 </Grid>
@@ -1094,6 +1166,14 @@ const Estimate = (props) => {
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={7000}
+      />
     </Grid>
   );
 };
