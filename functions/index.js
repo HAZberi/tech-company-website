@@ -262,12 +262,12 @@ exports.sendMail = functions.https.onRequest((request, response) => {
                           <tr>
                             <td
                               align="center"
-                              background="https://gistcdn.githack.com/HAZberi/c2a7688d2ebf8ff0cf2e0c2c8b4d9d64/raw/8d89cd0fe65cb9abef42ac657f40cd5efb5e12eb/repeatingBackground.svg"
+                              background="https://i.imgur.com/oo6PaiS.png"
                               bgcolor="#ffffff"
                               width="600"
-                              height="640"
-                              valign="center"
-                              style="background-repeat:repeat;"
+                              height="617"
+                              valign="top"
+                              style="background-repeat:repeat; background-size: 600px 300px;"
                               class="h_auto m_device_width"
                             >
                               <!--[if gte mso 9]>
@@ -792,12 +792,12 @@ exports.sendMail = functions.https.onRequest((request, response) => {
                           <tr>
                             <td
                               align="center"
-                              background="https://gistcdn.githack.com/HAZberi/c2a7688d2ebf8ff0cf2e0c2c8b4d9d64/raw/8d89cd0fe65cb9abef42ac657f40cd5efb5e12eb/repeatingBackground.svg"
+                              background="https://i.imgur.com/oo6PaiS.png"
                               bgcolor="#ffffff"
                               width="600"
-                              height="640"
-                              valign="center"
-                              style="background-repeat:repeat;"
+                              height="617"
+                              valign="top"
+                              style="background-repeat:repeat; background-size: 600px 300px;"
                               class="h_auto m_device_width"
                             >
                               <!--[if gte mso 9]>
