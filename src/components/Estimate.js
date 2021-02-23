@@ -544,9 +544,13 @@ const Estimate = (props) => {
       case "Select one.":
         //Check if there is any already or previously selected option exist
         //if condition is true => toggle the previously selected option
-        if (previouslySelectedOption[0])
+        if (previouslySelectedOption[0]) {
           previouslySelectedOption[0].selected = !previouslySelectedOption[0]
             .selected;
+          if (previouslySelectedOption[0] === selectedOption) {
+            selectedOption.selected = !selectedOption.selected;
+          }
+        }
         //if there is no previously selected option then Toggle the options currently selected property
         selectedOption.selected = !selectedOption.selected;
         break;
@@ -731,6 +735,44 @@ const Estimate = (props) => {
         .options.filter((option) => option.selected)[0]?.title;
       setCategory(websiteType);
     }
+  };
+
+  const estimateDisabled = () => {
+    let disabled = true;
+    //Getting an unansweredQuestions List after removing the default question
+    const unAnsweredQuestions = questions
+      .filter(
+        (question) => question.title !== "Which service are you interested in?"
+      )
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((answeredQuestion) => answeredQuestion.length === 0);
+    //Check if user has selected any type of service
+    if (questions.length >= 2) {
+      if (unAnsweredQuestions.length === 0) {
+        disabled = false;
+      } else if (questions.length > 2 && unAnsweredQuestions.length === 1) {
+        if (
+          questions
+            .filter(
+              (question) =>
+                question.title !== "Which features do you expect to use?" &&
+                question.title !== "Which service are you interested in?"
+            )
+            .map((question) =>
+              question.options.filter((option) => option.selected)
+            )
+            .filter((unAnswered) => unAnswered.length === 0).length > 0
+        ) {
+          disabled = true;
+        } else {
+          disabled = false;
+        }
+      }
+    } else {
+      //if User hasn't selected any type of service than disable estimate
+      disabled = true;
+    }
+    return disabled;
   };
 
   const placeRequest = () => {
@@ -1024,6 +1066,7 @@ const Estimate = (props) => {
             variant="contained"
             color="secondary"
             className={classes.estimate}
+            disabled={estimateDisabled()}
             onClick={() => {
               setOpen(true);
               calculateCost();
