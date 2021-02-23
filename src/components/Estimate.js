@@ -797,7 +797,7 @@ const Estimate = (props) => {
         setOpen(false);
         setAlert({
           open: true,
-          message: "Request placed successfully!",
+          message: "Request has been placed successfully.",
           backgroundColor: "#4BB543",
         });
       })
@@ -1140,7 +1140,7 @@ const Estimate = (props) => {
               <Grid item style={{ width: "100%" }}>
                 <TextField
                   InputProps={{ disableUnderline: true }}
-                  placeholder="Enter your message here..."
+                  placeholder="Tell us about your project here..."
                   id="message"
                   rows={6}
                   value={message}
@@ -1189,6 +1189,15 @@ const Estimate = (props) => {
                   color="secondary"
                   className={classes.placeRequest}
                   onClick={placeRequest}
+                  disabled={
+                    name.length === 0 ||
+                    nameHelperText.length !== 0 ||
+                    email.length === 0 ||
+                    emailHelperText.length !== 0 ||
+                    phone.length === 0 ||
+                    phoneHelperText.length !== 0 ||
+                    message.length === 0
+                  }    
                 >
                   {loading ? (
                     <CircularProgress size={25} />

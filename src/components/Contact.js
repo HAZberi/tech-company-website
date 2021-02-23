@@ -297,7 +297,7 @@ const Contact = (props) => {
             <TextField
               InputProps={{ disableUnderline: true }}
               id="message"
-              placeholder="Enter your message here..."
+              placeholder="Tell us about your project here..."
               rows={10}
               value={message}
               className={classes.message}
