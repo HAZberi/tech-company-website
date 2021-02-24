@@ -8,6 +8,7 @@ import CallToAction from "../components/ui/CallToAction.js";
 import history from "../assets/history.svg";
 import founder from "../assets/founder.jpg";
 import founder2 from "../assets/founder2.jpeg";
+import founder3 from "../assets/founder3.jpg"
 
 const useStyles = makeStyles((theme) => ({
   statement: {
@@ -284,7 +285,7 @@ const About = (props) => {
         >
           <Grid item align="center">
             <Avatar
-              src={founder}
+              src={founder3}
               className={classes.avatar}
               alt="founder's headshot"
             />
