@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./components/Theme.js";
+import ScrollToTop from "./scripts/ScrollToTop.js";
 
 import Header from "./components/ui/Header.js";
 import Footer from "./components/ui/Footer.js";
@@ -22,6 +23,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <div>
         <BrowserRouter>
+          <ScrollToTop />
           <Header
             value={value}
             setValue={setValue}
