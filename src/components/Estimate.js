@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import Lottie from "react-lottie";
 import { cloneDeep } from "lodash";
@@ -401,6 +401,8 @@ const Estimate = (props) => {
   const medium = useMediaQuery(theme.breakpoints.down("md"));
   const smallest = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const questionsRef = useRef();
+
   const [questions, setQuestions] = useState(defaultQuestions);
 
   const [open, setOpen] = useState(false);
@@ -428,6 +430,10 @@ const Estimate = (props) => {
     backgroundColor: "",
   });
 
+  // useEffect(()=>{
+  //   if(smallest) questionsRef.current.scrollIntoView({behavior: 'smooth'});
+  // }, [smallest])
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -443,6 +449,7 @@ const Estimate = (props) => {
     setCustomFeatures("");
     setCategory("");
     setUsers("");
+    if (smallest) questionsRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const nextQuestion = () => {
@@ -468,14 +475,18 @@ const Estimate = (props) => {
     };
     //Finally Update the question structure in state
     setQuestions(updatedQuestions);
+    if (smallest) {
+      questionsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const nextQuestionDisabled = () => {
     //Filter out the currently active question
     const activeQuestion = questions.filter((question) => question.active);
     //Check if active question id is the last id in the questions array and return true
-    if (activeQuestion[0].id === questions[questions.length - 1].id)
+    if (activeQuestion[0].id === questions[questions.length - 1].id) {
       return true;
+    }
     //Under all other circumstances we need to enable question navigation
     return false;
   };
@@ -501,6 +512,7 @@ const Estimate = (props) => {
     };
     //Finally Update the question structure in state
     setQuestions(updatedQuestions);
+    if (smallest) questionsRef.current.scrollIntoView({ behavior: "smooth" });
 
     //if we need to restrict user to select only one type of service
     //its kind of a reset function for question
@@ -517,7 +529,9 @@ const Estimate = (props) => {
     //Filter out the currently active question
     const activeQuestion = questions.filter((question) => question.active);
     //Check if active question id is the first id in the questions array and return true
-    if (activeQuestion[0].id === questions[0].id) return true;
+    if (activeQuestion[0].id === questions[0].id) {
+      return true;
+    }
     //Under all other circumstances we need to enable question navigation
     return false;
   };
@@ -958,6 +972,7 @@ const Estimate = (props) => {
         </Grid>
         <Grid
           item
+          ref={questionsRef}
           style={{
             marginTop: smaller ? 0 : medium ? "9em" : "7em",
             marginBottom: smaller ? 0 : "5em",
@@ -1197,7 +1212,7 @@ const Estimate = (props) => {
                     phone.length === 0 ||
                     phoneHelperText.length !== 0 ||
                     message.length === 0
-                  }    
+                  }
                 >
                   {loading ? (
                     <CircularProgress size={25} />
