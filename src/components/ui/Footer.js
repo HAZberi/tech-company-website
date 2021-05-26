@@ -112,7 +112,7 @@ const Footer = (props) => {
                 item
                 className={classes.link}
                 style={
-                  window.matchMedia("(max-width: 1050px)").matches
+                  window.matchMedia("(max-width: 1450px)").matches
                     ? { display: "none" }
                     : {}
                 }
