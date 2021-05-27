@@ -19,6 +19,12 @@ Beri.Dev is a fully functional and high fidelity website built for startups, sma
 
 In the project directory, you can run:
 
+To install all the project dependencies:
+
+### `npm install`
+
+To start the development server:
+
 ### `npm start`
 
 Runs the app in the development mode.\
