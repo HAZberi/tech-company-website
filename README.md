@@ -1,8 +1,21 @@
-# Getting Started with Create React App
+# Startup Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## A fully functional high fidelity website built with latest technologies to maximize speed and performance.
 
-## Available Scripts
+### Project Details
+
+Beri.Dev is a fully functional and high fidelity website built for startups, small businesses and boutique companies. It focuses on a vibrant and engaging design while providing quality user experience. Beri.Dev has all the elements to engage clients through a crafted landing page, pause and play animations, call to action items, contact forms with validations, interactive estimate questionnaire, quote generation, site navigation and email notifications; all wrapped in a fully responsive design that changes with the viewport. The user interface is written completely with Material UI theming system to produce highly customized components. All the images are fully optimized to maximize overall site speed and performance. Icons are also converted to SVGs (Scalable Vector Graphics) to provide a smooth and consistent experience.
+
+### Possible Improvements
+
+* Implement server-side rendering with NextJS to handle production grade SEO (Search Engine Optimization).
+* Improve email handling mechanism.
+* Build an admin dashboard to manage website content and track quote generation.
+* Implement google analytics.
+* Improve code optimization and modularity.
+* Implement unit testing and build a testing pipeline.
+
+### To run this project in development mode
 
 In the project directory, you can run:
 
@@ -10,61 +23,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
